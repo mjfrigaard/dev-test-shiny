@@ -1,0 +1,105 @@
+/*-- scss:defaults --*/
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Tinos&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+$font-family-sans-serif: "Prometoe", sans-serif;
+$text-font-family: 'Prometo';
+$text-font-is-google: 0;
+$text-font-base: sans-serif;
+$header-font-family: 'Prometo';
+$header-font-is-google: 0;
+$header-font-family-fallback: 'Georgia', serif;
+$code-font-family: 'Fira Sans Condensed';
+$code-font-is-google: 0;
+$code-block-font-size: 0.80em;
+
+$body-bg: #004f5b;
+$body-color: #FFFFFF;
+$link-color: #00d082;
+$presentation-font-size-root: 45px;
+$code-block-font-size: 0.8em;
+
+
+// headings
+$h1-font-size: 1.5em !default;
+$h2-font-size: 1.45em !default;
+$h3-font-size: 1.20em !default;
+
+/*-- scss:rules --*/
+
+
+.small {
+  font-size: 0.75em;
+}
+
+.brshort {
+    line-height: 10px;
+ }
+
+.title {
+  color: $body-bg;
+  font-size: $h1-font-size;
+  font-family: $presentation-heading-font;
+}
+
+.subtitle {
+  color: $link-color;
+  font-size: $h2-font-size;
+  font-family: $presentation-heading-font;
+}
+
+.author {
+  color: $body-color;
+  font-size: $h2-font-size;
+  font-family: $presentation-heading-font;
+}
+
+.footer {
+  color: $link-color;
+  font-family: $presentation-heading-font;
+}
+
+.reveal .slide-number {
+  color: $link-color;
+  font-family: $presentation-heading-font;
+}
+
+.reveal .panel-tabset [role=tab] {
+    font-size: 0.8em;
+}
+
+.reveal .footer {
+    color: $link-color;
+}
+
+.huge-primary {
+ font-family: $font-family-sans-serif;
+ font-size: 1500%;
+ font-weight: bold;
+ color: #004f5b;
+}
+
+
+.center-x{
+    text-align: center;
+}
+
+.black-code {
+  color: #000000;
+  font-family: $font-family-monospace;
+  font-size: 2em;
+}
+
+.black-code-smaller {
+  color: #000000;
+  font-family: $font-family-monospace;
+  font-size: 1.5em;
+}
+
+.black-code-smallest {
+  color: #000000;
+  font-family: $font-family-monospace;
+  font-size: 1em;
+}

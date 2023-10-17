@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  title: "dev-test-shiny"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Welcome
+      - href: about.qmd
+        text: About
+    right:
+      - href: slides/wrkshp.qmd
+        text: Full workshop
+      - href: slides/efficient-tests.qmd
+        text: Efficient tests
+
+format:
+  html:
+    theme:
+      light: [minty, styles-dark.scss]
+      dark: [cyborg, styles.scss]
+    css: styles.css
+    toc: true
+
+editor: source
+
+
+

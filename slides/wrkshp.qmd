@@ -1,0 +1,2730 @@
+---
+title: "Developing & Testing Your Shiny Application"
+author: "Martin Frigaard (Atorus)"
+format: 
+  revealjs: 
+    title-slide-style: pandoc
+    center: false
+    height: 900
+    width: 1600
+    theme: slides.scss
+    highlight-style: ayu-mirage
+    transition: fade
+    code-line-numbers: false
+    slide-number: true
+    chalkboard: true
+    scrollable: true
+    pdf-separate-fragments: false
+
+title-slide-attributes:
+  data-background-image: img/dark_bkg.jpg
+  data-background-size: 100% auto
+  data-background-opacity: "0.60"
+  
+from: markdown+emoji
+editor: source
+---
+
+```{r, include = FALSE}
+library(tidyverse)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(ggthemes)
+options(
+  dplyr.print_min = 6,
+  dplyr.print_max = 6,
+  width = 64,
+  pillar.print_max = 8
+)
+library(fontawesome)
+```
+
+## Introduction
+
+<br>
+
+. . .
+
+[*Why are you here?*]{style='font-size: 1.20em;'}
+
+<br>
+
+. . .
+
+1. Comfortable building shiny apps, not as comfortable with R packages 
+
+ . . .
+
+2. Encountered frameworks (`golem`, `leprechaun`, or `rhino`) and not sure which one use
+
+. . .
+
+3. Comfortable building R packages, but want to build more app-packages
+
+## Agenda
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+#### Shiny stuff
+
+- Shiny
+
+- Packages 
+
+- Development
+
+:::
+
+::: {.column width="33%"}
+
+#### Package stuff
+
+- Documentation
+
+- Dependencies 
+
+- Data 
+
+:::
+
+::: {.column width="33%"}
+
+#### App-package stuff
+
+- Launch 
+
+- External files 
+
+- Testing 
+
+:::
+
+::::
+
+# Shiny
+
+. . .
+
+- The application code and data in this presentation come from the excellent [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) (BWAS) course
+
+. . .
+
+- The learning modules in this course also serve as ‘prerequisites’ for many of the topics covered here
+
+## New shiny app
+
+[Branch: `main`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+- Shiny apps only require two files (`README.md` is optional)
+
+###
+
+- Boilerplate app code in `app.R`
+
+:::
+
+:::{.column width="60%"}
+
+```bash
+moviesApp/
+├── README.md
+├── app.R
+└── moviesApp.Rproj
+
+1 directory, 3 files
+```
+
+:::
+
+::::
+
+
+
+## Shiny code
+
+[Branch: `02_movies-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Slightly more developed:
+
+- Updates to `app.R`
+
+- Utility function (`utils.R`)
+
+:::
+
+:::{.column width="60%"}
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|3|6|"
+moviesApp/
+├── README.md
+├── app.R
+├── movies.RData
+├── moviesApp.Rproj
+└── utils.R
+
+1 directory, 5 files
+```
+
+:::
+
+::::
+
+## Shiny project folders
+
+[Branch: `03_proj-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Shiny app project folders:
+
+- `R/`  
+
+- `www/` 
+
+:::
+
+:::{.column width="60%"}
+
+<br>
+
+:::{style='font-size: 0.79em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|3|4-6|11|11-12|"
+moviesApp/
+├── DESCRIPTION
+├── R
+│   ├── mod_scatter_display.R
+│   ├── mod_var_input.R
+│   └── utils.R
+├── README.md
+├── app.R
+├── movies.RData
+├── moviesApp.Rproj
+└── www
+    └── shiny.png
+
+3 directories, 9 files
+```
+
+:::
+
+:::
+
+::::
+
+## Shiny loadSupport()
+
+[Branch: `03_proj-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+Shiny automatically `source`s the files in the `R/` folder and serves the external resources in `www/`
+
+. . .
+
+- *loads any top-level supporting `.R` files in the `R/` directory adjacent to the `app.R/server.R`/`ui.R` files* - [Shiny `loadSupport()`](https://shiny.posit.co/r/reference/shiny/1.5.0/loadsupport)
+
+. . .
+
+- *Add images by placing your image in a folder labeled `www` within your Shiny app directory* - [Building a user interface](https://shiny.posit.co/r/getstarted/shiny-basics/lesson2/index.html#recap)
+
+## DESCRIPTION files 
+
+[Branch: `04_description`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+The `DESCRIPTION` file can be used to control the `DisplayMode` (i.e., `Showcase`)
+
+:::
+
+:::{.column width="60%"}
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|4"
+Type: shiny
+Title: movies app
+Author: John Smith
+DisplayMode: Showcase
+```
+
+:::
+
+::::
+
+## DESCRIPTION fields 
+
+[Branch: `04_description`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::{style='font-size: 0.85em;'}
+
+'*The `Package`, `Version`, `License`, `Description`, `Title`, `Author`, and `Maintainer` fields are mandatory.*' - [ Writing R Extensions](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file)
+
+:::
+
+:::
+
+:::{.column width="60%"}
+
+:::{style='font-size: 0.83em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|1|2|3|4|5|6|7|"
+Package: moviesApp
+Title: movies app
+Version: 0.0.0.9000
+Author: John Smith [aut, cre]
+Maintainer: John Smith <John.Smith@email.io>
+Description: A movie-review shiny application.
+License: GPL-3
+```
+
+:::
+
+:::
+
+::::
+
+## .Rproj files 
+
+[Branch: `05_rproj`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+The `.Rproj` file is a plain text configuration file for the Posit Workbench IDE.
+
+:::
+
+:::{.column width="60%"}
+
+:::{style='font-size: 0.75em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|10|"
+moviesApp/
+├── DESCRIPTION
+├── R
+│   ├── mod_scatter_display.R
+│   ├── mod_var_input.R
+│   └── utils.R
+├── README.md
+├── app.R
+├── movies.RData
+├── moviesApp.Rproj
+└── www
+    └── shiny.png
+
+3 directories, 9 files
+```
+
+:::
+
+:::
+
+::::
+
+## Shiny project .Rproj fields 
+
+[Branch: `05_rproj`]{style='font-weight: bold; font-size: 0.90em;'}
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Shiny apps built with the **New Project Wizard** have the following fields:
+
+:::
+
+:::{.column width="60%"}
+
+:::{style='font-size: 0.80em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: XeLaTeX
+```
+
+:::
+
+:::
+
+::::
+
+
+
+## R Package (Project build tools)
+
+[Branch: `05_rproj`]{style='font-weight: bold; font-size: 0.90em;'}
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::{style='font-size: 0.85em;'}
+
+These are accessible under:
+
+**Tools > Project Options… > Build Tools**
+
+<br>
+
+Change **Project build tools** to **Package** 
+
+:::
+
+:::
+
+:::{.column width="60%"}
+
+![](img/proj_build_tools.png)
+
+:::
+
+::::
+
+## R Package .Rproj fields 
+
+[Branch: `05_rproj`]{style='font-weight: bold; font-size: 0.90em;'}
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="35%"}
+
+These add the following fields to the `.Rproj` file:
+
+:::
+
+:::{.column width="65%"}
+
+:::{style='font-size: 0.80em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+BuildType: Package
+PackageUseDevtools: Yes
+PackageInstallArgs: --no-multiarch --with-keep.source
+PackageRoxygenize: rd,collate,namespace
+```
+
+:::
+
+:::
+
+::::
+
+## Creating new app-packages 
+
+[Branch: `06a_create-package`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+:::{style='font-size: 0.80em;'}
+
+Create new Shiny app-packages (or convert Shiny projects) with  `usethis::create_package()`
+
+<br>
+
+Assuming it's being called from the desired location of your new app-package:
+
+:::
+
+<br>
+
+:::{style='font-size: 0.80em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+usethis::create_package(path = getwd())
+```
+
+:::
+
+:::
+
+:::{.column width="55%"}
+
+:::{style='font-size: 0.80em;'}
+
+This creates an app similar to the version we saw in `main`: 
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|3|4|5|6|7|8|"
+newApp/
+  ├── .Rbuildignore
+  ├── .Rproj.user/
+  ├── .gitignore
+  ├── DESCRIPTION
+  ├── NAMESPACE
+  ├── R/
+  └── newApp.Rproj
+```
+
+:::
+
+:::
+
+::::
+
+## Converting Shiny apps (fields) 
+
+[Branch: `06a_create-package`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+:::{style='font-size: 0.85em;'}
+
+Many of the `DESCRIPTION` fields inevitably require revision
+
+<br>
+
+We can handle this during the creation process with the `fields` argument
+
+:::
+
+:::
+
+::: {.column width="55%"}
+
+:::{style='font-size: 0.59em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|4|6-10|11-15|"
+fields = list(Package = 'moviesApp',
+       Version = '0.0.0.9000',
+       Title = 'movies app',
+       Description = 'A movie-review Shiny application.',
+       "Authors@R" = NULL,
+       Author = utils::person(
+          given = "John", 
+          family = "Smith", 
+          email = "John.Smith@email.io", 
+          role = c("aut", "cre")),
+        Maintainer = utils::person(
+          given = "John", 
+          family = "Smith",
+          email = "John.Smith@email.io"),
+        License = "GPL-3")
+```
+
+:::
+
+:::
+
+::::
+
+## Converting Shiny apps (IDE options) 
+
+[Branch: `06a_create-package`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+:::{style='font-size: 0.85em;'}
+
+`check_name`: verifies your Shiny app-package name is valid for CRAN
+
+<br>
+
+`open`: can be set to `FALSE` if you don't need Posit Workbench to open in a new session
+
+:::
+
+:::
+
+::: {.column width="55%"}
+
+:::{style='font-size: 0.58em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|17-18|"
+usethis::create_package(path = getwd(),
+  fields = list(Package = 'moviesApp',
+         Version = '0.0.0.9000',
+         Title = 'movies app',
+         Description = 'A movie-review Shiny application.',
+         "Authors@R" = NULL,
+         Author = utils::person(
+            given = "John", 
+            family = "Smith", 
+            email = "John.Smith@email.io", 
+            role = c("aut", "cre")),
+          Maintainer = utils::person(
+            given = "John", 
+            family = "Smith",
+            email = "John.Smith@email.io"),
+          License = "GPL-3"),
+  check_name = FALSE, 
+  open = FALSE)
+```
+
+:::
+
+:::
+
+::::
+
+## Development 
+
+[Branch: `06b_devtools`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+:::{style='font-size: 0.95em;'}
+
+`devtools::load_all()` is the development function you'll use the most during package development
+
+:::
+
+<br>
+
+. . .
+
+:::{style='font-size: 0.95em;'}
+
+`devtools::document()` creates the help files and writes the `NAMESPACE`
+
+:::
+
+<br>
+
+. . .
+
+:::{style='font-size: 0.95em;'}
+
+`devtools::install()` installs a local version of your app-package
+
+:::
+
+
+## Development: `load_all()`
+
+[Branch: `06b_devtools`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+
+:::{style='font-size: 0.85em;'}
+
+'*`load_all()` removes friction from the development workflow and eliminates the temptation to use workarounds that often lead to mistakes around namespace and dependency management*’ - [Benefits of `load_all()`, R Packages, 2ed](https://r-pkgs.org/workflow101.html#benefits-of-load_all)
+
+:::
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| eval: false 
+#| echo: true
+devtools::load_all()
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{bash}
+#| eval: false 
+#| echo: true
+ℹ Loading moviesApp
+```
+
+:::
+
+::::
+
+<br>
+
+. . .
+
+Load the package when anything changes in the `R/` folder.
+
+
+## Development: `document()`
+
+[Branch: `06b_devtools`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+:::{style='font-size: 0.85em;'}
+
+`document()` write dependencies into the `NAMESPACE` and creates the help files in the `man/` folder
+
+:::
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+:::{style='font-size: 0.85em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+devtools::document()
+```
+
+:::
+
+:::
+
+::: {.column width="70%"}
+
+:::{style='font-size: 0.80em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+First time using roxygen2. Upgrading automatically...
+Setting `RoxygenNote` to "7.2.3"
+Warning message:
+roxygen2 requires Encoding: "UTF-8"
+ℹ Current encoding is NA 
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+<br>
+
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+:::{style='font-size: 0.85em;'}
+
+Updated `DESCRIPTION` fields
+
+:::
+
+:::
+
+::: {.column width="70%"}
+
+:::{style='font-size: 0.80em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+RoxygenNote: 7.2.3
+Encoding: UTF-8
+
+```
+
+:::
+
+:::
+
+::::
+
+## Development: `document()`
+
+[Branch: `06b_devtools`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+<br>
+
+:::{style='font-size: 0.95em;'}
+
+Future calls to `document()` will result in the following output:
+
+:::
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+:::{style='font-size: 0.85em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+devtools::document()
+```
+
+:::
+
+:::
+
+:::{.column width="70%"}
+
+:::{style='font-size: 0.73em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+==> devtools::document(roclets = c('rd', 'collate', 'namespace'))
+
+ℹ Updating moviesApp
+  documentation
+ℹ Loading moviesApp
+Documentation completed
+```
+
+:::
+
+:::
+
+::::
+
+## Development: `install()` 
+
+[Branch: `06b_devtools`]{style='font-weight: bold; font-size: 0.90em;'}
+
+. . .
+
+<br>
+
+:::{style='font-size: 0.85em;'}
+
+Install a package after the initial setup, after major changes to the code, documentation, or dependencies, and before committing or sharing.
+
+:::
+
+. . .
+
+<br>
+
+:::: {.columns}
+::: {.column width="25%"}
+:::{style='font-size: 0.80em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+devtools::install()
+```
+
+:::
+:::
+
+:::{.column width="70%"}
+
+:::{style='font-size: 0.59em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|3|8|"
+==> R CMD INSTALL --preclean --no-multiarch --with-keep.source moviesApp
+
+* installing to library ‘/path/to/pkg/R-4.2/x86_64-apple-darwin17.0’
+* installing *source* package ‘moviesApp’ ...
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+No man pages found in package  ‘moviesApp’ 
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (moviesApp)
+```
+
+:::
+
+:::
+
+::::
+
+## Development: `check()`?
+
+[Branch: `06b_devtools`]{style='font-weight: bold; font-size: 0.90em;'}
+
+. . .
+
+<br>
+
+`devtools::check()` performs a series of checks to ensure a package meets the standards set by [CRAN](https://cran.r-project.org/)
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="38%"}
+
+:::{style='font-size: 0.73em;'}
+
+- Consider `check()` like 'quality control' for:
+   - Documentation   
+   - `NAMESPACE` dependencies   
+   - Unnecessary or non-standard folders and files   
+   - etc. 
+   
+:::
+   
+:::
+
+::: {.column width="2%"}
+
+:::
+   
+::: {.column width="60%"}
+
+:::{style='font-size: 0.68em;'}
+
+[R Packages recommends](https://r-pkgs.org/workflow101.html#sec-workflow101-r-cmd-check) using `check()` often, but I agree with the advice in [Mastering Shiny](https://mastering-shiny.org/scaling-packaging.html#r-cmd-check) on using `check()` with app-packages,
+
+> *'I don't recommend that you [call `check()`] the first time, the second time, or even the third time you try out the package structure. Instead, I recommend that you get familiar with the basic structure and workflow before you take the next step to make a fully compliant package.'*
+
+:::
+
+:::
+
+::::
+
+
+# Ready
+
+. . .
+
+
+[BREAK!]{style='font-weight: bold; font-size: 1.60em;'}
+
+# R Packages 
+
+## Documentation: `roxygen2`
+
+[Branch: `07_roxygen2`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+  
+1. Each function needs: 
+    - [`@title`, `@description`, `@param`(s), `@return`, and `@examples` (if applicable)]{style='font-size: 0.80em;'}
+
+2. Regularly load and document to preview the help files
+    - [`load_all()` & `document()`]{style='font-size: 0.80em;'}
+
+:::
+
+::: {.column width="50%"}
+  
+3. Application functions   
+    - [Link modules with `@seealso`]{style='font-size: 0.80em;'}   
+    - [Group functions with `@family`]{style='font-size: 0.80em;'}
+    
+4. Use Markdown for code, emphasis, hyperlinks, etc.
+  
+5. Include any additional information in a new `@section`
+
+:::
+
+::::
+
+
+## Documentation: `roxygen2` & `document()`
+
+[Branch: `07_roxygen2`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+![](img/roxygen2_document.png)
+:::
+
+:::{.column width="60%"}
+
+```{bash}
+#| eval: false 
+#| echo: true
+man
+├── mod_scatter_display_server.Rd
+├── mod_scatter_display_ui.Rd
+├── mod_var_input_server.Rd
+├── mod_var_input_ui.Rd
+├── movies_app.Rd
+├── movies_server.Rd
+├── movies_ui.Rd
+└── scatter_plot.Rd
+
+1 directory, 8 files
+```
+
+:::
+
+::::
+
+## Dependencies 
+
+[Branch: `07_roxygen2`]{style='font-weight: bold; font-size: 0.90em;'}
+
+
+
+
+<br>
+
+*What happens when we load, document, and install `moviesApp`, then try to launch the standalone app function?*
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{r}
+#| eval: false 
+#| echo: true
+devtools::load_all()
+```
+:::
+
+:::{.column width="60%"}
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{r}
+#| eval: false 
+#| echo: true
+devtools::document()
+```
+:::
+
+:::{.column width="60%"}
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{r}
+#| eval: false 
+#| echo: true
+devtools::install()
+```
+:::
+
+:::{.column width="60%"}
+
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="10%"}
+
+:::
+
+:::{.column width="90%"}
+
+```{r}
+#| eval: false 
+#| echo: true
+library(moviesApp)
+movies_app()
+```
+
+```{bash}
+#| eval: false 
+#| echo: true
+Error in movies_app() : could not find function "movies_app"
+```
+
+:::
+
+::::
+
+## Dependencies: exports
+
+[Branch: `08a_pkg-exports`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+*How can I export `movies_app()` from `moviesApp`?*
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+Exporting functions: 
+
+:::{style='font-size: 0.80em;'}
+
+- Use `@export` tag from `roxygen2` 
+
+- Name argument is optional 
+
+- Run `document()` to write `NAMESPACE`
+
+:::
+
+:::
+
+:::{.column width="60%"}
+
+:::{style='font-size: 0.90em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+# Generated by roxygen2: do not edit by hand
+
+export(movies_app)
+export(scatter_plot)
+```
+
+:::
+
+<br>
+
+![](img/app_fun_namespaced.png)
+
+:::
+
+::::
+
+## Dependencies: imports 
+
+[Branch: `08b_pkg-imports`]{style='font-weight: bold; font-size: 0.90em;'}
+
+
+<br>
+
+:::: {.columns}
+
+:::{.column width="50%"}
+:::{style='font-size: 0.90em;'}
+Add the package name to the `Imports` field in the `DESCRIPTION`
+:::
+:::
+
+
+:::{.column width="50%"}
+:::{style='font-size: 0.90em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+usethis::use_package('pkg')
+```
+:::
+
+:::
+::::
+
+. . .
+
+:::: {.columns}
+
+:::{.column width="50%"}
+:::{style='font-size: 0.90em;'}
+ Use a ‘fully qualified variable reference’ in the code below `R/`
+:::
+:::
+
+::: {.column width="50%"}
+:::{style='font-size: 0.90em;'}
+```{r}
+#| eval: false 
+#| echo: true
+pkg::fun()
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+:::{.column width="50%"}
+:::{style='font-size: 0.90em;'}
+
+Use `@importFrom` if an object can't be imported with `::` (i.e., an operator)
+
+:::
+:::
+
+:::{.column width="50%"}
+
+:::{style='font-size: 0.90em;'}
+```{r}
+#| eval: false 
+#| echo: true
+#' @importFrom rlang .data
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+:::{.column width="50%"}
+:::{style='font-size: 0.90em;'}
+
+Use the `@import` tag if your code uses ***a lot*** of functions from a package
+
+:::
+:::
+
+::: {.column width="50%"}
+:::{style='font-size: 0.90em;'}
+```{r}
+#| eval: false 
+#| echo: true
+#' @import shiny
+```
+:::
+:::
+
+::::
+
+## Dependencies: imports cont.
+
+[Branch: `08b_pkg-imports`]{style='font-weight: bold; font-size: 0.90em;'}
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::{style='font-size: 0.90em;'}
+
+- `document()` writes the `NAMESPACE` (**not the `DESCRIPTION`**)
+
+<br>
+
+- All packages in `NAMESPACE` must be in `DESCRIPTION` 
+
+:::
+
+:::
+
+:::{.column width="60%"}
+
+![](img/roxygen2_document_description.png){width='80%'}
+
+:::
+
+::::
+
+. . .
+
+I highly recommend reading [Confusion about imports](https://r-pkgs.org/dependencies-in-practice.html#confusion-about-imports) in [R packages, 2ed](https://r-pkgs.org/)
+
+## Dependencies: recap 
+
+[Branch: `08b_pkg-imports`]{style='font-weight: bold; font-size: 0.90em;'}
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Updates to `NAMESPACE`
+
+:::
+
+:::{.column width="60%"}
+
+:::{style='font-size: 0.90em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+# Generated by roxygen2: do not edit by hand
+
+export(movies_app)
+export(scatter_plot)
+import(shiny)
+importFrom(rlang,.data)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Updates to `DESCRIPTION`
+
+:::
+
+:::{.column width="60%"}
+
+:::{style='font-size: 0.90em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+Imports: 
+    ggplot2,
+    rlang,
+    shiny,
+    shinythemes,
+    stringr
+```
+
+:::
+
+:::
+
+::::
+
+
+
+## Data 
+
+[Branch: `09_data`]{style='font-weight: bold; font-size: 0.90em;'}
+
+
+<br>
+
+There are three locations for data in your app-package:
+
+<br>
+
+. . .
+
+<br>
+
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+::: {style='font-size: 1.40em;'}
+**`data/`**
+:::
+
+:::
+
+:::{.column width="33%"}
+
+::: {style='font-size: 1.40em;'}
+**`data-raw/`**
+:::
+
+:::
+
+:::{.column width="33%"}
+
+::: {style='font-size: 1.40em;'}
+**`inst/extdata/`**
+:::
+
+:::
+
+::::
+
+## Data: package data
+
+[Branch: `09_data`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {style='font-size: 1.20em;'}
+**`data/`**
+:::
+
+
+::: {style='font-size: 0.80em;'}
+
+- Contains package data  
+
+:::
+
+:::
+
+:::{.column width="40%"}
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {style='font-size: 0.80em;'}
+
+- Accessible via namespace (i.e., `pkg::data`) or `data()` function
+
+:::
+
+:::
+
+:::{.column width="40%"}
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {style='font-size: 0.80em;'}
+
+- Add data files to data with `usethis::use_data()`
+
+:::
+
+:::
+
+:::{.column width="40%"}
+
+::: {style='font-size: 0.90em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+data
+  ├── movies.RData
+  └── movies.rda
+
+1 directory, 2 files
+```
+
+:::
+
+:::
+
+::::
+
+## Data: raw data files 
+
+[Branch: `09_data`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {style='font-size: 1.20em;'}
+
+**`data-raw/`**
+
+:::
+
+:::
+
+:::{.column width="40%"}
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {style='font-size: 0.80em;'}
+
+- Scripts and files used to create data in `data/`
+
+:::
+
+:::
+
+:::{.column width="40%"}
+
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+::: {style='font-size: 0.80em;'}
+
+- Create `data-raw` files with `usethis::use_data_raw()`
+
+:::
+
+:::
+
+:::{.column width="30%"}
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {style='font-size: 0.80em;'}
+
+- For example, the scripts used to create `movies.RData` *might* look like this:
+
+:::
+
+:::
+
+:::{.column width="40%"}
+
+<br>
+
+::: {style='font-size: 0.85em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+data-raw
+  ├── all.csv
+  ├── movies.csv
+  ├── pull_rotten_data.R
+  ├── rotten.R
+  └── scrape_boxoffice.R
+
+1 directory, 5 files
+```
+
+:::
+
+:::
+
+::::
+
+## Data: external data files 
+
+[Branch: `09_data`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style='font-size: 1.20em;'}
+**`inst/extdata/`**
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style='font-size: 0.85em;'}
+
+- `inst/extdata` can be used for external datasets in other file formats (`.csv`, `.tsv`, `.txt`, `.xlsx`, etc)
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style='font-size: 0.85em;'}
+
+- Import these files with the `system.file()` file path accessor function
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+::: {style='font-size: 0.70em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "2-3"
+inst/
+└── extdata
+    └── movies.fst
+
+2 directories, 1 file
+```
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "2"
+fst::read_fst(path = 
+      system.file("extdata/", "movies.fst", 
+                  package = "moviesApp")
+    )
+```
+
+:::
+
+:::
+
+::::
+
+# BREAK!
+
+# App-packages
+
+The next section covers some practices specific to app-packages. 
+
+## Launching apps
+
+[Branch: `10_launch-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+Shiny has three functions for launching apps:
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+::: {style='font-size: 1.40em;'}
+**`shinyApp()`**
+:::
+
+:::
+
+:::{.column width="33%"}
+
+::: {style='font-size: 1.40em;'}
+**`shinyAppDir()`**
+:::
+
+:::
+
+:::{.column width="33%"}
+
+::: {style='font-size: 1.40em;'}
+**`runApp()`**
+:::
+
+:::
+
+::::
+
+## Launching apps: shinyApp()
+
+[Branch: `10_launch-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+What happens when we call `shinyApp()`?
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+::: {style='font-size: 0.80em;'}
+
+- `shinyApp()` creates and launches an app defined *inline* (or with UI and server function arguments)
+
+:::
+
+:::
+
+::: {.column width="60%"}
+
+::: {style='font-size: 0.70em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|3-5|"
+app <- shinyApp(
+  ui = fluidPage(), 
+  server = function(input, output) {
+    
+  }
+)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+::: {style='font-size: 0.80em;'}
+
+- `shinyApp()` creates a shiny app object (`shiny.appobj`)
+
+:::
+
+:::
+
+::: {.column width="60%"}
+
+::: {style='font-size: 0.70em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+str(app)
+```
+
+:::
+
+::: {style='font-size: 0.65em;'}
+
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|7|9|"
+List of 5
+ $ httpHandler     :function (req)  
+ $ serverFuncSource:function ()  
+ $ onStart         : NULL
+ $ options         : list()
+ $ appOptions      :List of 2
+  ..$ appDir       : chr "/path/to/moviesApp"
+  ..$ bookmarkStore: NULL
+ - attr(*, "class")= chr "shiny.appobj"
+```
+
+:::
+
+:::
+
+::::
+
+## Launching apps:  `shinyAppDir()`
+
+[Branch: `10_launch-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+. . .
+
+What happens when we call  `shinyAppDir()`?
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+::: {style='font-size: 0.80em;'}
+
+- `shinyAppDir()` launches an app from a directory (with an `app.R` or `ui.R`/`server.R` files).
+
+:::
+
+:::
+
+::: {.column width="60%"}
+
+::: {style='font-size: 0.70em;'}
+
+<br>
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|"
+shinyAppDir(
+  appDir = "path/to/app/", 
+  options = list())
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+::: {style='font-size: 0.80em;'}
+
+<br>
+
+- `shinyAppDir()` can use a returned `appDir` from `shinyApp()`
+
+:::
+
+:::
+
+::: {.column width="60%"}
+
+::: {style='font-size: 0.70em;'}
+
+<br>
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|1-2|3|"
+app <- shinyApp(ui = movies_ui,
+        server = movies_server)
+app$appOptions$appDir
+```
+
+```{bash}
+#| eval: false 
+#| echo: true
+[1] "path/to/moviesApp"
+```
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|"
+shinyAppDir(
+  appDir = app$appOptions$appDir)
+```
+
+
+:::
+
+:::
+
+::::
+
+
+## Launching apps: `runApp()`
+
+[Branch: `10_launch-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+
+What happens when we call `runApp()`?
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+::: {style='font-size: 0.80em;'}
+
+- `runApp()` is the most versatile way to launch your app from the IDE
+
+:::
+:::
+
+::: {.column width="60%"}
+::: {style='font-size: 0.70em;'}
+
+<br>
+
+```{r}
+#| eval: false 
+#| echo: true
+runApp()
+```
+
+:::
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+-  [*It will run apps from the console, stored in a directory, or with a shiny object*]{style='font-size: 0.70em;'}
+:::
+
+::: {.column width="60%"}
+::: {style='font-size: 0.70em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|"
+runApp(
+  appDir = "path/to/app/",
+  test.mode = TRUE/FALSE)
+
+```
+
+:::
+:::
+
+::::
+
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::
+
+::: {.column width="60%"}
+::: {style='font-size: 0.70em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|4"
+app <- shinyApp(
+        ui = movies_ui,
+        server = movies_server)
+runApp(appDir = app)
+```
+
+:::
+:::
+
+::::
+
+
+## Launching apps: `app.R`
+
+[Branch: `10_launch-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+:::{style='font-size: 0.90em;'}
+What should go in `app.R`?
+:::
+
+. . .
+
+::::{.columns}
+
+:::{.column width="20%"}
+:::
+
+::: {.column width="60%"}
+::: {style='font-size: 0.61em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|1|2-12|13-18|"
+withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
+  if (!interactive()) {
+    sink(stderr(), type = "output")
+    tryCatch(expr = {
+        library(moviesApp) # load package 
+      },
+      error = function(e) {
+        pkgload::load_all() # load R/ folder 
+      }
+    )
+    shinyApp(ui = movies_ui,
+      server = movies_server) # create shiny object 
+  } else {
+    pkgload::load_all() # load R/ folder
+    shinyApp(ui = movies_ui, # create shiny object
+      server = movies_server)
+  }
+})
+```
+
+:::
+:::
+
+:::{.column width="20%"}
+:::
+
+::::
+
+## Launching apps: `display_type()`
+
+[Branch: `10_launch-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+`display_type()` is a helper function:
+
+. . .
+
+::: {style='font-size: 0.65em;'}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|1|2-10|11-15|"
+display_type <- function(run = "w") {
+  if (run == "p") {
+    options(shiny.launch.browser = .rs.invokeShinyPaneViewer)
+  } else if (run == "b") {
+    options(shiny.launch.browser = .rs.invokeShinyWindowExternal) 
+  } else if (run == "w") {
+    options(shiny.launch.browser = .rs.invokeShinyWindowViewer) 
+  } else {
+    options(shiny.launch.browser = NULL)
+  }
+    shinyViewerType <- getOption('shiny.launch.browser') |> 
+                        attributes() |> 
+                        unlist() |> 
+                        unname()
+    cli::cli_alert_info("shinyViewerType set to {shinyViewerType}")
+}
+```
+:::
+
+
+## Launching apps: `movies_app()`
+
+[Branch: `10_launch-app`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+
+What should go in the standalone app function?
+
+. . .
+
+::::{.columns}
+
+:::{.column width="20%"}
+:::
+
+::: {.column width="60%"}
+::: {style='font-size: 0.63em;'}
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|1|2-12|13-17|"
+movies_app <- function(test = FALSE, run = "w") {
+  if (interactive()) { # App launched from interactive session
+      display_type(run = run)
+      if (isTRUE(test)) {
+        shinyApp(ui = movies_ui,
+          server = movies_server,
+          options = list(test.mode = TRUE))
+      } else {
+        shinyApp(ui = movies_ui,
+          server = movies_server, 
+          options = list(test.mode = FALSE))
+      }
+  } else { # App deployed 
+    shinyApp(ui = movies_ui(),
+             server = movies_server)
+  }
+}
+```
+
+:::
+:::
+
+:::{.column width="20%"}
+:::
+
+::::
+
+## External files: `www`
+
+[Branch: `11a_inst-www`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+Adding external files (formerly in `www`)
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+::: {style='font-size: 0.80em;'}
+- Move `www` into `inst/`
+:::
+:::
+
+:::{.column width="60%"}
+::: {style='font-size: 0.80em;'}
+```{bash}
+#| eval: false 
+#| echo: true
+inst
+  └── www
+       └── shiny.png
+  
+2 directories, 1 file
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+::: {style='font-size: 0.80em;'}
+- Use `addResourcePath()` and `system.file()` to add the `www` location to the UI
+:::
+:::
+
+:::{.column width="60%"}
+::: {style='font-size: 0.67em;'}
+```{r}
+#| eval: false 
+#| echo: true
+addResourcePath(prefix = 'www', 
+                directoryPath = system.file('www', 
+                                    package = 'moviesApp'))
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+:::
+
+:::{.column width="60%"}
+::: {style='font-size: 0.80em;'}
+```{r}
+#| eval: false 
+#| echo: true
+img(src = "www/shiny.png")
+```
+:::
+:::
+
+::::
+
+## External files: `bslib`
+
+[Branch: `11b_inst-bslib`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+`inst/` can store alternate images and resources 
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style='font-size: 0.80em;'}
+
+- Add image to `inst/www`
+
+:::
+:::
+
+:::{.column width="50%"}
+::: {style='font-size: 0.80em;'}
+```{bash}
+#| eval: false 
+#| echo: true
+inst
+ └── www
+      ├── bootstrap.png
+      └── shiny.png
+  
+2 directories, 2 files
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style='font-size: 0.80em;'}
+- `addResourcePath()` has already added the `www/` folder 
+:::
+:::
+
+:::{.column width="50%"}
+::: {style='font-size: 0.80em;'}
+```{r}
+#| eval: false 
+#| echo: true
+img("www/bootstrap.png")
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style='font-size: 0.80em;'}
+
+- Add `bslib` argument to `movies_ui()`
+
+:::
+:::
+
+:::{.column width="50%"}
+::: {style='font-size: 0.80em;'}
+```{r}
+#| eval: false 
+#| echo: true
+movies_app(test = FALSE, bslib = TRUE)
+```
+:::
+:::
+
+::::
+
+## External files: `dev`
+
+[Branch: `11c_inst-dev`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+We can also store entire apps in `inst/`
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style='font-size: 0.80em;'}
+
+`inst/dev/`:
+
+- `app.R` (app file)
+- `imdb.png` (image file)
+- `tidy_movies.fst` (data) 
+
+:::
+:::
+
+:::{.column width="50%"}
+::: {style='font-size: 0.80em;'}
+
+<br>
+
+```{bash}
+#| eval: false 
+#| echo: true
+inst/dev
+├── app.R
+├── imdb.png
+└── tidy_movies.fst
+
+1 directory, 3 files
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style='font-size: 0.80em;'}
+- Functions in `R/` are accessible in `inst/dev/app.R`
+
+- Write an alternate standalone app function
+:::
+:::
+
+:::{.column width="50%"}
+::: {style='font-size: 0.80em;'}
+
+<br>
+
+```{r}
+#| eval: false 
+#| echo: true
+ggp2_movies_app(test = FALSE, run = 'p')
+```
+:::
+:::
+
+::::
+
+
+## External files: `prod`
+
+[Branch: `11d_inst-prod`]{style='font-weight: bold; font-size: 0.90em;'}
+
+<br>
+
+Apps can be deployed from a dedicated `inst/` folder
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style='font-size: 0.80em;'}
+
+In `inst/prod/app/app.R`
+
+::: {style='font-size: 0.85em;'}
+```{r}
+#| eval: false 
+#| echo: true
+shinyApp(
+  ui = moviesApp::movies_ui(bslib = TRUE), 
+  server = moviesApp::movies_server)
+```
+:::
+
+:::
+:::
+
+:::{.column width="50%"}
+::: {style='font-size: 0.80em;'}
+
+<br>
+
+```{bash}
+#| eval: false 
+#| echo: true
+inst/
+  └── prod/
+       └── app/
+            └── app.R
+          
+3 directories, 1 file
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style='font-size: 0.80em;'}
+- in `app.R`, use `shinyAppDir()` and `system.file()` to return the app object from `prod/app/app.R`
+:::
+:::
+
+:::{.column width="50%"}
+::: {style='font-size: 0.67em;'}
+
+<br>
+
+```{r}
+#| eval: false 
+#| echo: true
+shinyAppDir(appDir = system.file("prod/app", 
+                            package = "moviesApp"))
+```
+:::
+:::
+
+::::
+
+# Tests
+
+## Test specs
+
+[Branch: `12a_tests-specs`]{style='font-weight: bold; font-size: 0.90em;'}
+
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::
+
+:::{.column width="60%"}
+
+```bash
+moviesApp/
+
+```
+
+:::
+
+::::
+
+## Test fixture
+
+`12b_tests-fixtures`
+
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::
+
+:::{.column width="60%"}
+
+```bash
+moviesApp/
+
+```
+
+:::
+
+::::
+
+## Test helpers
+
+`12c_tests-helpers`
+
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::
+
+:::{.column width="60%"}
+
+```bash
+moviesApp/
+
+```
+
+:::
+
+::::
+
+## Test mocks
+
+`12d_tests-mocks`
+
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::
+
+:::{.column width="60%"}
+
+```bash
+moviesApp/
+
+```
+
+:::
+
+::::
+
+## Testing modules
+
+`12e_tests-modules`
+
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::
+
+:::{.column width="60%"}
+
+```bash
+moviesApp/
+
+```
+
+:::
+
+::::
+
+## System tests 
+
+`12f_tests-system`
+
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+:::
+
+:::{.column width="60%"}
+
+```bash
+moviesApp/
+
+```
+
+:::
+
+::::
+
+# Debugging 
+
+## Debugging
+
+`spec_topic-debugging-01`
+
+## Debugging
+
+`spec_topic-debugging-02`
+
+## Debugging
+
+`spec_topic-debugging-03`
+
+## Debugging
+
+`spec_topic-debugging-04`
+
+

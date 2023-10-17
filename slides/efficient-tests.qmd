@@ -1,0 +1,1046 @@
+---
+title: "What Do You Mean Test Coverage?!"
+subtitle: "Efficient Testing for Shiny Apps"
+author: "Martin Frigaard (Atorus)"
+format: 
+  revealjs: 
+    title-slide-style: pandoc
+    center: false
+    height: 900
+    width: 1600
+    theme: slides.scss
+    highlight-style: ayu-mirage
+    transition: fade
+    code-line-numbers: false
+    slide-number: true
+    chalkboard: true
+    scrollable: true
+    pdf-separate-fragments: false
+
+title-slide-attributes:
+  data-background-image: img/dark_bkg.jpg
+  data-background-size: 100% auto
+  data-background-opacity: "0.60"
+  
+from: markdown+emoji
+editor: source
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(cli)
+library(knitr)
+library(fontawesome)
+library(testthat)
+library(glue)
+options(
+  dplyr.print_min = 6,
+  dplyr.print_max = 6,
+  width = 70,
+  crayon.enabled = TRUE,
+  pillar.print_max = 8
+)
+```
+
+
+## Introduction {auto-animate="true"}
+
+<br>
+
+*A bit about me...*
+
+. . .
+
+<br>
+
+
+```{r}
+#| echo: false 
+whoami <- function() {
+cat("As a shiny developer
+I want to focus on writing tests that matter 
+So that I can spend less time testing code...")
+}
+```
+
+```{r}
+#| eval: false
+whoami()
+```
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.95em;"}
+
+```{r}
+#| echo: false
+#| collapse: false
+whoami()
+```
+
+:::
+
+## Agenda 
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+::: {style='font-size: 1.30em; font-weight: bold;'}
+
+Shiny testing 
+
+:::
+
+- Unit tests
+
+- Integration tests 
+
+- System tests 
+
+- Test tools
+  - Fixtures 
+  - Helpers
+
+:::
+
+::: {.column width="33%"}
+
+::: {style='font-size: 1.30em; font-weight: bold'}
+
+Development
+
+:::
+
+- Standard app development 
+
+- Behavior-driven development
+  - Features  
+  - Scenarios  
+
+:::
+
+::: {.column width="33%"}
+
+::: {style='font-size: 1.30em; font-weight: bold'}
+
+Efficient Tests
+
+:::
+
+- What should I test?
+
+- How should I test it?
+
+- Code coverage
+
+:::
+
+::::
+
+
+# Shiny Testing 
+
+## Testing your shiny app
+
+<br>
+
+-   Is **much** easier if your app is in a package 
+
+. . .
+
+&emsp; &emsp;*...but its not impossible if it's not*
+    
+. . .
+
+-   Requires additional packages and/or functions beyond `testthat` 
+
+. . .
+
+-   Benefits from having a well-designed test suite
+
+. . .
+
+-   Understand the relationship between `R/` files and `test-` files
+
+<br>
+
+
+## Unit Tests
+
+<br>
+
+. . .
+
+-   Package(s): `testthat`
+
+<br>
+
+. . .
+
+-   Focuses on specific units of code, ensuring each function or component behaves as intended.
+
+<br>
+
+. . .
+
+Example: Verifying that a function correctly calculates a specific value based on the input.
+
+<!--
+
+:::{style='font-size: 0.70em;'}
+
+```{r}
+#| eval: false 
+testthat::test_that(desc = "", code = {
+  
+  x <- my_fun("input")
+  y <- paste0(c('i', 'n', 'p', 'u', 't'), collapse = "")
+  
+  testthat::expect_equal(
+    object = x, 
+    expected = y)
+  
+})
+```
+
+:::
+
+-->
+
+
+## Integration Tests
+
+<br>
+
+. . .
+
+-   Package(s): `shiny` (`testServer()`) & `testtthat`
+
+<br>
+
+. . .
+
+-   Confirms app/module server functions operate as expected
+
+. . .
+
+<br>
+
+Example: Making sure that modules communicate and display the results from a specific function or calculation
+
+## System Tests
+
+<br>
+
+. . .
+
+Package(s): `shiny` & `shinytest2`
+
+<br>
+
+. . .
+
+Confirms all parts of the app behave correctly and provide a good user experience.
+
+<br>
+
+. . .
+
+Example: Simulating a user's experience with the application, selecting inputs, entering data, and ensuring the application responds correctly and displays the expected outputs.
+
+
+## Test Fixtures 
+
+:::{style='font-size: 0.90em; font-style: italic;'}
+Test fixtures are used to create repeatable test conditions
+:::
+
+. . .
+
+<br>
+
+-   Good fixtures provide a consistent, well-defined test environment.
+
+<br>
+
+. . .
+
+-   Fixtures are removed/destroyed after the test is executed.
+
+. . .
+
+<br>
+
+-   This ensures any changes made during the test don't persist or interfere with future tests.
+
+## Example: custom plot function 
+
+. . .
+
+<br>
+
+My app has the following utility function for creating a `ggplot2` scatter plot:
+
+. . .
+
+<br>
+
+::: {style='font-size: 0.85em;'}
+
+```{r}
+#| eval: false 
+#| code-fold: false
+#| code-line-numbers: "|3|4|5|"
+scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
+    ggplot2::ggplot(data = df,
+      ggplot2::aes(x = .data[[x_var]],
+          y = .data[[y_var]],
+          color = .data[[col_var]])) +
+      ggplot2::geom_point(alpha = alpha_var, size = size_var)
+
+}
+```
+
+:::
+
+<br>
+
+. . .
+
+The data masking from `rlang` (`.data[[ ]]`) means it can handle string arguments (i.e. `input$x` and `input$y`)
+
+
+
+## Example: test fixture
+
+<br>
+
+. . .
+
+Test fixtures can be stored in `tests/testthat/fixtures/`
+
+<br>
+
+:::: {style='font-size: 0.90em;'}
+
+::: {.fragment}
+
+::: {.incremental}
+
+```{bash}
+#| eval: false 
+#| code-fold: false
+#| code-line-numbers: "|4|5|"
+tests/
+  ├── testthat/
+  │   ├── fixtures/                                         
+  │   │   ├── make-tidy_ggp2_movies.R 
+  │   │   └── tidy_ggp2_movies.rds 
+  │   ├── helper.R                                          
+  │   └── test-scatter_plot.R                                     
+  └── testthat.R
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+<br>
+
+The `make-tidy_ggp2_movies.R` creates a 'tidy' version of `ggplot2movies::movies`.
+
+
+## Using test fixtures
+
+<br>
+
+. . .
+
+Static data fixtures can be accessed with `testthat::test_path()`:
+
+:::: {style='font-size: 0.80em;'}
+
+::: {.fragment}
+
+::: {.incremental}
+
+```{r}
+#| eval: false 
+#| code-fold: false
+#| code-line-numbers: "|2|3|9"
+test_that("tidy_ggp2_movies.rds works", code = {
+tidy_ggp2_movies <- readRDS(test_path("fixtures", "tidy_ggp2_movies.rds"))
+  app_graph <- scatter_plot(tidy_ggp2_movies,
+                            x_var = 'rating',
+                            y_var = 'budget',
+                            col_var = 'mpaa',
+                            alpha_var = 3/4,
+                            size_var = 2.5)
+expect_true(ggplot2::is.ggplot(app_graph))
+})
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {style='font-size: 0.80em;'}
+
+- If `tidy_ggp2_movies.rds` is used in  a few tests,  move `make-tidy_ggp2_movies.R` into `data-raw/` and make `tidy_ggp2_movies` part of the package
+
+:::
+
+. . .
+
+::: {style='font-size: 0.80em;'}
+
+- `ggplot2::is.ggplot()` confirms a plot object has been built (doesn't require a snapshot test)
+
+:::
+
+
+## Test helpers 
+
+Test helpers reduce repeated/duplicated test code
+
+<br>
+
+. . .
+
+Objects that aren't large enough to justify storing as static test fixtures can be created with helper functions
+
+<br>
+
+. . .
+
+Helpers can be stored in `tests/testthat/helper.R`
+
+<br>
+
+
+:::: {style='font-size: 0.80em;'}
+
+::: {.fragment}
+
+::: {.incremental}
+
+```{bash}
+#| eval: false 
+#| code-fold: false
+#| code-line-numbers: "|6|"
+tests/
+  ├── testthat/
+  │   ├── fixtures/
+  │   │   ├── make-tidy_ggp2_movies.R
+  │   │   └── tidy_ggp2_movies.rds
+  │   ├── helper.R
+  │   └── test-scatter_plot.R    
+  └── testthat.R
+```
+
+
+:::
+
+:::
+
+::::
+
+## Example: test helper
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Assume I want a list of inputs to pass to the `scatter_plot()` in my test:
+
+:::
+
+::: {.column width="50%"}
+
+::: {style='font-size: 0.80em;'}
+
+```{r}
+#| eval: false 
+#| code-fold: false
+ggp2_scatter_inputs <- list(  
+        x = "rating",
+        y = "length",
+        z = "mpaa",
+        alpha = 0.75,
+        size = 3,
+        plot_title = "Enter plot title"
+)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+I could store these values in a function in `tests/testthat/helper.R`
+:::
+
+::: {.column width="50%"}
+
+::: {style='font-size: 0.80em;'}
+
+```{r}
+#| eval: false 
+#| code-fold: false
+var_inputs <- function() {
+   list( x = "rating",
+        y = "length",
+        z = "mpaa",
+        alpha = 0.75,
+        size = 3,
+        plot_title = "Enter plot title"
+    )
+}
+```
+
+:::
+
+:::
+
+::::
+
+## Using test helpers 
+
+<br>
+
+. . .
+
+This removes duplicated code...
+
+<br>
+
+:::: {style='font-size: 0.80em;'}
+
+::: {.fragment}
+
+::: {.incremental}
+
+```{r}
+#| eval: false 
+#| code-fold: false
+#| code-line-numbers: "|6-10|"
+test_that("scatter_plot() works", code = {
+  
+tidy_ggp2_movies <- readRDS(test_path("fixtures", "tidy_ggp2_movies.rds"))
+  
+app_graph <- scatter_plot(tidy_ggp2_movies,
+                          x_var = var_inputs()$x,
+                          y_var = var_inputs()$y,
+                          col_var = var_inputs()$z,
+                          alpha_var = var_inputs()$alpha,
+                          size_var = var_inputs()$size)
+
+testthat::expect_true(ggplot2::is.ggplot(app_graph))
+})
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+...but it's unclear where ` var_inputs()` comes from (or what it contains)
+
+## Tips on test helpers 
+
+. . .
+
+If you have repeated code in your tests, consider the following questions below before creating a helper function:
+
+. . .
+
+1. Does the code help explain what behavior is being tested?
+
+2. Would a helper make it harder to debug the test when it fails?
+
+. . .
+
+Consider a function like `make_ggp2_inputs()`: 
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style='font-size: 0.75em;'}
+
+```{r}
+make_ggp2_inputs <- function() {
+  glue::glue_collapse("list(x = 'rating',
+     y = 'length',
+     z = 'mpaa',
+     alpha = 0.75,
+     size = 3,
+     plot_title = 'Enter plot title'
+     )")
+}
+```
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {style='font-size: 0.75em;'}
+
+```{r}
+#| collapse: false
+make_ggp2_inputs()
+```
+
+:::
+
+:::
+
+::::
+
+# Development
+
+## Traditional development {.center auto-animate="true"}
+
+:::{style='font-size: 0.90em; font-style: italic;'}
+
+Focuses on coding an applications functionalities
+
+:::
+
+. . .
+
+<br>
+
+
+- User specifications often go beyond what they 'need' and include [solutions]{style='font-weight: bold; '}
+
+. . .
+
+- Specifications with solutions bind developers to a particular implementation
+
+. . .
+
+- Developers will then focus on the technical implementation and not finding the optimal solution
+
+. . .
+
+- Can lead to delays evaluating the testability of features until late in the project
+
+
+## Behavior-driven development  {.center auto-animate="true"}
+
+:::{style='font-size: 0.90em; font-style: italic;'}
+
+Create applications that meet desired behaviors
+
+:::
+
+. . .
+
+<br>
+
+- Starts with understanding the user needs
+
+. . .
+
+- Acknowledges specifications and requirements will change and evolve
+
+. . .
+
+- Identifies and prioritizes features that deliver value
+
+. . .
+
+- Uses [scenarios]{style='font-weight: bold; '} for guiding how to test and build [features]{style='font-weight: bold; '} 
+
+
+
+## How does BDD work? {auto-animate="true"}
+
+:::{style='font-size: 0.90em; font-style: italic;'}
+
+Users **and** developers work together to develop a clear vision of app's value
+
+:::
+
+. . .
+
+<br>
+
+Ongoing discussions between users and developers improves understanding of the problem by:
+
+<br>
+
+. . .
+
+- Uncovering hidden assumptions
+
+. . .
+
+- Considering any potential risks
+
+. . .
+
+- Building a [shared appreciation]{style='font-weight: bold; '} for meeting user needs and achieving business goals
+
+## Features 
+
+:::{style='font-size: 0.90em; font-style: italic;'}
+
+Features are tangible functionalities that facilitate achieving a business goal
+
+:::
+
+. . .
+
+<br>
+
+1. [Who]{style='font-weight: bold; '} wants the feature?
+
+. . .
+
+2. What [action]{style='font-weight: bold; '} does the feature perform?
+
+. . .
+
+3. What is the intended business [value]{style='font-weight: bold; '}?
+
+. . .
+
+[Gherkin](https://cucumber.io/docs/gherkin/):
+
+:::{style="font-size: 0.90em;"}
+
+```{verbatim}
+#| eval: false 
+Feature: < what is being built to deliver the proposed value >
+  As a < user/stakeholder >
+  I want to < perform some action >
+  So that I can < achieve a business goal >
+```
+
+:::
+
+## Describing features
+
+:::{style='font-size: 0.90em; font-style: italic;'}
+
+Users and developers write stories to describe a feature's expected outcome
+
+:::
+
+<br>
+
+. . .
+
+1. Uses a first-person voice   
+
+. . .
+
+2. States what users need     
+
+. . .
+
+3. States why users need it
+
+. . .
+
+:::{style="font-size: 0.95em;"}
+
+```{verbatim}
+#| eval: false 
+Feature: CDISC Variable Exploration Dashboard
+  As a researcher or analyst 
+  I want to explore variables in the Vital Signs Analysis Dataset (ADVS)
+  So that I can analyze and derive insights from the vital signs data
+```
+
+:::
+
+## Scenarios 
+
+:::{style='font-size: 0.90em; font-style: italic;'}
+
+Describe application behaviors in a plain, human-readable format
+
+:::
+
+<br>
+
+. . .
+
+-   **Given**: establishes [preconditions]{style='font-weight: bold; '} for the scenario.
+
+. . .
+
+-   **When**: specifies an [action]{style='font-weight: bold; '} being tested.
+
+. . .
+
+-   **Then**: defines what [outcomes]{style='font-weight: bold; '} to expect.
+
+. . .
+
+[Gherkin](https://cucumber.io/docs/gherkin/):
+
+:::{style="font-size: 0.78em;"}
+
+```{verbatim}
+#| eval: false
+  Scenario: < concrete example >
+    Given < initial conditions >
+    When  < action to test >
+    Then  < expected outcome >
+```
+
+:::
+
+
+## Writing scenarios
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="30%"}
+Set the stage
+:::
+
+::: {.column width="70%"}
+
+:::{style="font-size: 0.78em;"}
+
+```{verbatim}
+#| eval: false
+Feature: User login
+
+  Scenario: Successful login with correct credentials
+    Given the login page is loaded
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="30%"}
+Action and outcome
+:::
+
+::: {.column width="70%"}
+
+:::{style="font-size: 0.78em;"}
+
+```{verbatim}
+#| eval: false
+    When the user enters a valid username and password
+    Then the user should be redirected to the dashboard
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="30%"}
+More outcomes
+:::
+
+::: {.column width="70%"}
+
+:::{style="font-size: 0.78em;"}
+
+```{verbatim}
+#| eval: false
+    And the user should see the landing page
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="22%"}
+Alternate story
+:::
+
+::: {.column width="78%"}
+
+:::{style="font-size: 0.70em;"}
+
+```{verbatim}
+#| eval: false
+
+  Scenario: Unsuccessful login with incorrect password
+    Given the login page is loaded
+    When the user enters a valid username but an incorrect password
+    Then the user should see an error message stating 'Invalid password.'
+
+```
+
+:::
+
+:::
+
+::::
+
+## BDD with Shiny
+
+*Efficient testing means writing scenarios that cover critical paths.*
+
+<br>
+
+. . .
+
+- Ideally everything in your app is tested 
+
+. . .
+
+- In reality, decisions have to be made about what to test
+
+. . .
+
+-   If developers and users have collaboratively defined key features and expected behaviors, prioritize those scenarios  
+
+. . .
+
+- Adopt an 'inspect and adapt' posture 
+
+## `testthat` BDD support
+
+. . .
+
+<br>
+
+`testthat` has `describe()` and `it()` functions for features and scenarios:
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+
+```{r}
+#| eval: false
+#| code-fold: false
+#| code-line-numbers: "|1|7|13|14|15"
+testthat::describe(
+    "Feature: Scatter plot data visualization
+       As a film data analyst
+       I want to explore movie review data from IMDB.com
+       So that I can analyze relationships between movie reivew metrics"
+       code = {
+      testthat::it(
+        "Scenario: Create scatter plot
+           Given I have launched the movie review exploration app,
+           When I view the scatter plot,
+           Then I should see points representing values for a default
+                set of continuous and categorical columns.", 
+          code = {
+      # test code
+  })
+})
+```
+
+:::
+
+# What to test
+
+## Efficient testing  
+
+-  [Unit tests]{style='font-weight: bold; font-size: 1.15em;'}
+    -   All business logic (models, calculations, etc.) should have unit tests (no getting around this)  
+
+. . .
+
+-   [Integration tests]{style='font-weight: bold; font-size: 1.15em;'}
+    -   `shiny::testServer()` tests should focus on 'handshakes' between modules and exporting/saving data
+
+. . .
+
+-   [System/end-to-end tests]{style='font-weight: bold; font-size: 1.15em;'}
+    -   Prioritize the feature/scenario that most directly observes the intended business goal with `shinytest2()` 
+
+
+## Test coverage  
+
+<br>
+
+- Test coverage focuses on the execution paths (i.e., it assumes all paths are equally important)
+
+. . .
+
+- Test coverage can't check if our app meets user expectations
+
+. . .
+
+- Test coverage is a valuable metric, but shouldn't be the sole criterion for assessing your app
+
+
+## Remember
+
+<br><br>
+
+:::{style="font-size: 1.15em;"}
+
+> *Today's functionality is tomorrow's regression* 
+
+:::
+
+. . .
+
+<br><br>
+
+Apps need thorough and continuous testing in development so new features don't negatively affect the existing functionalities
+
+# Thanks!
