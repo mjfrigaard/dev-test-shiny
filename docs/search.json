@@ -1,8 +1,8 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Materials",
     "section": "",
     "text": "About these materials:"
   },
@@ -558,12 +558,5 @@
     "title": "What Do You Mean Test Coverage?!",
     "section": "Remember",
     "text": "Remember\n\n\n\nToday’s functionality is tomorrow’s regression\n\n\n\n\nApps need thorough and continuous testing in development so new features don’t negatively affect the existing functionalities"
-  },
-  {
-    "objectID": "materials.html",
-    "href": "materials.html",
-    "title": "Materials",
-    "section": "",
-    "text": "About these materials:"
   }
 ]
