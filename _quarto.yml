@@ -1,14 +1,15 @@
 project:
   type: website
-
+  output-dir: docs
+  
 website:
-  title: "dev-test-shiny"
+  title: "Develop and test shiny apps"
   navbar:
     left:
       - href: index.qmd
         text: Welcome
-      - href: about.qmd
-        text: About
+      - href: materials.qmd
+        text: Materials
     right:
       - href: slides/wrkshp.qmd
         text: Full workshop
@@ -18,8 +19,8 @@ website:
 format:
   html:
     theme:
-      light: [minty, styles-dark.scss]
-      dark: [cyborg, styles.scss]
+      light: [minty, styles.scss]
+      dark: [cyborg, styles-dark.scss]
     css: styles.css
     toc: true
 

@@ -1,8 +1,5 @@
 ---
-title: "dev-test-shiny"
+title: "Welcome!"
 ---
-
-Welcome!
-
 
 
