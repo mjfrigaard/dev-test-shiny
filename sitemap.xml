@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mjfrigaard.github.io/dev-test-shiny/materials.html</loc>
-    <lastmod>2023-10-17T18:24:37.341Z</lastmod>
+    <lastmod>2023-10-19T22:01:41.617Z</lastmod>
   </url>
   <url>
     <loc>https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html</loc>
-    <lastmod>2023-10-17T18:24:32.984Z</lastmod>
+    <lastmod>2023-10-19T22:01:35.026Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mjfrigaard.github.io/dev-test-shiny/index.html</loc>
+    <lastmod>2023-10-19T22:01:26.456Z</lastmod>
   </url>
   <url>
     <loc>https://mjfrigaard.github.io/dev-test-shiny/slides/efficient-tests.html</loc>
-    <lastmod>2023-10-17T18:24:36.787Z</lastmod>
+    <lastmod>2023-10-19T22:01:39.673Z</lastmod>
   </url>
 </urlset>
