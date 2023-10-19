@@ -33,6 +33,8 @@ install.packages(pkgs)
 
 To follow along, change the branch in the **Git** pane to the corresponding **Branch** in the slide footer: 
 
+:::: {.column-page-inset-right}
+
 ::: {layout="[[1], [1,1]]"}
 ![](img/cloud_branches.gif){width='100%'}
 
@@ -42,7 +44,7 @@ To follow along, change the branch in the **Git** pane to the corresponding **Br
 ![](img/slide_03_proj-app.png){width='100%'}
 :::
 
-
+::::
 
 
 
