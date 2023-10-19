@@ -2,6 +2,54 @@
 title: "Materials"
 ---
 
-About these materials: 
+:::{.callout-tip title="Code & Materials"}
+
+## Local use
+
+- Install latest version of RStudio ([`RStudio 2023.09.0 463` "Desert Sunflower"](https://www.rstudio.com/products/rstudio/download/#download) or later)
+
+- Access ALL hands-on materials by cloning the repo:  <https://github.com/mjfrigaard/moviesApp.git> 
+
+
+## Posit Cloud 
+
+- Posit Cloud has the workshop materials pre-installed: <https://posit.cloud/spaces/434433/content/6827633>
+
+
+## Packages 
+
+- Install these R packages:
+
+```{r pkg-list}
+#| eval: false
+pkgs <- c(
+  "shiny", "shinythemes", "rlang", "ggplot2", 
+  "devtools",  "logger", "fs", "rmarkdown", "lobstr"
+  )
+install.packages(pkgs)
+```
+
+:::
+
+To follow along, change the branch in the **Git** pane to the corresponding **Branch** in the slide footer: 
+
+::: {layout="[[1], [1,1]]"}
+![](img/cloud_branches.gif){width='100%'}
+
+
+![](img/slide_02_movies-app.png){width='100%'}
+
+![](img/slide_03_proj-app.png){width='100%'}
+:::
+
+
+
+
+
+
+
+
+
+
 
 

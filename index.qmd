@@ -3,3 +3,23 @@ title: "Welcome!"
 ---
 
 
+
+This site contains the materials for the R/Pharma workshop titled, [Developing & Testing Your Shiny Application](https://www.eventbrite.com/e/developing-testing-your-shiny-application-tickets-728472048507).
+
+
+
+## Workshop Description 
+
+This talk takes a deep dive into the world of testing shiny applications, covering strategies for determining what needs to be tested to ensure your app's functional accuracy and reliability. Shiny's reactive programming model requires specialized approaches to testing, distinct from traditional R package testing.
+
+I'll begin by describing the application of unit, integration, and end-to-end testing in Shiny apps. Then we'll move into the role of testing in development and highlight the need for code organization when designing your testing suite.
+
+The focus then shifts to practical aspects of testing by illustrating tools like test data and fixtures. Attendees will see example tests for utility functions, modules, and tests to capture specific user interactions (and confirm the application behaves as expected).
+
+Finally, I will demonstrate advanced topics like test coverage, what it measures, and why 100% coverage isn't necessarily a metric worth chasing.
+
+This presentation will give R developers a toolkit of testing techniques (building a test suite, writing effective tests, and automated testing) regardless of their familiarity with Shiny.
+
+## About Me
+
+[Martin Frigaard](https://www.martinfrigaard.io/) is a Data Visualization Engineer at [Atorus](https://www.atorusresearch.com/).

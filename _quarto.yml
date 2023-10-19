@@ -3,7 +3,7 @@ project:
   output-dir: docs
   
 website:
-  title: "Develop and test shiny apps"
+  title: "Developing & Testing Your Shiny Application"
   navbar:
     left:
       - href: index.qmd
