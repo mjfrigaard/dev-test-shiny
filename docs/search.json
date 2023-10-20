@@ -32,7 +32,7 @@
     "href": "slides/wrkshp.html#introduction",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Introduction",
-    "text": "Introduction\n\n\nWhy are you here?\n\n\n\n\nComfortable building shiny apps, not as comfortable with R packages\n\n\n\n\nEncountered frameworks (golem, leprechaun, or rhino) and not sure which one use\n\n\n\n\nComfortable building R packages, but want to build more app-packages"
+    "text": "Introduction\n\n\nWhy are you here?\n\n\n\n\nComfortable building shiny apps, not as comfortable with R packages\n\n\n\n\nEncountered frameworks (golem, leprechaun, or rhino) and not sure which one to use\n\n\n\n\nComfortable building R packages, but want to build more app-packages"
   },
   {
     "objectID": "slides/wrkshp.html#agenda",
@@ -45,8 +45,8 @@
     "objectID": "slides/wrkshp.html#new-shiny-app",
     "href": "slides/wrkshp.html#new-shiny-app",
     "title": "Developing & Testing Your Shiny Application",
-    "section": "New shiny app",
-    "text": "New shiny app\n\nBranch: main\n\n\n\n\n\n\nShiny apps only require two files (README.md is optional)\n\n\n\nBoilerplate app code in app.R\n\n\nmoviesApp/\n├── README.md\n├── app.R\n└── moviesApp.Rproj\n\n1 directory, 3 files"
+    "section": "New Shiny app",
+    "text": "New Shiny app\n\nBranch: main\n\n\n\n\n\n\nShiny apps only require two files (README.md is optional)\n\n\n\nBoilerplate app code in app.R\n\n\nmoviesApp/\n├── README.md\n├── app.R\n└── moviesApp.Rproj\n\n1 directory, 3 files"
   },
   {
     "objectID": "slides/wrkshp.html#shiny-code",
@@ -151,7 +151,7 @@
     "href": "slides/wrkshp.html#development-document",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Development: document()",
-    "text": "Development: document()\n\nBranch: 06b_devtools\n\n\n\n\ndocument() write dependencies into the NAMESPACE and creates the help files in the man/ folder\n\n\n\n\n\n\n\n\ndevtools::document()\n\n\n\n\n\nFirst time using roxygen2. Upgrading automatically...\nSetting `RoxygenNote` to \"7.2.3\"\nWarning message:\nroxygen2 requires Encoding: \"UTF-8\"\nℹ Current encoding is NA \n\n\n\n\n\n\n\n\n\n\nUpdated DESCRIPTION fields\n\n\n\n\nRoxygenNote: 7.2.3\nEncoding: UTF-8"
+    "text": "Development: document()\n\nBranch: 06b_devtools\n\n\n\n\ndocument() writes dependencies into the NAMESPACE and creates the help files in the man/ folder\n\n\n\n\n\n\n\n\ndevtools::document()\n\n\n\n\n\nFirst time using roxygen2. Upgrading automatically...\nSetting `RoxygenNote` to \"7.2.3\"\nWarning message:\nroxygen2 requires Encoding: \"UTF-8\"\nℹ Current encoding is NA \n\n\n\n\n\n\n\n\n\n\nUpdated DESCRIPTION fields\n\n\n\n\nRoxygenNote: 7.2.3\nEncoding: UTF-8"
   },
   {
     "objectID": "slides/wrkshp.html#development-document-1",
@@ -249,49 +249,21 @@
     "href": "slides/wrkshp.html#data-external-data-files",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Data: external data files",
-    "text": "Data: external data files\n\nBranch: 09_data\n\n\n\n\n\n\ninst/extdata/\n\n\n\n\n\n\n\n\n\n\n\ninst/extdata can be used for external datasets in other file formats (.csv, .tsv, .txt, .xlsx, etc)\n\n\n\n\n\n\n\n\n\n\n\n\nImport these files with the system.file() file path accessor function\n\n\n\n\n\ninst/\n└── extdata\n    └── movies.fst\n\n2 directories, 1 file\n\n\nfst::read_fst(path = \n      system.file(\"extdata/\", \"movies.fst\", \n                  package = \"moviesApp\")\n    )"
+    "text": "Data: external data files\n\nBranch: 09_data\n\n\n\n\n\n\ninst/extdata/\n\n\n\n\n\n\n\n\n\n\n\ninst/extdata can be used for external datasets in other file formats (.csv, .sas7bdat, .txt, .xlsx, etc)\n\n\n\n\n\n\n\n\n\n\n\n\nImport these files with the system.file() file path accessor function\n\n\n\n\n\ninst/\n└── extdata\n    └── movies.fst\n\n2 directories, 1 file\n\n\nfst::read_fst(path = \n      system.file(\"extdata/\", \"movies.fst\", \n                  package = \"moviesApp\")\n    )"
   },
   {
     "objectID": "slides/wrkshp.html#launching-apps",
     "href": "slides/wrkshp.html#launching-apps",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Launching apps",
-    "text": "Launching apps\n\nBranch: 10_launch-app\n\n\nShiny has three functions for launching apps:\n\n\n\n\n\nshinyApp()\n\n\n\nshinyAppDir()\n\n\n\nrunApp()"
-  },
-  {
-    "objectID": "slides/wrkshp.html#launching-apps-shinyapp",
-    "href": "slides/wrkshp.html#launching-apps-shinyapp",
-    "title": "Developing & Testing Your Shiny Application",
-    "section": "Launching apps: shinyApp()",
-    "text": "Launching apps: shinyApp()\n\nBranch: 10_launch-app\n\n\n\nWhat happens when we call shinyApp()?\n\n\n\n\n\n\n\nshinyApp() creates and launches an app defined inline (or with UI and server function arguments)\n\n\n\n\n\napp &lt;- shinyApp(\n  ui = fluidPage(), \n  server = function(input, output) {\n    \n  }\n)\n\n\n\n\n\n\n\n\n\n\nshinyApp() creates a shiny app object (shiny.appobj)\n\n\n\n\n\nstr(app)\n\n\n\n\nList of 5\n $ httpHandler     :function (req)  \n $ serverFuncSource:function ()  \n $ onStart         : NULL\n $ options         : list()\n $ appOptions      :List of 2\n  ..$ appDir       : chr \"/path/to/moviesApp\"\n  ..$ bookmarkStore: NULL\n - attr(*, \"class\")= chr \"shiny.appobj\""
-  },
-  {
-    "objectID": "slides/wrkshp.html#launching-apps-shinyappdir",
-    "href": "slides/wrkshp.html#launching-apps-shinyappdir",
-    "title": "Developing & Testing Your Shiny Application",
-    "section": "Launching apps: shinyAppDir()",
-    "text": "Launching apps: shinyAppDir()\n\nBranch: 10_launch-app\n\n\n\nWhat happens when we call shinyAppDir()?\n\n\n\n\n\n\n\nshinyAppDir() launches an app from a directory (with an app.R or ui.R/server.R files).\n\n\n\n\n\n\nshinyAppDir(\n  appDir = \"path/to/app/\", \n  options = list())\n\n\n\n\n\n\n\n\n\n\n\nshinyAppDir() can use a returned appDir from shinyApp()\n\n\n\n\n\n\napp &lt;- shinyApp(ui = movies_ui,\n        server = movies_server)\napp$appOptions$appDir\n\n\n[1] \"path/to/moviesApp\"\n\n\nshinyAppDir(\n  appDir = app$appOptions$appDir)"
-  },
-  {
-    "objectID": "slides/wrkshp.html#launching-apps-runapp",
-    "href": "slides/wrkshp.html#launching-apps-runapp",
-    "title": "Developing & Testing Your Shiny Application",
-    "section": "Launching apps: runApp()",
-    "text": "Launching apps: runApp()\n\nBranch: 10_launch-app\n\n\nWhat happens when we call runApp()?\n\n\n\n\n\n\nrunApp() is the most versatile way to launch your app from the IDE\n\n\n\n\n\n\nrunApp()\n\n\n\n\n\n\n\n\n\nIt will run apps from the console, stored in a directory, or with a shiny object\n\n\n\n\nrunApp(\n  appDir = \"path/to/app/\",\n  test.mode = TRUE/FALSE)\n\n\n\n\n\n\n\n\n\n\n\n\napp &lt;- shinyApp(\n        ui = movies_ui,\n        server = movies_server)\nrunApp(appDir = app)"
+    "text": "Launching apps\n\nBranch: 10_launch-app\n\n\nThere are two common methods for launching Shiny apps:\n\n\n\n\n\napp.R file in our root folder:\n\n\n\n\nmoviesApp\n  └── app.R\n\n\n\n\nStandalone app function stored in R/:\n\n\n\n\nmoviesApp\n  └── R\n      └── movies_app.R"
   },
   {
     "objectID": "slides/wrkshp.html#launching-apps-app.r",
     "href": "slides/wrkshp.html#launching-apps-app.r",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Launching apps: app.R",
-    "text": "Launching apps: app.R\n\nBranch: 10_launch-app\n\n\n\nWhat should go in app.R?\n\n\n\n\n\n\n\n\n\nwithr::with_options(new = list(shiny.autoload.r = FALSE), code = {\n  if (!interactive()) {\n    sink(stderr(), type = \"output\")\n    tryCatch(expr = {\n        library(moviesApp) # load package \n      },\n      error = function(e) {\n        pkgload::load_all() # load R/ folder \n      }\n    )\n    shinyApp(ui = movies_ui,\n      server = movies_server) # create shiny object \n  } else {\n    pkgload::load_all() # load R/ folder\n    shinyApp(ui = movies_ui, # create shiny object\n      server = movies_server)\n  }\n})"
-  },
-  {
-    "objectID": "slides/wrkshp.html#launching-apps-helper",
-    "href": "slides/wrkshp.html#launching-apps-helper",
-    "title": "Developing & Testing Your Shiny Application",
-    "section": "Launching apps: helper",
-    "text": "Launching apps: helper\n\nBranch: 10_launch-app\n\n\ndisplay_type() is a helper function:\n\n\n\n\n\n\n\n\ndisplay_type &lt;- function(run = \"w\") {\n  if (run == \"p\") {\n    options(shiny.launch.browser = .rs.invokeShinyPaneViewer)\n  } else if (run == \"b\") {\n    options(shiny.launch.browser = .rs.invokeShinyWindowExternal) \n  } else if (run == \"w\") {\n    options(shiny.launch.browser = .rs.invokeShinyWindowViewer) \n  } else {\n    options(shiny.launch.browser = NULL)\n  }\n    shinyViewerType &lt;- getOption('shiny.launch.browser') |&gt; \n                        attributes() |&gt; \n                        unlist() |&gt; \n                        unname()\n    cli::cli_alert_info(\"shinyViewerType set to {shinyViewerType}\")\n}"
+    "text": "Launching apps: app.R\n\nBranch: 10_launch-app\n\n\n\nWhat should go in app.R?\n\n\n\n\n\n\n\n\n\nwithr::with_options(new = list(shiny.autoload.r = FALSE), code = {\n  if (!interactive()) {\n    sink(stderr(), type = \"output\")\n    tryCatch(\n      expr = {\n        library(moviesApp) # load package \n      },\n      error = function(e) {\n        pkgload::load_all() # load R/ folder\n      }\n    )\n  } else {\n    pkgload::load_all() # load R/ folder \n  }\n  shinyApp(ui = movies_ui, # create shiny object \n           server = movies_server)\n})"
   },
   {
     "objectID": "slides/wrkshp.html#launching-apps-movies_app",
@@ -301,11 +273,25 @@
     "text": "Launching apps: movies_app()\n\nBranch: 10_launch-app\n\n\nWhat should go in the standalone app function?\n\n\n\n\n\n\n\n\nmovies_app &lt;- function(test = FALSE, run = \"w\") {\n  if (interactive()) { # App launched from interactive session\n      display_type(run = run)\n      if (isTRUE(test)) {\n        shinyApp(ui = movies_ui,\n          server = movies_server,\n          options = list(test.mode = TRUE))\n      } else {\n        shinyApp(ui = movies_ui,\n          server = movies_server, \n          options = list(test.mode = FALSE))\n      }\n  } else { # App deployed \n    shinyApp(ui = movies_ui(),\n             server = movies_server)\n  }\n}"
   },
   {
+    "objectID": "slides/wrkshp.html#launching-apps-helper",
+    "href": "slides/wrkshp.html#launching-apps-helper",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Launching apps: helper",
+    "text": "Launching apps: helper\n\nBranch: 10_launch-app\n\n\ndisplay_type() is a helper function:\n\n\n\n\n\n\n\n\ndisplay_type &lt;- function(run = \"w\") {\n  if (run == \"p\") {\n    options(shiny.launch.browser = .rs.invokeShinyPaneViewer)\n  } else if (run == \"b\") {\n    options(shiny.launch.browser = .rs.invokeShinyWindowExternal) \n  } else if (run == \"w\") {\n    options(shiny.launch.browser = .rs.invokeShinyWindowViewer) \n  } else {\n    options(shiny.launch.browser = NULL)\n  }\n    shinyViewerType &lt;- getOption('shiny.launch.browser') |&gt; \n                        attributes() |&gt; \n                        unlist() |&gt; \n                        unname()\n    cli::cli_alert_info(\"shinyViewerType set to {shinyViewerType}\")\n}"
+  },
+  {
     "objectID": "slides/wrkshp.html#external-files-www",
     "href": "slides/wrkshp.html#external-files-www",
     "title": "Developing & Testing Your Shiny Application",
-    "section": "External files: www",
-    "text": "External files: www\n\nBranch: 11a_inst-www\n\n\nAdding external files (formerly in www)\n\n\n\n\n\n\nMove www into inst/\n\n\n\n\n\ninst\n  └── www\n       └── shiny.png\n  \n2 directories, 1 file\n\n\n\n\n\n\n\n\n\n\n\nUse addResourcePath() and system.file() to add the www location to the UI\n\n\n\n\n\naddResourcePath(prefix = 'www', \n                directoryPath = system.file('www', \n                                    package = 'moviesApp'))\n\n\n\n\n\n\n\n\n\n\n\n\nimg(src = \"www/shiny.png\")"
+    "section": "External files: www/",
+    "text": "External files: www/\n\nBranch: 11a_inst-www\n\n\nAdding external files (formerly in www)\n\n\n\n\n\n\nMove the www (and contents) into inst/\n\n\n\n\nCurrent location\n\n├── inst\n│   └── extdata\n│       └── movies.fst\n└── www\n    └── shiny.png\n\n\n\n\nNew location:\n\ninst/\n  ├── extdata/\n  │   └── movies.fst\n  └── www/\n      └── shiny.png\n\n\n\n\n\n\n\nAfter loading, documenting, and installing, we can access shiny.png with system.file()"
+  },
+  {
+    "objectID": "slides/wrkshp.html#external-files-www-1",
+    "href": "slides/wrkshp.html#external-files-www-1",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "External files: www/",
+    "text": "External files: www/\n\nBranch: 11a_inst-www\n\n\nAdding external files (formerly in www)\n\n\n\n\n\n\nIn the app UI function, include a call to addResourcePath()\n\n\n\n\n\nmovies_ui &lt;- function() {\n  addResourcePath(prefix = , \n                  directoryPath = )\n  tagList(\n    # Additional UI code\n  )\n}\n\n\n\n\n\n\n\n\n\n\nUse system.file() to add the www path\n\n\n\n\n\naddResourcePath(prefix = 'www', \n                directoryPath = system.file('www', \n                                    package = 'moviesApp'))\n\n\n\n\n\n\n\n\n\n\nReference the file (without inst/)\n\n\n\n\n\nimg(src = \"www/shiny.png\")"
   },
   {
     "objectID": "slides/wrkshp.html#external-files-bslib",
@@ -445,14 +431,14 @@
     "href": "slides/wrkshp.html#example-test-helper",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Example test helper",
-    "text": "Example test helper\n\nBranch: 12c_tests-helpers\n\n\n\nConsider the inputs passed to the scatter_plot() function in the previous test:\n\n\n\n\n\n\n\nggp2_scatter_inputs &lt;- list(\n                        x = \"rating\",\n                        y = \"length\",\n                        z = \"mpaa\",\n                        alpha = 0.75,\n                        size = 3,\n                        plot_title = \"Enter plot title\"\n                        )\n\n\n\n\n\nvar_inputs &lt;- function() {\n list(\n    x = \"rating\",\n    y = \"length\",\n    z = \"mpaa\",\n    alpha = 0.75,\n    size = 3,\n    plot_title = \"Enter plot title\"\n   )\n}\n\n\n\n\n\n\n\nWe could write var_inputs() to store these values in a list"
+    "text": "Example test helper\n\nBranch: 12c_tests-helpers\n\n\n\nConsider the inputs passed to the scatter_plot() function in the previous test:\n\n\n\n\n\n\n\nggp2_scatter_inputs &lt;- list(x = \"rating\",\n                            y = \"length\",\n                            z = \"mpaa\",\n                            alpha = 0.75,\n                            size = 3,\n                            plot_title = \"Enter plot title\")\n\n\n\n\n\nvar_inputs &lt;- function() {\n list(x = \"rating\",\n      y = \"length\",\n      z = \"mpaa\",\n      alpha = 0.75,\n      size = 3,\n      plot_title = \"Enter plot title\")\n}\n\n\n\n\n\n\n\nWe could write var_inputs() to store these values in a list"
   },
   {
     "objectID": "slides/wrkshp.html#example-test-helper-1",
     "href": "slides/wrkshp.html#example-test-helper-1",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Example test helper",
-    "text": "Example test helper\n\nBranch: 12c_tests-helpers\n\n\n\nThis would allow us to use var_inputs() with the same ‘reactive syntax’ we use in the module server function\n\n\n\n\n\n\n\nstr(var_inputs())\n## List of 6\n##  $ x         : chr \"rating\"\n##  $ y         : chr \"length\"\n##  $ z         : chr \"mpaa\"\n##  $ alpha     : num 0.75\n##  $ size      : num 3\n##  $ plot_title: chr \"Enter plot title\"\n\n\n\n\n\napp_graph &lt;- scatter_plot(\n  tidy_ggp2_movies,\n  x_var = var_inputs()$x,\n  y_var = var_inputs()$y,\n  col_var = var_inputs()$z,\n  alpha_var = var_inputs()$alpha,\n  size_var = var_inputs()$size)\n\ntestthat::expect_true(ggplot2::is.ggplot(app_graph))\n\n\n\n\n\n\n\n\nThis removes duplicated code, but it’s not clear for the reader what var_inputs() contains or where it comes from"
+    "text": "Example test helper\n\nBranch: 12c_tests-helpers\n\n\n\nThis would allow us to use var_inputs() with the same ‘reactive syntax’ we use in the module server function\n\n\n\n\n\n\n\nstr(var_inputs())\n## List of 6\n##  $ x         : chr \"rating\"\n##  $ y         : chr \"length\"\n##  $ z         : chr \"mpaa\"\n##  $ alpha     : num 0.75\n##  $ size      : num 3\n##  $ plot_title: chr \"Enter plot title\"\n\n\n\n\n\napp_graph &lt;- scatter_plot(\n  tidy_ggp2_movies,\n  x_var = var_inputs()$x,\n  y_var = var_inputs()$y,\n  col_var = var_inputs()$z,\n  alpha_var = var_inputs()$alpha,\n  size_var = var_inputs()$size)\n\nexpect_true(ggplot2::is.ggplot(app_graph))\n\n\n\n\n\n\n\n\nThis removes duplicated code, but it’s not clear for the reader what var_inputs() contains or where it comes from"
   },
   {
     "objectID": "slides/wrkshp.html#test-helpers-the-dry-principle",
@@ -522,7 +508,7 @@
     "href": "slides/wrkshp.html#example-function-feature-and-scenario",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Example function: feature and scenario",
-    "text": "Example function: feature and scenario\n\nBranch: 12d_tests-mocks\n\n\nFeature and scenario decriptions for check_installed() might look like:\n\n\n\n\n\nFeature: Checking if an R package is installed\n\n  Scenario: Checking an uninstalled package\n    Given the R package 'foo' is not installed\n    When I call the `check_installed()` function with 'foo'\n    Then the function should raise an error with the message\n    `Please install 'foo' before continuing`\n\n\n\n\nis_installed('foo')\n## [1] FALSE\n\n\n\n\n\n\n\n\n\n\n  Scenario: Checking an installed package\n    Given the R package 'base' is installed\n    When I call the `check_installed()` function with 'foo'\n    When I call the `check_installed()` function with 'base'\n    Then the function should return without any error\n\n\n\n\nis_installed('base')\n## [1] TRUE"
+    "text": "Example function: feature and scenario\n\nBranch: 12d_tests-mocks\n\n\nFeature and scenario decriptions for check_installed() might look like:\n\n\n\n\n\nFeature: Checking if an R package is installed\n\n  Scenario: Checking an uninstalled package\n    Given the R package 'foo' is not installed\n    When I call the `check_installed()` function with 'foo'\n    Then the function should raise an error with the message\n    `Please install 'foo' before continuing`\n\n\n\n\nis_installed('foo')\n## [1] FALSE\n\n\n\n\n\n\n\n\n\n\n  Scenario: Checking an installed package\n    Given the R package 'base' is installed\n    When I call the `check_installed()` function with 'base'\n    Then the function should return without any error\n\n\n\n\nis_installed('base')\n## [1] TRUE"
   },
   {
     "objectID": "slides/wrkshp.html#example-test-mock",
@@ -532,43 +518,50 @@
     "text": "Example test mock\n\nBranch: 12d_tests-mocks\n\n\nInstead of real-time computations, mocks return predefined responses to given inputs.\n\n\n\ndescribe(\"Feature: Checking if an R package is installed\", code = {\n\n\n\n\n\n\n  describe(\"Scenario: Checking an uninstalled package\n              Given the R package 'foo' is not installed\n              When I call the `check_installed()` function with 'foo'\", code = {\n\n\n\n\n\n\n  test_that(\"Then the function should raise an error with the message\n             `Please install 'foo' before continuing`\", code = {\n\n\n\n\n\n\n\n\n      test_logger(start = \"mock is_installed\", msg = \"FALSE\")\n      local_mocked_bindings(\n        is_installed = function(package) FALSE\n      )\n      expect_error(object = check_installed(\"foo\"))\n      test_logger(end = \"mock is_installed\", msg = \"FALSE\")\n    })\n\n\n\n\nis_installed() is set to FALSE\nexpect_error() confirms the error message"
   },
   {
+    "objectID": "slides/wrkshp.html#notes-on-mocking",
+    "href": "slides/wrkshp.html#notes-on-mocking",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Notes on mocking",
+    "text": "Notes on mocking\n\nBranch: 12d_tests-mocks\n\n\n\nThe roxygen2 documentation for check_installed() needs an @importFrom tag to import is_installed from rlang\n\n\n\n\n\n\nUsing explicit namespacing alone won’t work\n\n\n\n\n#' Check if package is installed\n#' \n#' An example function for demonstrating how to use `testthat`'s\n#' mocking functions.\n#' \n#' @param package string, name of package\n#'\n#' @return invisible \n#'\n#' @importFrom rlang is_installed\n#'\n#' @export\n#'\n#' @examples\n#' check_installed(\"foo\")\n#' check_installed(\"base\")"
+  },
+  {
     "objectID": "slides/wrkshp.html#testing-modules",
     "href": "slides/wrkshp.html#testing-modules",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Testing modules",
-    "text": "Testing modules\n\nBranch: 12e_tests-modules\n\n\n\n\n\n\nmoviesApp/"
+    "text": "Testing modules\n\nBranch: 12e_tests-modules"
   },
   {
     "objectID": "slides/wrkshp.html#system-tests",
     "href": "slides/wrkshp.html#system-tests",
     "title": "Developing & Testing Your Shiny Application",
     "section": "System tests",
-    "text": "System tests\n\nBranch: 12f_tests-system\n\n\n\n\n\n\nmoviesApp/"
+    "text": "System tests\n\nBranch: 12f_tests-system"
+  },
+  {
+    "objectID": "slides/wrkshp.html#debugging",
+    "href": "slides/wrkshp.html#debugging",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Debugging",
+    "text": "Debugging\n\nBranch: spec_topic-debugging-01"
   },
   {
     "objectID": "slides/wrkshp.html#debugging-1",
     "href": "slides/wrkshp.html#debugging-1",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Debugging",
-    "text": "Debugging\n\nBranch: spec_topic-debugging-01"
+    "text": "Debugging\n\nBranch: spec_topic-debugging-02"
   },
   {
     "objectID": "slides/wrkshp.html#debugging-2",
     "href": "slides/wrkshp.html#debugging-2",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Debugging",
-    "text": "Debugging\n\nBranch: spec_topic-debugging-02"
+    "text": "Debugging\n\nBranch: spec_topic-debugging-03"
   },
   {
     "objectID": "slides/wrkshp.html#debugging-3",
     "href": "slides/wrkshp.html#debugging-3",
-    "title": "Developing & Testing Your Shiny Application",
-    "section": "Debugging",
-    "text": "Debugging\n\nBranch: spec_topic-debugging-03"
-  },
-  {
-    "objectID": "slides/wrkshp.html#debugging-4",
-    "href": "slides/wrkshp.html#debugging-4",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Debugging",
     "text": "Debugging\n\nBranch: spec_topic-debugging-04"
