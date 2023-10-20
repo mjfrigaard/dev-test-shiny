@@ -19,7 +19,7 @@ format:
 
 title-slide-attributes:
   data-background-image: img/dark_bkg.jpg
-  data-background-size: 100% auto
+  data-background-size: contain
   data-background-opacity: "0.60"
   
 from: markdown+emoji
