@@ -39,7 +39,7 @@
     "href": "slides/wrkshp.html#introduction",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Introduction",
-    "text": "Introduction\n\n\nWhy are you here?\n\n\n\n\nComfortable building shiny apps, not as comfortable with R packages\n\n\n\n\nEncountered frameworks (golem, leprechaun, or rhino) and not sure which one to use\n\n\n\n\nComfortable building R packages, but want to build more app-packages"
+    "text": "Introduction\n\n\nWhy are you here?\n\n\n\n\n\nComfortable building shiny apps, not as comfortable with R packages\n\n\n\n\n\n\nEncountered frameworks (golem, leprechaun, or rhino) and not sure which one to use\n\n\n\n\n\n\nComfortable building R packages, but want to build more app-packages"
   },
   {
     "objectID": "slides/wrkshp.html#agenda",
@@ -368,7 +368,7 @@
     "href": "slides/wrkshp.html#app-specifications",
     "title": "Developing & Testing Your Shiny Application",
     "section": "App specifications",
-    "text": "App specifications\n\nBranch: 12a_tests-specs\n\n\n\n\nApplications should have some version of the following specifications:\n\n\n\n\n\n\n\n\nUser specifications\n\n\n\n\nCapture the needs and expectations of the end-user\n\n\n\n\n\n\n\n\n\nFeatures\n\n\n\n\nDescribe the high-level capabilities of the application\n\n\n\n\n\n\n\n\n\nFunctional requirements\n\n\n\n\nThe testable, specific behaviors (i.e., inputs and outputs)"
+    "text": "App specifications\n\nBranch: 12a_tests-specs\n\n\n\n\nApplications should have some version of the following specifications:\n\n\n\n\n\n\n\nUser specifications\n\n\n\nCapture the needs and expectations of the end-user\n\n\n\n\n\n\n\n\nFeatures\n\n\n\nDescribe the high-level capabilities of the application\n\n\n\n\n\n\n\n\nFunctional requirements\n\n\n\nThe testable, specific behaviors (i.e., inputs and outputs)"
   },
   {
     "objectID": "slides/wrkshp.html#test-specifications",
@@ -389,14 +389,14 @@
     "href": "slides/wrkshp.html#describe-features-background",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Describe features & background",
-    "text": "Describe features & background\n\nBranch: 12a_tests-specs\n\n\n\nThe Feature and Background can be included in nested testthat::describe() blocks\n\n\n\n\n\ntestthat::describe(\n  \"Feature: &lt; High-level description of capability &gt;\", code = {\n  \n    testthat::describe(\n      \"Background: &lt; Preconditions &gt;\n         Given &lt; Initial context for scenario &gt;\", code = { \n    \n  })\n})"
+    "text": "Describe features & background\n\nBranch: 12a_tests-specs\n\n\n\nThe Feature and Background can be included in nested testthat::describe() blocks\n\n\n\n\n\ntestthat::describe(\n  \"Feature: &lt; High-level description of capability &gt;\n      As a \n      I want \n      So that\", code = {\n  \n    testthat::describe(\n      \"Background: &lt; Preconditions &gt;\n         Given &lt; Initial context for scenario &gt;\", code = { \n    \n  })\n})"
   },
   {
     "objectID": "slides/wrkshp.html#write-a-test-for-it",
     "href": "slides/wrkshp.html#write-a-test-for-it",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Write a test for it",
-    "text": "Write a test for it\n\nBranch: 12a_tests-specs\n\n\n\nFor Scenarios, each Then keyword should have a corresponding testthat::it() or testthat::test_that()\n\n\n\n\n\ntestthat::it(\"\n  Scenario: &lt; Steps outlining a concrete example to illustrate the feature &gt;\n    When ...\n    And ...\n    Then\", \n  code = {\n    # test code \n    testthat::expect_equal(\n      object = x, \n      expected = y)\n})"
+    "text": "Write a test for it\n\nBranch: 12a_tests-specs\n\n\n\nFor Scenarios, each Then keyword should have a corresponding testthat::it() or testthat::test_that()\n\n\n\n\n\ntestthat::it(\"\n  Scenario: &lt; Steps outlining a concrete example to illustrate the feature &gt;\n    Given ...\n    When ...\n    Then\", \n  code = {\n    # test code \n    testthat::expect_equal(\n      object = x, \n      expected = y)\n})"
   },
   {
     "objectID": "slides/wrkshp.html#test-fixtures",
