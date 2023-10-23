@@ -53,15 +53,27 @@ library(rlang)
 
 . . .
 
+:::{style="font-size: 1.05em;"}
+
 1.  Comfortable building shiny apps, not as comfortable with R packages
 
+:::
+
 . . .
+
+:::{style="font-size: 1.05em;"}
 
 2.  Encountered frameworks (`golem`, `leprechaun`, or `rhino`) and not sure which one to use
 
+:::
+
 . . .
 
+:::{style="font-size: 1.05em;"}
+
 3.  Comfortable building R packages, but want to build more app-packages
+
+:::
 
 ## Agenda
 
@@ -2712,7 +2724,7 @@ Applications *should* have some version of the following specifications:
 ::: columns
 :::{.column width="35%"}
 :::{style="font-size: 0.90em;"}
-1)  User specifications
+User specifications
 :::
 :::
 
@@ -2728,7 +2740,7 @@ Capture the **needs and expectations** of the end-user
 ::: columns
 :::{.column width="35%"}
 :::{style="font-size: 0.90em;"}
-2)  Features
+Features
 :::
 :::
 
@@ -2744,7 +2756,7 @@ Describe the high-level **capabilities** of the application
 ::: columns
 :::{.column width="35%"}
 :::{style="font-size: 0.90em;"}
-3)  Functional requirements
+Functional requirements
 :::
 :::
 
@@ -2833,13 +2845,16 @@ The `Feature` and `Background` can be included in nested `testthat::describe()` 
 
 <br>
 
-:::{style="font-size: 0.90em;"}
+:::{style="font-size: 0.80em;"}
 ```{r}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "|2|3-6|4|5|6|"
+#| code-line-numbers: "|2|3-5|8|9|"
 testthat::describe(
-  "Feature: < High-level description of capability >", code = {
+  "Feature: < High-level description of capability >
+      As a 
+      I want 
+      So that", code = {
   
     testthat::describe(
       "Background: < Preconditions >
@@ -2873,8 +2888,8 @@ For `Scenario`s, each `Then` keyword should have a corresponding `testthat::it()
 #| code-line-numbers: "1|2|3|4|5|7-10|"
 testthat::it("
   Scenario: < Steps outlining a concrete example to illustrate the feature >
+    Given ...
     When ...
-    And ...
     Then", 
   code = {
     # test code 

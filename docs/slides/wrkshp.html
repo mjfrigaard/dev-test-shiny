@@ -404,19 +404,25 @@
 <p><br></p>
 </div>
 <div class="fragment">
+<div style="font-size: 1.05em;">
 <ol type="1">
 <li>Comfortable building shiny apps, not as comfortable with R packages</li>
 </ol>
 </div>
+</div>
 <div class="fragment">
+<div style="font-size: 1.05em;">
 <ol start="2" type="1">
 <li>Encountered frameworks (<code>golem</code>, <code>leprechaun</code>, or <code>rhino</code>) and not sure which one to use</li>
 </ol>
 </div>
+</div>
 <div class="fragment">
+<div style="font-size: 1.05em;">
 <ol start="3" type="1">
 <li>Comfortable building R packages, but want to build more app-packages</li>
 </ol>
+</div>
 </div>
 </section>
 <section id="agenda" class="slide level2">
@@ -2492,9 +2498,7 @@
 <div class="columns">
 <div class="column" style="width:35%;">
 <div style="font-size: 0.90em;">
-<ol type="1">
-<li>User specifications</li>
-</ol>
+<p>User specifications</p>
 </div>
 </div><div class="column" style="width:65%;">
 <div style="font-size: 0.90em;">
@@ -2507,9 +2511,7 @@
 <div class="columns">
 <div class="column" style="width:35%;">
 <div style="font-size: 0.90em;">
-<ol start="2" type="1">
-<li>Features</li>
-</ol>
+<p>Features</p>
 </div>
 </div><div class="column" style="width:65%;">
 <div style="font-size: 0.90em;">
@@ -2522,9 +2524,7 @@
 <div class="columns">
 <div class="column" style="width:35%;">
 <div style="font-size: 0.90em;">
-<ol start="3" type="1">
-<li>Functional requirements</li>
-</ol>
+<p>Functional requirements</p>
 </div>
 </div><div class="column" style="width:65%;">
 <div style="font-size: 0.90em;">
@@ -2614,17 +2614,20 @@
 </div>
 <div class="fragment">
 <p><br></p>
-<div style="font-size: 0.90em;">
+<div style="font-size: 0.80em;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70" data-code-line-numbers="|2|3-6|4|5|6|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>testthat<span class="sc">::</span><span class="fu">describe</span>(</span>
-<span id="cb70-2"><a href="#cb70-2"></a>  <span class="st">"Feature: &lt; High-level description of capability &gt;"</span>, <span class="at">code =</span> {</span>
-<span id="cb70-3"><a href="#cb70-3"></a>  </span>
-<span id="cb70-4"><a href="#cb70-4"></a>    testthat<span class="sc">::</span><span class="fu">describe</span>(</span>
-<span id="cb70-5"><a href="#cb70-5"></a>      <span class="st">"Background: &lt; Preconditions &gt;</span></span>
-<span id="cb70-6"><a href="#cb70-6"></a><span class="st">         Given &lt; Initial context for scenario &gt;"</span>, <span class="at">code =</span> { </span>
-<span id="cb70-7"><a href="#cb70-7"></a>    </span>
-<span id="cb70-8"><a href="#cb70-8"></a>  })</span>
-<span id="cb70-9"><a href="#cb70-9"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70" data-code-line-numbers="|2|3-5|8|9|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>testthat<span class="sc">::</span><span class="fu">describe</span>(</span>
+<span id="cb70-2"><a href="#cb70-2"></a>  <span class="st">"Feature: &lt; High-level description of capability &gt;</span></span>
+<span id="cb70-3"><a href="#cb70-3"></a><span class="st">      As a </span></span>
+<span id="cb70-4"><a href="#cb70-4"></a><span class="st">      I want </span></span>
+<span id="cb70-5"><a href="#cb70-5"></a><span class="st">      So that"</span>, <span class="at">code =</span> {</span>
+<span id="cb70-6"><a href="#cb70-6"></a>  </span>
+<span id="cb70-7"><a href="#cb70-7"></a>    testthat<span class="sc">::</span><span class="fu">describe</span>(</span>
+<span id="cb70-8"><a href="#cb70-8"></a>      <span class="st">"Background: &lt; Preconditions &gt;</span></span>
+<span id="cb70-9"><a href="#cb70-9"></a><span class="st">         Given &lt; Initial context for scenario &gt;"</span>, <span class="at">code =</span> { </span>
+<span id="cb70-10"><a href="#cb70-10"></a>    </span>
+<span id="cb70-11"><a href="#cb70-11"></a>  })</span>
+<span id="cb70-12"><a href="#cb70-12"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -2644,8 +2647,8 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb71" data-code-line-numbers="1|2|3|4|5|7-10|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>testthat<span class="sc">::</span><span class="fu">it</span>(<span class="st">"</span></span>
 <span id="cb71-2"><a href="#cb71-2"></a><span class="st">  Scenario: &lt; Steps outlining a concrete example to illustrate the feature &gt;</span></span>
-<span id="cb71-3"><a href="#cb71-3"></a><span class="st">    When ...</span></span>
-<span id="cb71-4"><a href="#cb71-4"></a><span class="st">    And ...</span></span>
+<span id="cb71-3"><a href="#cb71-3"></a><span class="st">    Given ...</span></span>
+<span id="cb71-4"><a href="#cb71-4"></a><span class="st">    When ...</span></span>
 <span id="cb71-5"><a href="#cb71-5"></a><span class="st">    Then"</span>, </span>
 <span id="cb71-6"><a href="#cb71-6"></a>  <span class="at">code =</span> {</span>
 <span id="cb71-7"><a href="#cb71-7"></a>    <span class="co"># test code </span></span>
