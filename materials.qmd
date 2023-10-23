@@ -15,6 +15,10 @@ title: "Materials"
 
 - Posit Cloud has the workshop materials pre-installed: <https://posit.cloud/spaces/434433/content/6827633>
 
+## Slido link 
+
+- Access the [Slido polls](https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF)
+
 
 ## Packages 
 
@@ -22,10 +26,9 @@ title: "Materials"
 
 ```{r pkg-list}
 #| eval: false
-pkgs <- c(
-  "shiny", "shinythemes", "rlang", "ggplot2", 
-  "devtools",  "logger", "fs", "rmarkdown", "lobstr"
-  )
+pkgs <- c("shiny", "shinythemes", "rlang", "ggplot2", 
+  "devtools",  "logger", "fs", "rmarkdown", "lobstr",
+  "shinytest2", "fst")
 install.packages(pkgs)
 ```
 

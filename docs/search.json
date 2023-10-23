@@ -4,7 +4,7 @@
     "href": "materials.html",
     "title": "Materials",
     "section": "",
-    "text": "Code & Materials\n\n\n\n\n\n\nInstall latest version of RStudio (RStudio 2023.09.0 463 “Desert Sunflower” or later)\nAccess ALL hands-on materials by cloning the repo: https://github.com/mjfrigaard/moviesApp.git\n\n\n\n\n\nPosit Cloud has the workshop materials pre-installed: https://posit.cloud/spaces/434433/content/6827633\n\n\n\n\n\nInstall these R packages:\n\n\npkgs &lt;- c(\n  \"shiny\", \"shinythemes\", \"rlang\", \"ggplot2\", \n  \"devtools\",  \"logger\", \"fs\", \"rmarkdown\", \"lobstr\"\n  )\ninstall.packages(pkgs)\nTo follow along, change the branch in the Git pane to the corresponding Branch in the slide footer:"
+    "text": "Code & Materials\n\n\n\n\n\n\nInstall latest version of RStudio (RStudio 2023.09.0 463 “Desert Sunflower” or later)\nAccess ALL hands-on materials by cloning the repo: https://github.com/mjfrigaard/moviesApp.git\n\n\n\n\n\nPosit Cloud has the workshop materials pre-installed: https://posit.cloud/spaces/434433/content/6827633\n\n\n\n\n\nAccess the Slido polls\n\n\n\n\n\nInstall these R packages:\n\n\npkgs &lt;- c(\"shiny\", \"shinythemes\", \"rlang\", \"ggplot2\", \n  \"devtools\",  \"logger\", \"fs\", \"rmarkdown\", \"lobstr\",\n  \"shinytest2\", \"fst\")\ninstall.packages(pkgs)\nTo follow along, change the branch in the Git pane to the corresponding Branch in the slide footer:"
   },
   {
     "objectID": "materials.html#local-use",
@@ -21,11 +21,18 @@
     "text": "Posit Cloud has the workshop materials pre-installed: https://posit.cloud/spaces/434433/content/6827633"
   },
   {
+    "objectID": "materials.html#slido-link",
+    "href": "materials.html#slido-link",
+    "title": "Materials",
+    "section": "",
+    "text": "Access the Slido polls"
+  },
+  {
     "objectID": "materials.html#packages",
     "href": "materials.html#packages",
     "title": "Materials",
     "section": "",
-    "text": "Install these R packages:\n\n\npkgs &lt;- c(\n  \"shiny\", \"shinythemes\", \"rlang\", \"ggplot2\", \n  \"devtools\",  \"logger\", \"fs\", \"rmarkdown\", \"lobstr\"\n  )\ninstall.packages(pkgs)"
+    "text": "Install these R packages:\n\n\npkgs &lt;- c(\"shiny\", \"shinythemes\", \"rlang\", \"ggplot2\", \n  \"devtools\",  \"logger\", \"fs\", \"rmarkdown\", \"lobstr\",\n  \"shinytest2\", \"fst\")\ninstall.packages(pkgs)"
   },
   {
     "objectID": "slides/wrkshp.html#introduction",
