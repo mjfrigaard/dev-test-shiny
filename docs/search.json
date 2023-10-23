@@ -39,7 +39,7 @@
     "href": "slides/wrkshp.html#introduction",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Introduction",
-    "text": "Introduction\n\n\nWhy are you here?\n\n\n\n\n\nComfortable building shiny apps, not as comfortable with R packages\n\n\n\n\n\n\nEncountered frameworks (golem, leprechaun, or rhino) and not sure which one to use\n\n\n\n\n\n\nComfortable building R packages, but want to build more app-packages"
+    "text": "Introduction\n\n\nWhy are you here?\n\n\n\n\n\nComfortable building shiny apps, not as comfortable with R packages\n\n\n\n\n\nEncountered frameworks (golem, leprechaun, or rhino) and not sure which one to use\n\n\n\n\n\nComfortable building R packages, but want to build more app-packages"
   },
   {
     "objectID": "slides/wrkshp.html#agenda",

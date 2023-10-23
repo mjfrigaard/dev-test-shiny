@@ -53,25 +53,31 @@ library(rlang)
 
 . . .
 
-:::{style="font-size: 1.05em;"}
+<br>
 
-1.  Comfortable building shiny apps, not as comfortable with R packages
+:::{style="font-size: 0.95em;"}
 
-:::
-
-. . .
-
-:::{style="font-size: 1.05em;"}
-
-2.  Encountered frameworks (`golem`, `leprechaun`, or `rhino`) and not sure which one to use
+Comfortable building shiny apps, not as comfortable with R packages
 
 :::
 
 . . .
 
-:::{style="font-size: 1.05em;"}
+<br>
 
-3.  Comfortable building R packages, but want to build more app-packages
+:::{style="font-size: 0.95em;"}
+
+Encountered frameworks (`golem`, `leprechaun`, or `rhino`) and not sure which one to use
+
+:::
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.95em;"}
+
+Comfortable building R packages, but want to build more app-packages
 
 :::
 
