@@ -112,7 +112,7 @@ library(rlang)
 ## New Shiny app
 
 ::::footer
-[Branch: `main`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `main`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -143,7 +143,7 @@ moviesApp/
 ## Shiny code
 
 :::: footer
-[Branch: `02_movies-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `02_movies-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -179,7 +179,7 @@ moviesApp/
 ## Shiny project folders
 
 :::: footer
-[Branch: `03_proj-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `03_proj-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -225,7 +225,7 @@ moviesApp/
 ## Shiny loadSupport()
 
 :::: footer
-[Branch: `03_proj-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `03_proj-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -245,7 +245,7 @@ Shiny automatically `source`s the files in the `R/` folder and serves the extern
 ## DESCRIPTION files
 
 :::: footer
-[Branch: `04_description`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `04_description`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -273,7 +273,7 @@ DisplayMode: Showcase
 ## DESCRIPTION fields
 
 :::: footer
-[Branch: `04_description`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `04_description`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -310,7 +310,7 @@ License: GPL-3
 ## .Rproj files
 
 :::: footer
-[Branch: `05_rproj`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `05_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -351,7 +351,7 @@ moviesApp/
 ## Shiny project .Rproj fields
 
 :::: footer
-[Branch: `05_rproj`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `05_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -389,7 +389,7 @@ LaTeX: XeLaTeX
 ## R Package (Project build tools)
 
 :::: footer
-[Branch: `05_rproj`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `05_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -417,7 +417,7 @@ Change **Project build tools** to **Package**
 ## R Package .Rproj fields
 
 :::: footer
-[Branch: `05_rproj`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `05_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -447,7 +447,7 @@ PackageRoxygenize: rd,collate,namespace
 ## Creating new app-packages
 
 :::: footer
-[Branch: `06a_create-package`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `06a_create-package`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -497,7 +497,7 @@ newApp/
 ## Converting Shiny apps (fields)
 
 :::: footer
-[Branch: `06a_create-package`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `06a_create-package`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -542,7 +542,7 @@ fields = list(Package = 'moviesApp',
 ## Converting Shiny apps (IDE options)
 
 :::: footer
-[Branch: `06a_create-package`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `06a_create-package`]{style="font-weight: bold; font-size: 1.10em;"}
 :::::
 
 <br>
@@ -590,7 +590,7 @@ usethis::create_package(path = getwd(),
 ## Development with devtools
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -620,7 +620,7 @@ usethis::create_package(path = getwd(),
 ## Development: load_all()
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -662,7 +662,7 @@ Load the package when anything changes in the `R/` folder.
 ## Development: document()
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -731,7 +731,7 @@ Encoding: UTF-8
 ## Development: document()
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -778,7 +778,7 @@ Documentation completed
 ## Development: install()
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -833,7 +833,7 @@ No man pages found in package  ‘moviesApp’
 ## Development: check()?
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -878,10 +878,20 @@ Consider `check()` like 'quality control' for:
 
 # R Packages
 
+Recap: Shiny stuff
+
+<br>
+
+- [x]   `DESCRIPTION` file and fields 
+
+- [x]   `.Rproj` files and fields 
+
+- [x]   `devtools` functions (`load_all()`, `document()`, `install()`)
+
 ## Documentation: roxygen2
 
 :::: footer
-[Branch: `07_roxygen2`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `07_roxygen2`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -909,7 +919,7 @@ Consider `check()` like 'quality control' for:
 ## Documentation: roxygen2 & document()
 
 :::: footer
-[Branch: `07_roxygen2`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `07_roxygen2`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -941,7 +951,7 @@ man
 ## Dependencies
 
 :::: footer
-[Branch: `07_roxygen2`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `07_roxygen2`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1022,7 +1032,7 @@ Error in movies_app() : could not find function "movies_app"
 ## Dependencies: exports
 
 :::: footer
-[Branch: `08a_pkg-exports`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `08a_pkg-exports`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1068,7 +1078,7 @@ export(scatter_plot)
 ## Dependencies: imports
 
 :::: footer
-[Branch: `08b_pkg-imports`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `08b_pkg-imports`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1154,7 +1164,7 @@ Use the `@import` tag if your code uses ***a lot*** of functions from a package
 ## Dependencies: imports cont.
 
 :::: footer
-[Branch: `08b_pkg-imports`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `08b_pkg-imports`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -1182,7 +1192,7 @@ I highly recommend reading [Confusion about imports](https://r-pkgs.org/dependen
 ## Dependencies: recap
 
 :::: footer
-[Branch: `08b_pkg-imports`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `08b_pkg-imports`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -1238,7 +1248,7 @@ Imports:
 ## Data
 
 :::: footer
-[Branch: `09_data`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1274,7 +1284,7 @@ There are three locations for data in your app-package:
 ## Data: package data
 
 :::: footer
-[Branch: `09_data`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1336,7 +1346,7 @@ data
 ## Data: raw data files
 
 :::: footer
-[Branch: `09_data`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1413,7 +1423,7 @@ data-raw
 ## Data: external data files
 
 :::: footer
-[Branch: `09_data`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1433,23 +1443,10 @@ data-raw
 
 . . .
 
-::: columns
+:::: columns
 :::{.column width="50%"}
 :::{style="font-size: 0.90em;"}
 -   `inst/extdata` can be used for external datasets in other file formats (`.csv`, `.sas7bdat`, `.txt`, `.xlsx`, etc)
-:::
-:::
-
-:::{.column width="50%"}
-:::
-:::
-
-. . .
-
-::: columns
-:::{.column width="50%"}
-:::{style="font-size: 0.90em;"}
--   Import these files with the `system.file()` file path accessor function
 :::
 :::
 
@@ -1465,7 +1462,23 @@ inst/
 
 2 directories, 1 file
 ```
+:::
+:::
 
+::::
+
+. . .
+
+:::: columns
+
+:::{.column width="50%"}
+:::{style="font-size: 0.90em;"}
+-   Import these files with the `system.file()` file path accessor function
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.70em;"}
 ```{bash}
 #| eval: false 
 #| echo: true
@@ -1477,6 +1490,86 @@ fst::read_fst(path =
 ```
 :::
 :::
+
+::::
+
+## Using system.file()
+
+:::: footer
+[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="31%"}
+:::{style="font-size: 0.80em;"}
+`system.file()` gives us access to the contents of our *installed* package
+:::
+:::
+
+:::{.column width="35%"}
+
+:::{style="font-size: 0.70em;"}
+"*This is your package.*"
+:::
+
+:::{style="font-size: 0.70em;"}
+```{bash}
+#| eval: false 
+#| echo: true 
+#| code-line-numbers: "|1,2,3,6|4,5,10,11,12,13|"
+├── DESCRIPTION
+├── NAMESPACE
+├── R
+├── README.md
+├── app.R
+├── data
+├── inst
+│   └── extdata
+│       └── movies.fst
+├── man
+├── moviesApp.Rproj
+└── www
+    └── shiny.png
+```
+:::
+:::
+
+:::{.column width="33%"}
+
+:::{style="font-size: 0.70em;"}
+"*This is your package, installed*"
+:::
+
+:::{style="font-size: 0.70em;"}
+```{bash}
+#| eval: false 
+#| echo: true 
+#| code-line-numbers: "|1,4,5,6|2,3,9,10|7,8,11,12|"
+├── DESCRIPTION
+├── INDEX
+├── Meta
+├── NAMESPACE
+├── R
+├── data
+├── extdata
+│   └── movies.fst
+├── help
+└── html
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::{style="font-size: 0.80em;"}
+> "*The contents of the `inst/` subdirectory will __be copied recursively to the installation directory__.*" - [Writing R extensions, Package subdirectories](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-subdirectories) 
 :::
 
 # Ready
@@ -1487,12 +1580,46 @@ fst::read_fst(path =
 
 # App-packages
 
-The next section covers some practices specific to app-packages.
+The next section covers practices specific to app-packages.
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="50%"}
+:::{style="font-size: 0.85em;"}
+
+- Launching apps  
+
+  -  `app.R`
+  
+  -  Standalone app function
+  
+:::
+:::
+
+:::{.column width="50%"}
+
+:::{style="font-size: 0.85em;"}
+
+- External resources  
+
+  - `www/`
+  
+  - App UI function arguments  
+  
+  - `dev/` and `prod/` apps    
+
+:::
+:::
+::::
 
 ## Launching apps
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1504,102 +1631,43 @@ There are two common methods for launching Shiny apps:
 . . .
 
 :::: columns
-:::{.column width="45%"}
-:::{style="font-size: 1.10em;"}
-`app.R` file in our root folder: 
-:::
-
-<br>
-
-:::{style="font-size: 0.90em;"}
-```{bash}
-#| eval: false 
-#| echo: true 
-moviesApp
-  └── app.R
-```
-:::
-:::
-
 :::{.column width="55%"}
 :::{style="font-size: 1.10em;"}
-Standalone app function stored in `R/`:
+A standalone app function:
 :::
 
 <br>
 
 :::{style="font-size: 0.90em;"}
-```{bash}
-#| eval: false 
-#| echo: true 
-moviesApp
-  └── R
+```{verbatim}
+moviesApp/
+  └── R/
       └── movies_app.R
 ```
 :::
 :::
 
-
-::::
-
-
-## Launching apps: app.R
-
-:::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
+:::{.column width="45%"}
+:::{style="font-size: 1.10em;"}
+An `app.R` file: 
+:::
 
 <br>
 
 :::{style="font-size: 0.90em;"}
-What should go in `app.R`?
-:::
-
-<br>
-
-. . .
-
-::: columns
-:::{.column width="11%"}
-:::
-
-:::{.column width="76%"}
-:::{style="font-size: 0.61em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "|1|2-11|12-14|15-16|"
-withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
-  if (!interactive()) {
-    sink(stderr(), type = "output")
-    tryCatch(
-      expr = {
-        library(moviesApp) # load package 
-      },
-      error = function(e) {
-        pkgload::load_all() # load R/ folder
-      }
-    )
-  } else {
-    pkgload::load_all() # load R/ folder 
-  }
-  shinyApp(ui = movies_ui, # create shiny object 
-           server = movies_server)
-})
+```{verbatim}
+moviesApp/
+  └── app.R
 ```
 :::
 :::
 
-:::{.column width="11%"}
-:::
-
 ::::
-
 
 ## Launching apps: movies_app()
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1610,61 +1678,86 @@ What should go in the standalone app function?
 
 . . .
 
-::: columns
-:::{.column width="11%"}
+:::: columns
+
+:::{.column width="50%"}
+:::{style="font-size: 0.85em;"}
+Check for `interactive()`
+:::
 :::
 
-:::{.column width="76%"}
-:::{style="font-size: 0.65em;"}
+:::{.column width="50%"}
+:::{style="font-size: 0.70em;"}
 ```{r}
 #| eval: false 
 #| echo: true
-#| code-line-numbers: "|1|2-12|13-17|"
-movies_app <- function(test = FALSE, run = "w") {
-  if (interactive()) { # App launched from interactive session
-      display_type(run = run)
-      if (isTRUE(test)) {
-        shinyApp(ui = movies_ui,
-          server = movies_server,
-          options = list(test.mode = TRUE))
-      } else {
-        shinyApp(ui = movies_ui,
-          server = movies_server, 
-          options = list(test.mode = FALSE))
-      }
-  } else { # App deployed 
-    shinyApp(ui = movies_ui(),
-             server = movies_server)
+#| code-line-numbers: "1,3,5|"
+if (interactive()) { 
+    # define interactive behavior
+  } else {
+    # define non-interactive behavior
   }
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::: columns
+
+:::{.column width="50%"}
+:::{style="font-size: 0.85em;"}
+Include argument for Shiny `options`
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.70em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|5|"
+movies_app <- function(options = list()) {
+    shinyApp(
+      ui = movies_ui(), 
+      server = movies_server,
+      options = options
+    )
 }
 ```
 :::
 :::
 
-:::{.column width="11%"}
-:::
-
 ::::
 
-## Launching apps: helper
+## Launching apps: display_type()
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
 
-`display_type()` is a helper function:
+The `display_type()` is a helper function that controls where the application is launched.
 
 <br>
 
 . . .
 
 ::: columns
-:::{.column width="11%"}
+:::{.column width="25%"}
+:::{style="font-size: 0.75em;"}
+Has options for **`v`**iewer pane, **`w`**indow, and **`b`**rowser.
+
+<br>
+
+Prints option to the **Console**
+:::
 :::
 
-:::{.column width="76%"}
+:::{.column width="75%"}
 :::{style="font-size: 0.65em;"}
 ```{r}
 #| eval: false 
@@ -1690,22 +1783,126 @@ display_type <- function(run = "w") {
 :::
 :::
 
-:::{.column width="11%"}
-:::
-
 ::::
 
-
-
-## External files: www/
+## Launching apps: movies_app()
 
 :::: footer
-[Branch: `11a_inst-www`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
 
-Adding external files (formerly in `www`)
+Include `display_type()` if `movies_app()` is interactive 
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="25%"}
+:::{style="font-size: 0.75em;"}
+Include default `run` argument to your preference
+:::
+:::
+
+:::{.column width="75%"}
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|3|5-9|8|"
+movies_app <- function(options = list(), run = "p") {
+  if (interactive()) {
+    display_type(run = run)
+  }
+    shinyApp(
+      ui = movies_ui(),
+      server = movies_server,
+      options = options
+    )
+}
+```
+:::
+:::
+
+::::
+
+## Launching apps: app.R
+
+:::: footer
+[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+What should go in `app.R`?
+:::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="28%"}
+:::{style="font-size: 0.75em;"}
+Turn off `loadSupport()`
+
+<br>
+
+Load package 
+
+<br>
+<br>
+<br>
+<br>
+
+Include Shiny `options`
+:::
+:::
+
+::::{.column width="72%"}
+
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|1,17|2-11|12-14|15-16|"
+withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
+  if (!interactive()) {
+    sink(stderr(), type = "output")
+    tryCatch(
+      expr = {
+        library(moviesApp)
+      },
+      error = function(e) {
+        pkgload::load_all()
+      }
+    )
+  } else {
+    pkgload::load_all()
+  }
+    moviesApp::movies_app(
+      options = list(test.mode = TRUE), run = 'p')
+})
+```
+:::
+:::
+
+::::
+
+## External resources
+
+:::: footer
+[Branch: `11a_inst-www`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+We have external files referenced in our UI (i.e., in `www`)
 
 <br>
 
@@ -1715,22 +1912,22 @@ Adding external files (formerly in `www`)
 
 :::{.column width="33%"}
 :::{style="font-size: 0.80em;"}
--   Move the `www` (and contents) into `inst/`
+
+To include in our app-package, we need to move `www/` (and contents) into `inst/`
+
 :::
 :::
 
 :::{.column width="33%"}
 :::{style="font-size: 0.80em;"}
 
-Current location
+Previous location:
 
-```{bash}
-#| eval: false 
-#| echo: true
-├── inst
+```{verbatim}
+├── inst/
 │   └── extdata
 │       └── movies.fst
-└── www
+└── www/
     └── shiny.png
 ```
 :::
@@ -1739,11 +1936,9 @@ Current location
 :::{.column width="33%"}
 :::{style="font-size: 0.80em;"}
 
-New location: 
+Current location: 
 
-```{bash}
-#| eval: false 
-#| echo: true
+```{verbatim}
 inst/
   ├── extdata/
   │   └── movies.fst
@@ -1763,7 +1958,7 @@ After loading, documenting, and installing, we can access `shiny.png` with `syst
 ## External files: www/
 
 :::: footer
-[Branch: `11a_inst-www`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `11a_inst-www`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1776,23 +1971,22 @@ Adding external files (formerly in `www`)
 
 :::: columns
 
-:::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
+:::{.column width="40%"}
+:::{style="font-size: 0.70em;"}
 -   In the app UI function, include a call to `addResourcePath()` 
 :::
 :::
 
-:::{.column width="50%"}
+:::{.column width="60%"}
 :::{style="font-size: 0.67em;"}
 ```{r}
 #| eval: false 
 #| echo: true
+#| code-line-numbers: "|2,3|"
 movies_ui <- function() {
   addResourcePath(prefix = , 
                   directoryPath = )
-  tagList(
-    # Additional UI code
-  )
+  tagList() # Additional UI code
 }
 ```
 :::
@@ -1800,24 +1994,26 @@ movies_ui <- function() {
 
 ::::
 
+<br>
+
 . . .
 
 :::: columns
 
-:::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
+:::{.column width="40%"}
+:::{style="font-size: 0.70em;"}
 -   Use `system.file()` to add the `www` path
 :::
 :::
 
-:::{.column width="50%"}
+:::{.column width="60%"}
 :::{style="font-size: 0.67em;"}
 ```{r}
 #| eval: false 
 #| echo: true
-addResourcePath(prefix = 'www', 
-                directoryPath = system.file('www', 
-                                    package = 'moviesApp'))
+#| code-line-numbers: "|1|"
+directoryPath = system.file('www', 
+                    package = 'moviesApp')
 ```
 :::
 :::
@@ -1826,15 +2022,17 @@ addResourcePath(prefix = 'www',
 
 . . .
 
+<br>
+
 ::: columns
-:::{.column width="45%"}
-:::{style="font-size: 0.80em;"}
+:::{.column width="40%"}
+:::{style="font-size: 0.70em;"}
 -   Reference the file (without `inst/`)
 :::
 :::
 
-:::{.column width="55%"}
-:::{style="font-size: 0.80em;"}
+:::{.column width="60%"}
+:::{style="font-size: 0.67em;"}
 ```{r}
 #| eval: false 
 #| echo: true
@@ -1847,7 +2045,7 @@ img(src = "www/shiny.png")
 ## External files: bslib
 
 :::: footer
-[Branch: `11b_inst-bslib`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `11b_inst-bslib`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1866,7 +2064,7 @@ img(src = "www/shiny.png")
 :::
 
 :::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
+:::{style="font-size: 0.70em;"}
 ```{bash}
 #| eval: false 
 #| echo: true
@@ -1888,12 +2086,12 @@ inst
 ::: columns
 :::{.column width="50%"}
 :::{style="font-size: 0.80em;"}
--   `addResourcePath()` has already added the `www/` folder
+-   In UI, `addResourcePath()` has already added `www/`
 :::
 :::
 
 :::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
+:::{style="font-size: 0.70em;"}
 ```{r}
 #| eval: false 
 #| echo: true
@@ -1913,11 +2111,13 @@ img("www/bootstrap.png")
 :::
 
 :::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
+:::{style="font-size: 0.70em;"}
 ```{r}
 #| eval: false 
 #| echo: true
-movies_app(test = FALSE, bslib = TRUE)
+movies_app(options = list(test.mode = TRUE), 
+  run = 'p', 
+  bslib = TRUE)
 ```
 :::
 :::
@@ -1926,7 +2126,7 @@ movies_app(test = FALSE, bslib = TRUE)
 ## External files: dev
 
 :::: footer
-[Branch: `11c_inst-dev`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `11c_inst-dev`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1949,12 +2149,10 @@ We can also store entire apps in `inst/`
 :::
 
 :::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
+:::{style="font-size: 0.70em;"}
 <br>
 
-```{bash}
-#| eval: false 
-#| echo: true
+```{verbatim}
 inst/dev
 ├── app.R
 ├── imdb.png
@@ -1968,48 +2166,73 @@ inst/dev
 
 . . .
 
-::: columns
+:::: columns
+
 :::{.column width="50%"}
 :::{style="font-size: 0.80em;"}
--   Functions in `R/` are accessible in `inst/dev/app.R`
+-   Functions from `R/` are accessible in `inst/dev/app.R`
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.70em;"}
+```{r}
+#| eval: false 
+#| echo: true
+moviesApp::mod_var_input_server("vars")
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::: columns
+
+:::{.column width="50%"}
+:::{style="font-size: 0.80em;"}
 
 -   Write an alternate standalone app function
 :::
 :::
 
 :::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
-<br>
-
+:::{style="font-size: 0.70em;"}
 ```{r}
 #| eval: false 
 #| echo: true
-ggp2_movies_app(test = FALSE, run = 'p')
+ggp2_movies_app(
+  options = list(test.mode = FALSE), 
+  run = 'p')
 ```
 :::
 :::
-:::
+
+::::
 
 ## External files: prod
 
 :::: footer
-[Branch: `11d_inst-prod`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `11d_inst-prod`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
 
 Apps can be deployed from a dedicated `inst/` folder
 
-<br>
-
 . . .
 
-::: columns
-:::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
-In `inst/prod/app/app.R`
+<br>
 
-:::{style="font-size: 0.85em;"}
+:::: columns
+
+:::{.column width="50%"}
+:::{style="font-size: 0.70em;"}
+In `inst/prod/app/app.R`
+:::
+
+:::{style="font-size: 0.80em;"}
 ```{r}
 #| eval: false 
 #| echo: true
@@ -2018,16 +2241,15 @@ shinyApp(
   server = moviesApp::movies_server)
 ```
 :::
-:::
+
 :::
 
 :::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
+
 <br>
 
-```{bash}
-#| eval: false 
-#| echo: true
+:::{style="font-size: 0.70em;"}
+```{verbatim}
 inst/
   └── prod/
        └── app/
@@ -2036,21 +2258,24 @@ inst/
 3 directories, 1 file
 ```
 :::
+
+
 :::
-:::
+
+::::
 
 . . .
 
-::: columns
+:::: columns
+
 :::{.column width="50%"}
-:::{style="font-size: 0.80em;"}
+:::{style="font-size: 0.70em;"}
 -   in `app.R`, use `shinyAppDir()` and `system.file()` to return the app object from `prod/app/app.R`
 :::
 :::
 
 :::{.column width="50%"}
 :::{style="font-size: 0.67em;"}
-<br>
 
 ```{r}
 #| eval: false 
@@ -2060,7 +2285,11 @@ shinyAppDir(appDir = system.file("prod/app",
 ```
 :::
 :::
-:::
+::::
+
+. . .
+
+[App](https://mjfrigaard.shinyapps.io/moviesApp-prod/)
 
 # Ready
 
@@ -2068,129 +2297,45 @@ shinyAppDir(appDir = system.file("prod/app",
 
 # Tests
 
-. . .
-
 <br>
-
-One of the *best* reasons to convert your shiny app into an R package!
 
 . . .
 
-<br>
+::: columns
+:::{.column width="50%"}
+:::{style="font-size: 0.80em;"}
 
+Recap: Package stuff 
+
+- [x]   `roxygen2` & dependencies 
+
+- [x]   Data
+
+- [x]   Launching apps 
+
+- [x]   External resources 
+
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.80em;"}
 The following sections will cover:
-
-. . .
 
 1.  Setting up your test suite
 
-. . .
+2.  Test fixtures and helpers
 
-2.  Test types (unit, integration and system)
+3.  Testing modules and system tests
+:::
+:::
 
-. . .
-
-3.  Test fixtures, helpers, and `testthat`s mocking functions
-
-## App specifications
-
-:::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 0.90em;"}
 ::::
-
-<br>
-
-. . .
-
-:::{style="font-size: 0.90em;"}
-Applications *should* have some version of the following specifications:
-:::
-
-. . .
-
-<br>
-
-::: columns
-:::{.column width="35%"}
-:::{style="font-size: 0.90em;"}
-1)  User specifications
-:::
-:::
-
-:::{.column width="65%"}
-:::{style="font-size: 0.90em;"}
-Capture the **needs and expectations** of the end-user
-:::
-:::
-:::
-
-. . .
-
-::: columns
-:::{.column width="35%"}
-:::{style="font-size: 0.90em;"}
-2)  Features
-:::
-:::
-
-:::{.column width="65%"}
-:::{style="font-size: 0.90em;"}
-Describe the high-level **capabilities** of the application
-:::
-:::
-:::
-
-. . .
-
-::: columns
-:::{.column width="35%"}
-:::{style="font-size: 0.90em;"}
-3)  Functional requirements
-:::
-:::
-
-:::{.column width="65%"}
-:::{style="font-size: 0.90em;"}
-The **testable, specific behaviors** 
-*(i.e., inputs and outputs)*
-:::
-:::
-:::
-
-## Test specifications
-
-:::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-. . .
-
-:::{style="font-size: 0.90em;"}
-A traceability matrix is a table that 'traces' the user specifications to features and functional requirements (and the tests they give rise to)
-:::
-
-. . .
-
-<br>
-
-:::{style="font-size: 0.70em;"}
-
-|                                                                              |                                                                                                                |                                                                                                                                                                     |       |
-|-------------------|----------------------|---------------------|---------|
-| User Specifications                                                          | Features                                                                                                       | Requirements                                                                                                                                                        | Tests |
-| **US1**: Shiny App Scatter Plot Data Visualization for Movie Review Explorer | **F1.1**: IMDB and Rotten Tomatoes data with continuous (i.e., scores) and categorical (i.e., mpaa) variables. | **FR 1.1**: The app should display movie review data from IMDB and Rotten Tomatoes containing both continuous and categorical variables stored in a tabular format. | ?     |
-|                                                                              |                                                                                                                |                                                                                                                                                                     |       |
-
-
-:::
-
 
 ## Test suite
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2294,7 +2439,7 @@ usethis::use_testthat(3)
 ## New tests
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2358,7 +2503,7 @@ tests/
 ## Test files
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2449,112 +2594,10 @@ expect_equal(
 
 ::::
 
-## Behavior-driven development tests
-
-:::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-In Behavior-driven development (BDD), requirements are written plain language ‘feature files’ using a series of keywords:
-
-. . .
-
-<br>
-
-:::{style="font-size: 0.90em;"}
-```{bash}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "1|3|4|6-10|"
-Feature: < High-level description of capability >
-
-  Background: < Steps or conditions that exist before each scenario >
-    Given < Initial context or preconditions for the scenario >
-    
-  Scenario: < Steps outlining a concrete example to illustrate the feature >
-    When
-    And
-    Then
-
-```
-:::
-
-## Describe features & background
-
-:::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-:::{style="font-size: 0.90em;"}
-The `Feature` and `Background` can be included in nested `testthat::describe()` blocks
-:::
-
-. . .
-
-<br>
-
-:::{style="font-size: 0.90em;"}
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "|2|3-6|4|5|6|"
-testthat::describe(
-  "Feature: < High-level description of capability >", code = {
-  
-    testthat::describe(
-      "Background: < Preconditions >
-         Given < Initial context for scenario >", code = { 
-    
-  })
-})
-```
-:::
-
-## Write a test for it
-
-:::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-:::{style="font-size: 0.90em;"}
-For `Scenario`s, each `Then` keyword should have a corresponding `testthat::it()` or `testthat::test_that()`
-:::
-
-<br>
-
-. . .
-
-:::{style="font-size: 0.85em;"}
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "1|2|3|4|5|7-10|"
-testthat::it("
-  Scenario: < Steps outlining a concrete example to illustrate the feature >
-    When ...
-    And ...
-    Then", 
-  code = {
-    # test code 
-    testthat::expect_equal(
-      object = x, 
-      expected = y)
-})
-```
-:::
-
-
-
 ## Running tests
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2647,11 +2690,208 @@ testthat::it("
 
 ::::
 
+
+## App specifications
+
+:::: footer
+[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+. . .
+
+:::{style="font-size: 0.90em;"}
+Applications *should* have some version of the following specifications:
+:::
+
+. . .
+
+<br>
+
+::: columns
+:::{.column width="35%"}
+:::{style="font-size: 0.90em;"}
+1)  User specifications
+:::
+:::
+
+:::{.column width="65%"}
+:::{style="font-size: 0.90em;"}
+Capture the **needs and expectations** of the end-user
+:::
+:::
+:::
+
+. . .
+
+::: columns
+:::{.column width="35%"}
+:::{style="font-size: 0.90em;"}
+2)  Features
+:::
+:::
+
+:::{.column width="65%"}
+:::{style="font-size: 0.90em;"}
+Describe the high-level **capabilities** of the application
+:::
+:::
+:::
+
+. . .
+
+::: columns
+:::{.column width="35%"}
+:::{style="font-size: 0.90em;"}
+3)  Functional requirements
+:::
+:::
+
+:::{.column width="65%"}
+:::{style="font-size: 0.90em;"}
+The **testable, specific behaviors** 
+*(i.e., inputs and outputs)*
+:::
+:::
+:::
+
+## Test specifications
+
+:::: footer
+[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+. . .
+
+:::{style="font-size: 0.90em;"}
+A traceability matrix is a table that 'traces' the user specifications to features and functional requirements (and the tests they give rise to)
+:::
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+
+|                                                                              |                                                                                                                |                                                                                                                                                                     |       |
+|-------------------|----------------------|---------------------|---------|
+| User Specifications                                                          | Features                                                                                                       | Requirements                                                                                                                                                        | Tests |
+| **US1**: Shiny App Scatter Plot Data Visualization for Movie Review Explorer | **F1.1**: IMDB and Rotten Tomatoes data with continuous (i.e., scores) and categorical (i.e., mpaa) variables. | **FR 1.1**: The app should display movie review data from IMDB and Rotten Tomatoes containing both continuous and categorical variables stored in a tabular format. | ?     |
+|                                                                              |                                                                                                                |                                                                                                                                                                     |       |
+
+
+:::
+
+## Behavior-driven development tests
+
+:::: footer
+[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+In Behavior-driven development (BDD), requirements are written plain language ‘feature files’ using a series of keywords:
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+```{bash}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "1|3|4|6-10|"
+Feature: < High-level description of capability >
+
+  Background: < Steps or conditions that exist before each scenario >
+    Given < Initial context or preconditions for the scenario >
+    
+  Scenario: < Steps outlining a concrete example to illustrate the feature >
+    When
+    And
+    Then
+
+```
+:::
+
+## _Describe_ features & background
+
+:::: footer
+[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+The `Feature` and `Background` can be included in nested `testthat::describe()` blocks
+:::
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|2|3-6|4|5|6|"
+testthat::describe(
+  "Feature: < High-level description of capability >", code = {
+  
+    testthat::describe(
+      "Background: < Preconditions >
+         Given < Initial context for scenario >", code = { 
+    
+  })
+})
+```
+:::
+
+## Write a test for _it_
+
+:::: footer
+[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+For `Scenario`s, each `Then` keyword should have a corresponding `testthat::it()` or `testthat::test_that()`
+:::
+
+<br>
+
+. . .
+
+:::{style="font-size: 0.85em;"}
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "1|2|3|4|5|7-10|"
+testthat::it("
+  Scenario: < Steps outlining a concrete example to illustrate the feature >
+    When ...
+    And ...
+    Then", 
+  code = {
+    # test code 
+    testthat::expect_equal(
+      object = x, 
+      expected = y)
+})
+```
+:::
+
 ## Test fixtures
 
 :::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
+
+<br>
 
 . . .
 
@@ -2694,10 +2934,113 @@ tests/
 :::
 :::
 
+## Feature description for fixture
+
+:::: footer
+[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+We can use nested `describe()` functions to document the `Feature` and `Background`
+:::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="7%"}
+:::
+
+
+:::{.column width="86%"}
+
+:::{style="font-size: 0.70em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2-3|4-5|8,9,10,11|"
+testthat::describe(
+    "Feature: Scatter plot data visualization
+       As a film data analyst
+       I want to explore movie review data from IMDB.com
+       So that I can analyze relationships between movie reivew metrics",
+  code = {
+  testthat::describe(
+    "Background:
+       Given I have data with IMDB movie reviews
+       And the data contains continuous variables like 'rating'
+       And the data contains categorical variables like 'mpaa'",
+    code = {
+         
+      })
+    })
+```
+:::
+
+:::
+
+:::{.column width="7%"}
+:::
+
+::::
+
+## Give a concrete scenario
+
+:::: footer
+[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+Illustrate the test with clear `Given`, `When`, `Then` steps 
+:::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="7%"}
+:::
+
+
+:::{.column width="86%"}
+:::{style="font-size: 0.80em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|3|4|5-9|"
+testthat::it(
+  "Scenario: Create scatter plot
+      Given I have launched the movie review exploration app,
+      When the scatter plot renders,
+      Then the points on the x axis should represent 'Ratings'
+      And the points on the y axis should represent 'Length'
+      And the points should be colored by 'MPAA' rating
+      And the size of the points should be set to '2'
+      And the opacity of the points should be set to '0.5'", 
+    code = {
+      
+  })
+```
+:::
+:::
+
+:::{.column width="7%"}
+:::
+
+::::
+
 ## Example fixture: data
 
 :::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -2765,107 +3108,11 @@ tests
 
 ::::
 
-## Describe fixture feature 
+
+## Write a fixture test
 
 :::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-:::{style="font-size: 0.85em;"}
-Describe feature with test fixture
-:::
-
-<br>
-
-. . .
-
-:::: columns
-
-:::{.column width="15%"}
-
-:::
-
-
-:::{.column width="85%"}
-
-:::{style="font-size: 0.70em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "|2|4-6|8-11|"
-testthat::describe(
-    "Feature: Scatter plot data visualization
-       As a film data analyst
-       I want to explore movie review data from IMDB.com
-       So that I can analyze relationships between movie reivew metrics",
-  code = {
-  testthat::describe(
-    "Background:
-       Given I have data with IMDB movie reviews
-       And the data contains continuous variables like 'rating'
-       And the data contains categorical variables like 'mpaa'",
-    code = {
-         
-      })
-    })
-```
-:::
-
-:::
-
-::::
-
-
-## Give a concrete scenario
-
-:::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-:::{style="font-size: 0.85em;"}
-Illustrate the feature in steps 
-:::
-
-<br>
-
-. . .
-
-:::: columns
-
-:::{.column width="15%"}
-:::
-
-
-:::{.column width="85%"}
-:::{style="font-size: 0.80em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "|3|4|5-6|"
-testthat::it(
-  "Scenario: Create scatter plot
-     Given I have launched the movie review exploration app,
-     When I view the scatter plot,
-     Then I should see points representing values for a default
-          set of continuous and categorical columns.", 
-    code = {
-      
-  })
-```
-:::
-:::
-
-::::
-
-
-## Write a fixture test for it 
-
-:::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -2915,90 +3162,10 @@ Write a test using the static data test fixture
 
 ::::
 
-
-## What am I testing?
-
-:::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-
-<br>
-
-:::: columns
-
-:::{.column width="40%"}
-:::{style="font-size: 0.95em;"}
-
-Am I testing, *'does the plot generate without producing an error?'*
-
-:::
-:::
-
-:::{.column width="60%"}
-:::{style="font-size: 0.80em;"}
-```{r}
-#| eval: false 
-#| echo: true
-app_graph <- scatter_plot(tidy_ggp2_movies,
-      x_var = ggp2_scatter_inputs$x,
-      y_var = ggp2_scatter_inputs$y,
-      col_var = ggp2_scatter_inputs$z,
-      alpha_var = ggp2_scatter_inputs$alpha,
-      size_var = ggp2_scatter_inputs$size)
-
-expect_true(ggplot2::is.ggplot(app_graph))
-```
-:::
-:::
-
-::::
-
-
-. . .
-
-<br>
-
-:::: columns
-
-:::{.column width="40%"}
-:::{style="font-size: 0.95em;"}
-
-Or, *‘is this plot visually correct?’*
-
-:::
-:::
-
-:::{.column width="60%"}
-:::{style="font-size: 0.80em;"}
-```{r}
-#| eval: false 
-#| echo: true
-expect_snapshot_file()
-# or
-vdiffr::expect_doppelganger()
-```
-:::
-:::
-
-::::
-
-. . .
-
-:::: columns
-:::{.column width="40%"}
-:::
-:::{.column width="60%"}
-:::{style="font-style: italic; font-size: 0.80em;"}
-[Read more about testing complex outputs](https://shiny.posit.co/r/articles/improve/server-function-testing/#complex-outputs-plots-htmlwidgets)
-:::
-:::
-::::
-
 ## Test helpers
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3046,7 +3213,7 @@ Store test helpers in `tests/testthat/helper.R` files.
 ## Example test helper
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3104,7 +3271,7 @@ We could write `var_inputs()` to store these values in a list
 ## Example test helper
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3163,7 +3330,7 @@ This removes duplicated code, but it's not clear for the reader what `var_inputs
 ## Test helpers & the DRY principle
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3188,10 +3355,10 @@ If you have repeated code in your tests, consider the following questions below 
 
 It’s more important that test code is obvious than DRY, because it’s **more likely you’ll be dealing with this test when it fails** (and you’re not likely to remember why all the top-level code is there)
 
-## Another example test helper
+## Better test helper
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3233,583 +3400,67 @@ This reduces the number of keystrokes per test, but doesn’t obscure the source
 
 ::::
 
-
-## Example test (snapshots & helper)
+## Test output
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
 
-What scenario calls for a snapshot test? 
+The [`logger` package](https://daroczig.github.io/logger/) is great for verbose test output. 
 
 . . .
-
-
-<br>
-
-:::{style="font-size: 0.80em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "|5|6|7"
-  testthat::it(
-  "Scenario: Scatter plot initial x, y, color values 
-      When I launched the Scatter Plot Data Visualization
-      And I have a dataset of movie reviews from IMDB and Rotten Tomatoes
-      Then the scatter plot should show 'IMDB Rating' on the x-axis
-      And the scatter plot should show 'Audience Score' on the y-axis
-      And the points on the scatter plot should be colored by 'MPAA Rating'",
-    code = {
-```
-:::
-
-## Example test (snapshots & helper)
-
-:::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-[`vdiffr`](https://vdiffr.r-lib.org/) allows us to perform a ‘visual unit test’
-
-. . . 
 
 <br>
 
 ::: columns
 
 :::{.column width="40%"}
-:::{style="font-size: 0.90em;"}
+:::{style="font-size: 0.80em;"}
 -  `test_logger()` can be used to log when a test `starts` and `ends`
-
-- `expect_doppelganger()` stores the expected output as an `.svg` file 
 :::
 :::
 
 :::{.column width="60%"}
-:::{style="font-size: 0.60em;"}
+:::{style="font-size: 0.70em;"}
 ```{r}
 #| eval: false 
 #| echo: true
-#| code-line-numbers: "1-2|4-9|11|12|13-18|"
-test_logger(start = "T2", 
-  msg = "Tests F1.2 initial x/y/z variables")
+#| code-line-numbers: "1-2|4-5|7-8|"
+test_logger(start = "Test number", 
+  msg = "Short description of functional requirement")
 
-scatter_inputs <- list(x = 'imdb_rating', 
-                   y = 'audience_score', 
-                   z = 'mpaa_rating', 
-                   alpha = 0.5,
-                   size = 2, 
-                   plot_title = 'Enter plot title')
+# test code (fixtures, helpers, etc.)
+# expectations
 
-vdiffr::expect_doppelganger(
-  title = "FR12-FR14: initial x y z axes", 
-  fig = scatter_plot(movies, 
-    x_var = scatter_inputs$x, 
-    y_var = scatter_inputs$y, 
-    col_var = scatter_inputs$z, 
-    alpha_var = scatter_inputs$alpha, 
-    size_var = scatter_inputs$size) +
+test_logger(end = "Test number", 
+  msg = "Short description of functional requirement")
 ```
 :::
-
 :::
 
 ::::
 
-## Example test (snapshots & helper)
-
-:::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
+. . .
 
 <br>
-
-The scenario describes a fully functional graph, so we include the labels and theme in the snapshot.
-
-. . . 
 
 ::: columns
 
 :::{.column width="40%"}
-:::{style="font-size: 0.90em;"}
-
-- We can compare the baseline `.svg` against future versions
-
-- The `msg` can reference a functional requirement (or feature)
-
+:::{style="font-size: 0.80em;"}
+Store common test utilities in `R/`:
 :::
 :::
 
 :::{.column width="60%"}
 :::{style="font-size: 0.70em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "1-6|7|8|10-12|"
-ggplot2::labs(
-  title = scatter_inputs$plot_title,
-  x = stringr::str_replace_all(
-      tools::toTitleCase(scatter_inputs$x),"_", " "),
-  y = stringr::str_replace_all(
-      tools::toTitleCase(scatter_inputs$y), "_", " ") ) +
-ggplot2::theme_minimal() +
-ggplot2::theme(legend.position = "bottom"))
-
-test_logger(
-  end = "T2",
-  msg = "Tests F1.2 initial x/y/z variables")
-```
-:::
-:::
-
-::::
-
-## Example test (snapshots & logging)
-
-:::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-. . .
-
-The output from `devtools::test_active_file()` is more verbose:
-
-. . .
-
-<br>
-
-:::: columns
-
-:::{.column width="25%"}
-:::{style="font-size: 0.90em;"}
-Test 2 starts
-:::
-:::
-
-:::{.column width="75%"}
-:::{style="font-size: 0.70em;"}
-```{bash}
-#| eval: false 
-#| echo: true
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]
-INFO [2023-10-12 07:24:39] [ START T2 = Tests F1.2 initial x/y/z variables]
-```
-:::
-:::
-
-::::
-
-. . .
-
-:::: columns
-
-:::{.column width="25%"}
-:::{style="font-size: 0.90em;"}
-Test 2 ends
-:::
-:::
-
-:::{.column width="75%"}
-:::{style="font-size: 0.70em;"}
-```{bash}
-#| eval: false 
-#| echo: true
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
-INFO [2023-10-12 07:24:40] [ END T2 = Tests F1.2 initial x/y/z variables]
-```
-:::
-:::
-
-::::
-
-. . .
-
-<br>
-
-:::: columns
-
-:::{.column width="25%"}
-:::{style="font-size: 0.90em;"}
-Test 3 (and the functional requirements it tests)
-:::
-:::
-
-:::{.column width="75%"}
-:::{style="font-size: 0.70em;"}
-```{bash}
-#| eval: false 
-#| echo: true
-INFO [2023-10-12 07:24:40] [ START T3 = Tests FR1.4 & FR1.5 update x/y/z]
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 2 ]
-INFO [2023-10-12 07:24:40] [ END T3 = Tests FR1.4 & FR1.5 update x/y/z]
-```
-:::
-:::
-
-::::
-
-## Example test (snapshots & logging)
-
-:::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-
-The initial test run gives us a warning about the snapshot files
-
-<br>
-
-. . .
-
-:::: columns
-
-:::{.column width="20%"}
-:::{style="font-size: 0.90em;"}
-Snapshots
-:::
-:::
-
-:::{.column width="80%"}
-:::{style="font-size: 0.70em;"}
-```{bash}
-#| eval: false 
-#| echo: true
-── Warning (test-scatter_plot.R:26:5): 
-Adding new file snapshot: 'tests/testthat/_snaps/fr12-fr14-initial-x-y-z-axes.svg'
-
-── Warning (test-scatter_plot.R:75:5):  
-Adding new file snapshot: 'tests/testthat/_snaps/fr14-fr15-update-x-y-color.svg'
-```
-:::
-:::
-
-::::
-
-. . .
-
-<br>
-
-:::: columns
-
-:::{.column width="40%"}
-:::{style="font-size: 0.90em;"}
-`svg` files are stored in `tests/testthat/_snaps/`
-:::
-:::
-
-:::{.column width="60%"}
-:::{style="font-size: 0.80em;"}
-```{bash}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "|3-4|"
-tests/testthat/_snaps/
-└── scatter_plot
-    ├── fr12-fr14-initial-x-y-z-axes.svg
-    └── fr14-fr15-update-x-y-color.svg
-
-2 directories, 2 files
-```
-:::
-:::
-
-::::
-
-## Test mocks
-
-:::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-Test mocking functions are a relatively new addition to `testthat`
-
-<br>
-
-. . .
-
-:::{style="font-size: 0.90em;"}
-Mocking functions can be used to substitute functions by emulating their behavior within the test scope
-:::
-
-<br>
-
-:::{style="font-size: 0.80em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "|2|3-5|6-8|9|"
-test_that(
-  "Scenario: 
-     Given `local_function()` behavior
-     When I ...
-     Then ...", {
-  local_mocked_bindings(
-    local_function = function(...) 'value'
-   )
-  expect_equal(observed = x, expected = y)
-})
-```
-:::
-
-## Example function: check_installed()
-
-:::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-Assume we have a `check_installed()` function that checks if a package is installed 
-
-. . .
-
-<br>
-
-:::: columns
-:::{.column width="40%"}
-
-:::{style="font-size: 0.80em;"}
-
--  `check_installed()` relies on `is_installed()` from `rlang` 
-
--  `rlang` is already listed under `Imports` in the `DESCRIPTION`
-
-:::
-:::
-
-:::{.column width="60%"}
-:::{style="font-size: 0.75em;"}
-```{r}
-#| eval: false 
-#| echo: true
-check_installed <- function(package) {
-  if (is_installed(package)) {
-    return(invisible())
-  } else {
-    stop("Please install '{package}' before continuing")
-  }
-}
-```
-:::
-:::
-
-::::
-
-. . .
-
-<br><br><br>
-
-:::{style="font-size: 0.75em;"}
-*The example above has been adapted from the package development masterclass workshop at [posit::conf(2023)](https://github.com/posit-conf-2023/pkg-dev-masterclass/tree/main)*
-:::
-
-## Example function: feature and scenario
-
-:::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-Feature and scenario decriptions for `check_installed()` might look like:
-
-. . .
-
-<br>
-
-:::: columns
-
-:::{.column width="70%"}
-:::{style="font-size: 0.80em;"}
 ```{verbatim}
 #| eval: false 
 #| echo: true
-Feature: Checking if an R package is installed
-
-  Scenario: Checking an uninstalled package
-    Given the R package 'foo' is not installed
-    When I call the `check_installed()` function with 'foo'
-    Then the function should raise an error with the message
-    `Please install 'foo' before continuing`
-```
-:::
-:::
-
-:::{.column width="30%"}
-:::{style="font-size: 0.80em;"}
-```{r}
-#| echo: true 
-#| collapse: true
-is_installed('foo')
-```
-
-:::
-:::
-
-::::
-
-. . .
-
-<br>
-
-:::: columns
-
-:::{.column width="70%"}
-:::{style="font-size: 0.80em;"}
-```{verbatim}
-#| eval: false 
-#| echo: true
-  Scenario: Checking an installed package
-    Given the R package 'base' is installed
-    When I call the `check_installed()` function with 'base'
-    Then the function should return without any error
-```
-:::
-:::
-
-:::{.column width="30%"}
-:::{style="font-size: 0.80em;"}
-```{r}
-#| echo: true 
-#| collapse: true
-is_installed('base')
-```
-:::
-:::
-
-::::
-
-
-## Example test mock
-
-:::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-Instead of real-time computations, mocks return predefined responses to given inputs.
-
-. . .
-
-:::{style="font-size: 0.75em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "1"
-describe("Feature: Checking if an R package is installed", code = {
-```
-:::
-
-. . .
-
-:::{style="font-size: 0.75em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "1|2|3|"
-  describe("Scenario: Checking an uninstalled package
-              Given the R package 'foo' is not installed
-              When I call the `check_installed()` function with 'foo'", code = {
-```
-:::
-
-. . .
-
-:::{style="font-size: 0.75em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "1-2"
-  test_that("Then the function should raise an error with the message
-             `Please install 'foo' before continuing`", code = {
-```
-:::
-
-. . .
-
-:::: columns
-
-:::{.column width="70%"}
-:::{style="font-size: 0.75em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "2-4|5|"
-      test_logger(start = "mock is_installed", msg = "FALSE")
-      local_mocked_bindings(
-        is_installed = function(package) FALSE
-      )
-      expect_error(object = check_installed("foo"))
-      test_logger(end = "mock is_installed", msg = "FALSE")
-    })
-```
-:::
-:::
-
-:::{.column width="30%"}
-:::{style="font-size: 0.70em;"}
-`is_installed()` is set to `FALSE`
-
-`expect_error()` confirms the error message
-:::
-:::
-
-::::
-
-## Notes on mocking 
-
-:::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 0.90em;"}
-::::
-
-<br>
-
-. . .
-
-The `roxygen2` documentation for `check_installed()` needs an `@importFrom` tag to import `is_installed` from `rlang`
-
-. . .
-
-<br>
-
-:::: columns
-:::{.column width="30%"}
-:::{style="font-size: 0.90em;"}
-
-Using explicit namespacing alone won’t work
-
-:::
-:::
-
-:::{.column width="70%"}
-:::{style="font-size: 0.69em;"}
-```{r}
-#| eval: false 
-#| echo: true
-#| code-line-numbers: "|10|"
-#' Check if package is installed
-#' 
-#' An example function for demonstrating how to use `testthat`'s
-#' mocking functions.
-#' 
-#' @param package string, name of package
-#'
-#' @return invisible 
-#'
-#' @importFrom rlang is_installed
-#'
-#' @export
-#'
-#' @examples
-#' check_installed("foo")
-#' check_installed("base")
+R/
+└── testthat.R
 ```
 :::
 :::
@@ -3820,47 +3471,1011 @@ Using explicit namespacing alone won’t work
 ## Testing modules
 
 :::: footer
-[Branch: `12e_tests-modules`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
 <br>
 
+We want tests for specific module behaviors (i.e., communicating or transferring values) 
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.80em;"}
+
+> *"Are the user inputs from the variable input module being passed to scatter-plot display module?"*
+
+:::
+
+<br>
 
 
-## System tests
+:::{style="font-size: 0.90em;"}
+```{r}
+#| eval: false 
+#| echo: true 
+#| code-line-numbers: "|3|5|"
+movies_server <- function(input, output, session) {
+
+      selected_vars <- mod_var_input_server("vars")
+
+      mod_scatter_display_server("plot", var_inputs = selected_vars)
+      
+}
+```
+:::
+
+## Module behaviors 
 
 :::: footer
-[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+What scenarios call for a snapshot test? 
+
+. . .
+
+
+<br>
+
+:::{style="font-size: 0.69em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "2|3|4-8"
+  testthat::it("Scenario: Scatter plot initial x, y, color values 
+                   Given the movie review application is loaded
+                   When I view the initial scatter plot
+                   Then the scatter plot should show 'IMDB Rating' on the x-axis
+                   And the scatter plot should show 'Audience Score' on the y-axis
+                   And the points on the scatter plot should be colored by 'MPAA Rating'
+                   And the size of the points should be set to '2'
+                   And the opacity of the points should be set to '0.5'", code = {
+```
+:::
+
+. . .
+
+:::{style="font-size: 0.69em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "2|3-5|6-8"
+  testthat::it("Scenario: Change x, y, color values for plotting
+                  Given the movie review application is loaded
+                  When I choose the variable 'IMDB number of votes' for the x-axis
+                  And I choose the variable 'Critics Score' for the y-axis
+                  And I choose the variable 'Genre' for the color
+                  Then the scatter plot should show 'IMDB number of votes' on the x-axis
+                  And the scatter plot should show 'Critics Score' on the y-axis
+                  And the points on the scatter plot should be colored by 'Genre'", code = {
+```
+:::
+
+
+
+## Testing modules: returned values 
+
+:::: footer
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="40%"}
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+
+Values from `mod_var_input_ui()` are passed to `setInputs()` 
+
+:::
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+
+Compare with `session$returned()`
+
+:::
+
+:::
+
+
+:::{.column width="60%"}
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true 
+#| code-line-numbers: "1|2-8|9-17|"
+shiny::testServer(app = mod_var_input_server, expr = {
+      # set inputs
+      session$setInputs(y = "imdb_rating",
+                        x = "audience_score",
+                        z = "mpaa_rating",
+                        alpha = 0.5,
+                        size = 2,
+                        plot_title = "Enter plot title")
+      # test against inputs in mod_var_input_ui()
+      testthat::expect_equal(object = session$returned(),
+        expected = list(y = "imdb_rating",
+                        x = "audience_score",
+                        z = "mpaa_rating",
+                        alpha = 0.5,
+                        size = 2,
+                        plot_title = "Enter plot title"))
+})
+```
+:::
+:::
+
+::::
+
+
+
+## Testing modules: returned values 
+
+:::: footer
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
 <br>
 
+We know the values are being returned from `mod_var_input_server()`
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.80em;"}
+
+> *"how can we test if the reactive values (`selected_vars`) are passed into `mod_scatter_display_server()`?"*
+
+:::
+
+. . .
+
+<br>
 
 
-# Bonus! Debugging
+:::{style="font-size: 0.90em;"}
+```{r}
+#| eval: false 
+#| echo: true 
+#| code-line-numbers: "3|5"
+movies_server <- function(input, output, session) {
 
-## Debugging
+      selected_vars <- mod_var_input_server("vars")
+
+      mod_scatter_display_server("plot", var_inputs = selected_vars)
+      
+}
+```
+:::
+
+## Testing modules: reactive inputs 
 
 :::: footer
-[Branch: `spec_topic-debugging-01`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
-## Debugging
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="40%"}
+
+<br>
+
+:::{style="font-size: 0.80em;"}
+
+If we pass the values from the variable input module to `args = list()`, we get an error:
+
+:::
+
+:::
+
+
+:::{.column width="60%"}
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true 
+#| code-line-numbers: "|1|3-8|"
+shiny::testServer(app = mod_scatter_display_server,
+  args = list(var_inputs = 
+        list(x = "critics_score",
+            y = "imdb_rating",
+            z = "mpaa_rating",
+            alpha = 0.5,
+            size = 2,
+            plot_title = "Enter Plot Title")), expr = {
+    testthat::expect_equal(object = inputs(),
+      expected = list(x = "critics_score",
+                      y = "imdb_rating",
+                      z = "mpaa_rating",
+                      alpha = 0.5,
+                      size = 2,
+                      plot_title = "Enter Plot Title"))
+})
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+
+```{verbatim}
+[ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+
+── Error (test-mod_scatter_display.R:29:13): ──
+Error in `var_inputs()`: could not find function "var_inputs"
+```
+
+:::
+
+## Testing modules: reactive inputs 
 
 :::: footer
-[Branch: `spec_topic-debugging-02`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
-## Debugging
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+
+We can fix this by simulating how `selected_vars` is used in `testServer()`
+
+:::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="40%"}
+
+:::{style="font-size: 0.70em;"}
+
+If we wrap the values in `reactive()` and pass them as `var_inputs` to `args`, this simulates the reactive values in `selected_vars`
+
+:::
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+
+`inputs()` is the object used to create the graph in the call to `renderPlot()`
+
+:::
+
+:::
+
+
+:::{.column width="60%"}
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true 
+#| code-line-numbers: "|1|2-9|10|11-17|"
+shiny::testServer(app = mod_scatter_display_server,
+  args = list(var_inputs = 
+      shiny::reactive(
+        list(x = "critics_score",
+            y = "imdb_rating",
+            z = "mpaa_rating",
+            alpha = 0.5,
+            size = 2,
+            plot_title = "Enter Plot Title"))), expr = {
+    testthat::expect_equal(object = inputs(),
+      expected = list(x = "critics_score",
+                      y = "imdb_rating",
+                      z = "mpaa_rating",
+                      alpha = 0.5,
+                      size = 2,
+                      plot_title = "Enter Plot Title"))
+})
+```
+:::
+:::
+
+::::
+
+## Testing modules: how does this work? 
 
 :::: footer
-[Branch: `spec_topic-debugging-03`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
-## Debugging
+<br>
+
+:::{style="font-size: 0.90em;"}
+If pause execution with the debugger, we can see the difference:
+:::
+
+. . .
+
+:::: columns
+
+:::{.column width="50%"}
+:::{style="font-size: 0.61em;"}
+
+```{r}
+#| eval: false 
+#| echo: true 
+Browse[1]> selected_vars
+reactive({
+    list(
+      y = input$y, 
+      x = input$x, 
+      z = input$z, 
+      alpha = input$alpha, 
+      size = input$size, 
+      plot_title = input$plot_title
+      )
+})
+```
+
+:::
+:::
+
+
+:::{.column width="50%"}
+:::{style="font-size: 0.61em;"}
+
+```{r}
+#| eval: false 
+#| echo: true 
+Browse[1]> selected_vars()
+$y
+[1] "audience_score"
+
+$x
+[1] "imdb_rating"
+
+$z
+[1] "mpaa_rating"
+
+$alpha
+[1] 0.5
+
+$size
+[1] 2
+
+$plot_title
+[1] ""
+```
+
+:::
+:::
+
+::::
+
+## Testing modules: reactive inputs
 
 :::: footer
-[Branch: `spec_topic-debugging-04`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
+
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+We can check other input values by passing them to `var_inputs` in `args = list()`
+:::
+
+. . .
+
+<br>
+
+
+:::: columns
+
+:::{.column width="35%"}
+
+:::{style="font-size: 0.80em;"}
+
+These values simulate alternate user inputs being passed from the variable input module (as `selected_vars`)
+
+:::
+
+:::
+
+
+:::{.column width="65%"}
+
+:::{style="font-size: 0.72em;"}
+
+```{r}
+#| eval: false 
+#| echo: true 
+#| code-line-numbers: "|1|2-9|"
+shiny::testServer(app = mod_scatter_display_server,
+  args = list(var_inputs =
+      shiny::reactive(
+        list(x = "critics_score",
+             y = "imdb_num_votes",
+             z = "genre",
+             alpha = 0.75,
+             size = 3,
+             plot_title = "New plot title"))), expr = {
+})
+```
+
+:::
+
+:::
+
+::::
+
+## Testing modules: outputs
+
+:::: footer
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.80em;"}
+
+> "*In terms of your testing strategy, you shouldn’t bother yourself with 'is Shiny generating the correct structure so that the plot will render in the browser?' That’s a question that the Shiny package itself needs to answer (and one for which we have our own tests).*"
+
+:::
+
+. . .
+
+
+:::{style="font-size: 0.80em;"}
+
+> "*The goal for your tests should be to ask 'is the code that I wrote producing the plot I want?' There are two components to that question:*
+>
+> 1. *Does the plot generate without producing an error?*
+> 2. *Is the plot visually correct?*
+>
+
+:::
+
+. . .
+
+:::{style="font-size: 0.80em;"}
+
+> *`testServer` is great for assessing the first component here.* - [Server Function Testing, Shiny Documentation](https://shiny.posit.co/r/articles/improve/server-function-testing/)
+
+:::
+
+## Testing modules: verifying outputs
+
+:::: footer
+[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+
+<br>
+
+:::{style="font-size: 0.80em;"}
+The outputs in the display module are handled by the `render*()` functions, so we need to verfiy ***'does the plot generate without producing an error?'***
+:::
+
+
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="40%"}
+
+:::{style="font-size: 0.70em;"}
+
+If we know how to subset the object rendered with `output$scatterplot`, we can test this for directly
+
+:::
+
+:::
+
+
+:::{.column width="60%"}
+
+:::{style="font-size: 0.62em;"}
+```{r}
+#| eval: false 
+#| echo: true 
+testthat::expect_equal(object = output$scatterplot[["alt"]],
+                       expected = "Plot object")
+```
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: columns
+
+:::{.column width="40%"}
+
+:::{style="font-size: 0.70em;"}
+
+We can also build the graph in the display module and confirm with `is.ggplot()`
+
+<br><br>
+
+...or we can do a sanity check by passing `plot` to `print()`
+
+:::
+
+:::
+
+
+:::{.column width="60%"}
+
+:::{style="font-size: 0.62em;"}
+```{r}
+#| eval: false 
+#| echo: true 
+  plot <- scatter_plot(movies,
+    x_var = inputs()$x,
+    y_var = inputs()$y,
+    col_var = inputs()$z,
+    alpha_var = inputs()$alpha,
+    size_var = inputs()$size) +
+  ggplot2::labs(title = inputs()$plot_title,
+    x = stringr::str_replace_all(tools::toTitleCase(
+      inputs()$x), "_", " "),
+    y = stringr::str_replace_all(tools::toTitleCase(
+      inputs()$y), "_", " ")) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(legend.position = "bottom")
+  testthat::expect_true(ggplot2::is.ggplot(plot))
+```
+:::
+
+:::
+
+::::
+
+
+## System tests with shinytest2
+
+:::: footer
+[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+
+<br>
+
+Setting up `shinytest2`: 
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="35%"}
+
+:::{style="font-size: 0.80em;"}
+
+Install `shinytest2` and run `use_shinytest2()`
+
+:::
+
+:::{style="font-size: 0.70em;"}
+
+```{r}
+#| eval: false 
+#| echo: true
+install.packages('shinytest2')
+library(shinytest2)
+shinytest2::use_shinytest2()
+```
+
+:::
+
+:::
+
+:::{.column width="65%"}
+
+:::{style="font-size: 0.70em;"}
+
+- [x]   Adding `shinytest2::load_app_env()` to `tests/testthat/setup-shinytest2.R`
+
+- [x]   Adding `*_.new.png` to `.gitignore`
+
+- [x]   Adding `_\\.new\\.png$` to `.Rbuildignore`
+
+- [x]   Setting active project to `/path/to/moviesApp`
+
+- [x]   Adding `shinytest2` to `Suggests` field in `DESCRIPTION`
+
+- [x]   Setting active project to `<no active project>`
+
+:::
+
+:::
+
+::::
+
+
+## shinytest2 setup
+
+:::: footer
+[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+. . .
+
+<br>
+
+`shinytest2` installation checklist:
+
+. . .
+
+:::: columns
+
+:::{.column width="40%"}
+
+:::{style="font-size: 0.70em;"}
+
+Verify you can create a new session with: 
+
+```{r}
+#| eval: false 
+#| echo: true
+library(chromote)
+b <- ChromoteSession$new()
+b$view()
+```
+
+:::
+
+:::
+
+:::{.column width="60%"}
+
+![](img/verify_chromote.png){width='85%'}
+
+:::
+
+::::
+
+## shinytest2: recording tests
+
+:::: footer
+[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+Ideally we'd have one test recording [per feature.](https://youtu.be/EOVPBN5o8F8?si=-iWQIMwDeQ-WQQWv&t=693)
+:::
+
+<br>
+
+. . .
+
+:::{style="font-size: 0.85em;"}
+```{verbatim}
+Feature 1: Scatter plot data visualization dropdowns
+     As a film data analyst
+     I want to explore continuous and categorical variables in the movie review data
+     So that I can analyze relationships between movie reivew metrics
+```
+:::
+
+
+## shinytest2: recording tests
+
+:::: footer
+[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+If we've been writing BDD scenarios, the tests are relatively easy to record: 
+:::
+
+<br>
+
+. . .
+
+:::{style="font-size: 0.85em;"}
+
+```{verbatim}
+  Scenario: Change dropdown values for plotting
+     Given the movie review application is loaded
+     When I choose the variable 'IMDB number of votes' for the x-axis
+     And I choose the variable 'Critics Score' for the y-axis
+     And I choose the variable 'Genre' for the color
+     And I choose the size of the points to be 3
+     And I choose the opacity of the points to be 0.7
+```
+
+:::
+
+
+## shinytest2: recording features 
+
+:::: footer
+[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="25%"}
+
+:::{style="font-size: 0.67em;"}
+
+```{r}
+#| eval: false 
+#| echo: true
+shinytest2::record_test()
+```
+
+:::
+
+:::
+
+:::{.column width="75%"}
+
+![](img/record_test.png){width='90%' fig-align='center'}
+
+:::
+
+::::
+
+## shinytest2: test contents
+
+:::: footer
+[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="40%"}
+
+:::{style="font-size: 0.70em;"}
+
+Test file is saved in `tests/testthat/test-shinytest2.R`
+
+<br><br>
+
+The test file contains the contents of our scenario.
+
+:::
+
+:::
+
+
+:::{.column width="60%"}
+
+:::{style="font-size: 0.62em;"}
+```{r}
+#| eval: false 
+#| echo: true 
+library(shinytest2)
+
+test_that("{shinytest2} recording: moviesApp-feature-01", {
+  app <- AppDriver$new(name = "moviesApp-feature-01", 
+                       height = 800, width = 1173)
+  app$set_inputs(`vars-y` = "imdb_num_votes")
+  app$set_inputs(`vars-x` = "critics_score")
+  app$set_inputs(`vars-z` = "genre")
+  app$set_inputs(`vars-alpha` = 0.7)
+  app$set_inputs(`vars-size` = 3)
+  app$set_inputs(`vars-plot_title` = "New plot title")
+  app$expect_values()
+})
+
+```
+:::
+
+:::
+
+::::
+
+. . .
+
+<br>
+
+
+:::: columns
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="80%"}
+
+:::{style="font-size: 0.70em;"}
+
+```{verbatim}
+   Then the scatter plot should show 'IMDB number of votes' on the x-axis
+   And the scatter plot should show 'Critics Score' on the y-axis
+   And the points on the scatter plot should be colored by 'Genre'
+   And the size of the points on the scatter plot should be 3
+   And the opacity of the points on the scatter plot should be 0.7
+   And the title of the plot should be 'New Plot Title'
+```
+
+:::
+
+:::
+
+::::
+
+## shinytest2: writing tests
+
+:::: footer
+[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.80em;"}
+We can create system tests using the feature and scenario descriptions, BDD functions, and `AppDriver$new()`
+:::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="10%"}
+:::
+
+:::{.column width="80%"}
+
+:::{style="font-size: 0.65em;"}
+
+```{r}
+#| eval: false 
+#| echo: true 
+testthat::describe("Feature 1: Scatter plot data visualization dropdowns
+     ...", code = {
+  testthat::it("Scenario: Change dropdown values for plotting
+                 Given ...
+                 When ...
+                 Then ...", {
+    app <- AppDriver$new(name = "moviesApp-feature-01", height = 800, width = 1173)
+    app$set_inputs(`vars-y` = "imdb_num_votes")
+    app$set_inputs(`vars-x` = "critics_score")
+    app$set_inputs(`vars-z` = "genre")
+    app$set_inputs(`vars-alpha` = 0.7)
+    app$set_inputs(`vars-size` = 3)
+    app$set_inputs(`vars-plot_title` = "New plot title")
+    app$expect_values()
+  })
+})
+```
+
+:::
+
+:::
+
+:::{.column width="10%"}
+:::
+
+::::
+
+
+## Recap
+
+:::: footer
+[Martin Frigaard | [Github](https://github.com/mjfrigaard) | [LinkedIn](https://www.linkedin.com/in/mjfrigaard/)]{style="font-size: 0.90em;"}
+::::
+
+:::: columns
+
+:::{.column width="50%"}
+
+Shiny App-Packages
+
+:::{style="font-size: 0.75em;"}
+
+- [x]   `DESCRIPTION` file and fields 
+
+- [x]   `.Rproj` files and fields 
+
+- [x]   `devtools` function workflow
+
+- [x]   `roxygen2` & dependencies
+
+- [x]   Data
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+<br>
+
+:::{style="font-size: 0.75em;"}
+
+- [x]   Launching apps 
+
+- [x]   External resources 
+
+- [x]   BDD tests, fixtures & helpers
+
+- [x]   Testing modules & system tests
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: columns
+
+:::{.column width="50%"}
+
+Read more:
+
+:::{style="font-size: 0.75em;"}
+
+- [R packages, 2ed](https://r-pkgs.org/)
+
+- [`shinytest2` documentation](https://rstudio.github.io/shinytest2/articles/shinytest2.html)
+
+- [Shiny testing](https://shiny.posit.co/r/articles/improve/testing-overview/) (Shiny documentation) 
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+<br>
+
+:::{style="font-size: 0.75em;"}
+
+- [BDD in Action, 2ed](https://www.manning.com/books/bdd-in-action-second-edition)
+
+- [Writing R Extensions](https://rstudio.github.io/r-manuals/r-exts/) 
+
+- [Shiny App-packages](https://mjfrigaard.github.io/shinyap/) (in development)
+
+:::
+
+:::
+
+::::
+
+
