@@ -295,7 +295,7 @@ My app has the following utility function for creating a `ggplot2` scatter plot:
 
 ```{r}
 #| eval: false 
-#| code-fold: false
+#| echo: true
 #| code-line-numbers: "|3|4|5|"
 scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
     ggplot2::ggplot(data = df,
@@ -334,8 +334,8 @@ Test fixtures can be stored in `tests/testthat/fixtures/`
 ::: {.incremental}
 
 ```{bash}
+#| echo: true
 #| eval: false 
-#| code-fold: false
 #| code-line-numbers: "|4|5|"
 tests/
   ├── testthat/
@@ -375,8 +375,8 @@ Static data fixtures can be accessed with `testthat::test_path()`:
 ::: {.incremental}
 
 ```{r}
+#| echo: true
 #| eval: false 
-#| code-fold: false
 #| code-line-numbers: "|2|3|9"
 test_that("tidy_ggp2_movies.rds works", code = {
 tidy_ggp2_movies <- readRDS(test_path("fixtures", "tidy_ggp2_movies.rds"))
@@ -439,8 +439,8 @@ Helpers can be stored in `tests/testthat/helper.R`
 ::: {.incremental}
 
 ```{bash}
+#| echo: true
 #| eval: false 
-#| code-fold: false
 #| code-line-numbers: "|6|"
 tests/
   ├── testthat/
@@ -478,8 +478,8 @@ Assume I want a list of inputs to pass to the `scatter_plot()` in my test:
 ::: {style='font-size: 0.80em;'}
 
 ```{r}
+#| echo: true
 #| eval: false 
-#| code-fold: false
 ggp2_scatter_inputs <- list(  
         x = "rating",
         y = "length",
@@ -511,8 +511,8 @@ I could store these values in a function in `tests/testthat/helper.R`
 ::: {style='font-size: 0.80em;'}
 
 ```{r}
+#| echo: true
 #| eval: false 
-#| code-fold: false
 var_inputs <- function() {
    list( x = "rating",
         y = "length",
@@ -548,7 +548,7 @@ This removes duplicated code...
 
 ```{r}
 #| eval: false 
-#| code-fold: false
+#| echo: true
 #| code-line-numbers: "|6-10|"
 test_that("scatter_plot() works", code = {
   
@@ -972,7 +972,7 @@ Alternate story
 
 ```{r}
 #| eval: false
-#| code-fold: false
+#| echo: true
 #| code-line-numbers: "|1|7|13|14|15"
 testthat::describe(
     "Feature: Scatter plot data visualization

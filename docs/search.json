@@ -886,42 +886,42 @@
     "href": "slides/efficient-tests.html#example-custom-plot-function",
     "title": "What Do You Mean Test Coverage?!",
     "section": "Example: custom plot function",
-    "text": "Example: custom plot function\n\n\nMy app has the following utility function for creating a ggplot2 scatter plot:\n\n\n\n\n\n\n\n\n\nThe data masking from rlang (.data[[ ]]) means it can handle string arguments (i.e. input$x and input$y)"
+    "text": "Example: custom plot function\n\n\nMy app has the following utility function for creating a ggplot2 scatter plot:\n\n\n\n\n\nscatter_plot &lt;- function(df, x_var, y_var, col_var, alpha_var, size_var) {\n    ggplot2::ggplot(data = df,\n      ggplot2::aes(x = .data[[x_var]],\n          y = .data[[y_var]],\n          color = .data[[col_var]])) +\n      ggplot2::geom_point(alpha = alpha_var, size = size_var)\n\n}\n\n\n\n\n\nThe data masking from rlang (.data[[ ]]) means it can handle string arguments (i.e. input$x and input$y)"
   },
   {
     "objectID": "slides/efficient-tests.html#example-test-fixture",
     "href": "slides/efficient-tests.html#example-test-fixture",
     "title": "What Do You Mean Test Coverage?!",
     "section": "Example: test fixture",
-    "text": "Example: test fixture\n\n\nTest fixtures can be stored in tests/testthat/fixtures/\n\n\n\n\n\n\n\n\n\n\n\nThe make-tidy_ggp2_movies.R creates a ‘tidy’ version of ggplot2movies::movies."
+    "text": "Example: test fixture\n\n\nTest fixtures can be stored in tests/testthat/fixtures/\n\n\n\n\n\ntests/\n  ├── testthat/\n  │   ├── fixtures/                                         \n  │   │   ├── make-tidy_ggp2_movies.R \n  │   │   └── tidy_ggp2_movies.rds \n  │   ├── helper.R                                          \n  │   └── test-scatter_plot.R                                     \n  └── testthat.R\n\n\n\n\n\n\n\nThe make-tidy_ggp2_movies.R creates a ‘tidy’ version of ggplot2movies::movies."
   },
   {
     "objectID": "slides/efficient-tests.html#using-test-fixtures",
     "href": "slides/efficient-tests.html#using-test-fixtures",
     "title": "What Do You Mean Test Coverage?!",
     "section": "Using test fixtures",
-    "text": "Using test fixtures\n\n\nStatic data fixtures can be accessed with testthat::test_path():\n\n\n\n\n\n\n\n\n\n\n\nIf tidy_ggp2_movies.rds is used in a few tests, move make-tidy_ggp2_movies.R into data-raw/ and make tidy_ggp2_movies part of the package\n\n\n\n\n\n\nggplot2::is.ggplot() confirms a plot object has been built (doesn’t require a snapshot test)"
+    "text": "Using test fixtures\n\n\nStatic data fixtures can be accessed with testthat::test_path():\n\n\n\n\ntest_that(\"tidy_ggp2_movies.rds works\", code = {\ntidy_ggp2_movies &lt;- readRDS(test_path(\"fixtures\", \"tidy_ggp2_movies.rds\"))\n  app_graph &lt;- scatter_plot(tidy_ggp2_movies,\n                            x_var = 'rating',\n                            y_var = 'budget',\n                            col_var = 'mpaa',\n                            alpha_var = 3/4,\n                            size_var = 2.5)\nexpect_true(ggplot2::is.ggplot(app_graph))\n})\n\n\n\n\n\n\n\n\nIf tidy_ggp2_movies.rds is used in a few tests, move make-tidy_ggp2_movies.R into data-raw/ and make tidy_ggp2_movies part of the package\n\n\n\n\n\n\nggplot2::is.ggplot() confirms a plot object has been built (doesn’t require a snapshot test)"
   },
   {
     "objectID": "slides/efficient-tests.html#test-helpers",
     "href": "slides/efficient-tests.html#test-helpers",
     "title": "What Do You Mean Test Coverage?!",
     "section": "Test helpers",
-    "text": "Test helpers\nTest helpers reduce repeated/duplicated test code\n\n\nObjects that aren’t large enough to justify storing as static test fixtures can be created with helper functions\n\n\n\nHelpers can be stored in tests/testthat/helper.R"
+    "text": "Test helpers\nTest helpers reduce repeated/duplicated test code\n\n\nObjects that aren’t large enough to justify storing as static test fixtures can be created with helper functions\n\n\n\nHelpers can be stored in tests/testthat/helper.R\n\n\n\n\n\ntests/\n  ├── testthat/\n  │   ├── fixtures/\n  │   │   ├── make-tidy_ggp2_movies.R\n  │   │   └── tidy_ggp2_movies.rds\n  │   ├── helper.R\n  │   └── test-scatter_plot.R    \n  └── testthat.R"
   },
   {
     "objectID": "slides/efficient-tests.html#example-test-helper",
     "href": "slides/efficient-tests.html#example-test-helper",
     "title": "What Do You Mean Test Coverage?!",
     "section": "Example: test helper",
-    "text": "Example: test helper\n\n\n\n\nAssume I want a list of inputs to pass to the scatter_plot() in my test:\n\n\n\n\n\n\n\n\n\n\n\nI could store these values in a function in tests/testthat/helper.R"
+    "text": "Example: test helper\n\n\n\n\nAssume I want a list of inputs to pass to the scatter_plot() in my test:\n\n\n\nggp2_scatter_inputs &lt;- list(  \n        x = \"rating\",\n        y = \"length\",\n        z = \"mpaa\",\n        alpha = 0.75,\n        size = 3,\n        plot_title = \"Enter plot title\"\n)\n\n\n\n\n\n\n\n\n\nI could store these values in a function in tests/testthat/helper.R\n\n\n\nvar_inputs &lt;- function() {\n   list( x = \"rating\",\n        y = \"length\",\n        z = \"mpaa\",\n        alpha = 0.75,\n        size = 3,\n        plot_title = \"Enter plot title\"\n    )\n}"
   },
   {
     "objectID": "slides/efficient-tests.html#using-test-helpers",
     "href": "slides/efficient-tests.html#using-test-helpers",
     "title": "What Do You Mean Test Coverage?!",
     "section": "Using test helpers",
-    "text": "Using test helpers\n\n\nThis removes duplicated code…\n\n\n\n\n\n\n\n\n\n\n…but it’s unclear where var_inputs() comes from (or what it contains)"
+    "text": "Using test helpers\n\n\nThis removes duplicated code…\n\n\n\n\n\ntest_that(\"scatter_plot() works\", code = {\n  \ntidy_ggp2_movies &lt;- readRDS(test_path(\"fixtures\", \"tidy_ggp2_movies.rds\"))\n  \napp_graph &lt;- scatter_plot(tidy_ggp2_movies,\n                          x_var = var_inputs()$x,\n                          y_var = var_inputs()$y,\n                          col_var = var_inputs()$z,\n                          alpha_var = var_inputs()$alpha,\n                          size_var = var_inputs()$size)\n\ntestthat::expect_true(ggplot2::is.ggplot(app_graph))\n})\n\n\n\n\n\n\n…but it’s unclear where var_inputs() comes from (or what it contains)"
   },
   {
     "objectID": "slides/efficient-tests.html#tips-on-test-helpers",
@@ -991,7 +991,7 @@
     "href": "slides/efficient-tests.html#testthat-bdd-support",
     "title": "What Do You Mean Test Coverage?!",
     "section": "testthat BDD support",
-    "text": "testthat BDD support\n\n\ntestthat has describe() and it() functions for features and scenarios:"
+    "text": "testthat BDD support\n\n\ntestthat has describe() and it() functions for features and scenarios:\n\n\n\n\n\ntestthat::describe(\n    \"Feature: Scatter plot data visualization\n       As a film data analyst\n       I want to explore movie review data from IMDB.com\n       So that I can analyze relationships between movie reivew metrics\"\n       code = {\n      testthat::it(\n        \"Scenario: Create scatter plot\n           Given I have launched the movie review exploration app,\n           When I view the scatter plot,\n           Then I should see points representing values for a default\n                set of continuous and categorical columns.\", \n          code = {\n      # test code\n  })\n})"
   },
   {
     "objectID": "slides/efficient-tests.html#efficient-testing",

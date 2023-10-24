@@ -590,7 +590,16 @@ So that I can spend less time testing code...</code></pre>
 <div class="fragment">
 <p><br></p>
 <div style="font-size: 0.85em;">
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|3|4|5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>scatter_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x_var, y_var, col_var, alpha_var, size_var) {</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> df,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>      ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> .data[[x_var]],</span>
+<span id="cb2-4"><a href="#cb2-4"></a>          <span class="at">y =</span> .data[[y_var]],</span>
+<span id="cb2-5"><a href="#cb2-5"></a>          <span class="at">color =</span> .data[[col_var]])) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>      ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">alpha =</span> alpha_var, <span class="at">size =</span> size_var)</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <p><br></p>
 </div>
@@ -607,7 +616,16 @@ So that I can spend less time testing code...</code></pre>
 <div style="font-size: 0.90em;">
 <div class="fragment">
 <div>
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|4|5|"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">tests/</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="ex">├──</span> testthat/</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="ex">│</span>   ├── fixtures/                                         </span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="ex">│</span>   │   ├── make-tidy_ggp2_movies.R </span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="ex">│</span>   │   └── tidy_ggp2_movies.rds </span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="ex">│</span>   ├── helper.R                                          </span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="ex">│</span>   └── test-scatter_plot.R                                     </span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="ex">└──</span> testthat.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -625,7 +643,18 @@ So that I can spend less time testing code...</code></pre>
 <div style="font-size: 0.80em;">
 <div class="fragment">
 <div>
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|2|3|9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">test_that</span>(<span class="st">"tidy_ggp2_movies.rds works"</span>, <span class="at">code =</span> {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>tidy_ggp2_movies <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">test_path</span>(<span class="st">"fixtures"</span>, <span class="st">"tidy_ggp2_movies.rds"</span>))</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  app_graph <span class="ot">&lt;-</span> <span class="fu">scatter_plot</span>(tidy_ggp2_movies,</span>
+<span id="cb4-4"><a href="#cb4-4"></a>                            <span class="at">x_var =</span> <span class="st">'rating'</span>,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>                            <span class="at">y_var =</span> <span class="st">'budget'</span>,</span>
+<span id="cb4-6"><a href="#cb4-6"></a>                            <span class="at">col_var =</span> <span class="st">'mpaa'</span>,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>                            <span class="at">alpha_var =</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                            <span class="at">size_var =</span> <span class="fl">2.5</span>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="fu">expect_true</span>(ggplot2<span class="sc">::</span><span class="fu">is.ggplot</span>(app_graph))</span>
+<span id="cb4-10"><a href="#cb4-10"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -659,7 +688,16 @@ So that I can spend less time testing code...</code></pre>
 <div style="font-size: 0.80em;">
 <div class="fragment">
 <div>
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="|6|"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">tests/</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="ex">├──</span> testthat/</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="ex">│</span>   ├── fixtures/</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="ex">│</span>   │   ├── make-tidy_ggp2_movies.R</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="ex">│</span>   │   └── tidy_ggp2_movies.rds</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="ex">│</span>   ├── helper.R</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="ex">│</span>   └── test-scatter_plot.R    </span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="ex">└──</span> testthat.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -674,7 +712,16 @@ So that I can spend less time testing code...</code></pre>
 <p>Assume I want a list of inputs to pass to the <code>scatter_plot()</code> in my test:</p>
 </div><div class="column" style="width:50%;">
 <div style="font-size: 0.80em;">
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ggp2_scatter_inputs <span class="ot">&lt;-</span> <span class="fu">list</span>(  </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"rating"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"length"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">z =</span> <span class="st">"mpaa"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.75</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot_title =</span> <span class="st">"Enter plot title"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -686,7 +733,17 @@ So that I can spend less time testing code...</code></pre>
 <p>I could store these values in a function in <code>tests/testthat/helper.R</code></p>
 </div><div class="column" style="width:50%;">
 <div style="font-size: 0.80em;">
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>var_inputs <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">list</span>( <span class="at">x =</span> <span class="st">"rating"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"length"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">z =</span> <span class="st">"mpaa"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.75</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot_title =</span> <span class="st">"Enter plot title"</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -701,7 +758,21 @@ So that I can spend less time testing code...</code></pre>
 <div style="font-size: 0.80em;">
 <div class="fragment">
 <div>
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|6-10|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">test_that</span>(<span class="st">"scatter_plot() works"</span>, <span class="at">code =</span> {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  </span>
+<span id="cb8-3"><a href="#cb8-3"></a>tidy_ggp2_movies <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">test_path</span>(<span class="st">"fixtures"</span>, <span class="st">"tidy_ggp2_movies.rds"</span>))</span>
+<span id="cb8-4"><a href="#cb8-4"></a>  </span>
+<span id="cb8-5"><a href="#cb8-5"></a>app_graph <span class="ot">&lt;-</span> <span class="fu">scatter_plot</span>(tidy_ggp2_movies,</span>
+<span id="cb8-6"><a href="#cb8-6"></a>                          <span class="at">x_var =</span> <span class="fu">var_inputs</span>()<span class="sc">$</span>x,</span>
+<span id="cb8-7"><a href="#cb8-7"></a>                          <span class="at">y_var =</span> <span class="fu">var_inputs</span>()<span class="sc">$</span>y,</span>
+<span id="cb8-8"><a href="#cb8-8"></a>                          <span class="at">col_var =</span> <span class="fu">var_inputs</span>()<span class="sc">$</span>z,</span>
+<span id="cb8-9"><a href="#cb8-9"></a>                          <span class="at">alpha_var =</span> <span class="fu">var_inputs</span>()<span class="sc">$</span>alpha,</span>
+<span id="cb8-10"><a href="#cb8-10"></a>                          <span class="at">size_var =</span> <span class="fu">var_inputs</span>()<span class="sc">$</span>size)</span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a>testthat<span class="sc">::</span><span class="fu">expect_true</span>(ggplot2<span class="sc">::</span><span class="fu">is.ggplot</span>(app_graph))</span>
+<span id="cb8-13"><a href="#cb8-13"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -856,10 +927,10 @@ So that I can spend less time testing code...</code></pre>
 <div class="fragment">
 <p><a href="https://cucumber.io/docs/gherkin/">Gherkin</a>:</p>
 <div style="font-size: 0.90em;">
-<div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Feature: &lt; what is being built to deliver the proposed value &gt;</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  As a &lt; user/stakeholder &gt;</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  I want to &lt; perform some action &gt;</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  So that I can &lt; achieve a business goal &gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Feature: &lt; what is being built to deliver the proposed value &gt;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  As a &lt; user/stakeholder &gt;</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  I want to &lt; perform some action &gt;</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  So that I can &lt; achieve a business goal &gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -886,10 +957,10 @@ So that I can spend less time testing code...</code></pre>
 </div>
 <div class="fragment">
 <div style="font-size: 0.95em;">
-<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Feature: CDISC Variable Exploration Dashboard</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  As a researcher or analyst </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  I want to explore variables in the Vital Signs Analysis Dataset (ADVS)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  So that I can analyze and derive insights from the vital signs data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Feature: CDISC Variable Exploration Dashboard</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  As a researcher or analyst </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  I want to explore variables in the Vital Signs Analysis Dataset (ADVS)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  So that I can analyze and derive insights from the vital signs data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -917,10 +988,10 @@ So that I can spend less time testing code...</code></pre>
 <div class="fragment">
 <p><a href="https://cucumber.io/docs/gherkin/">Gherkin</a>:</p>
 <div style="font-size: 0.78em;">
-<div class="sourceCode" id="cb5"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  Scenario: &lt; concrete example &gt;</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    Given &lt; initial conditions &gt;</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    When  &lt; action to test &gt;</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    Then  &lt; expected outcome &gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  Scenario: &lt; concrete example &gt;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    Given &lt; initial conditions &gt;</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    When  &lt; action to test &gt;</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    Then  &lt; expected outcome &gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -932,10 +1003,10 @@ So that I can spend less time testing code...</code></pre>
 <p>Set the stage</p>
 </div><div class="column" style="width:70%;">
 <div style="font-size: 0.78em;">
-<div class="sourceCode" id="cb6"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Feature: User login</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  Scenario: Successful login with correct credentials</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    Given the login page is loaded</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Feature: User login</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  Scenario: Successful login with correct credentials</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    Given the login page is loaded</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -945,8 +1016,8 @@ So that I can spend less time testing code...</code></pre>
 <p>Action and outcome</p>
 </div><div class="column" style="width:70%;">
 <div style="font-size: 0.78em;">
-<div class="sourceCode" id="cb7"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    When the user enters a valid username and password</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    Then the user should be redirected to the dashboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    When the user enters a valid username and password</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    Then the user should be redirected to the dashboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -957,7 +1028,7 @@ So that I can spend less time testing code...</code></pre>
 <p>More outcomes</p>
 </div><div class="column" style="width:70%;">
 <div style="font-size: 0.78em;">
-<div class="sourceCode" id="cb8"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    And the user should see the landing page</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    And the user should see the landing page</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -969,10 +1040,10 @@ So that I can spend less time testing code...</code></pre>
 <p>Alternate story</p>
 </div><div class="column" style="width:78%;">
 <div style="font-size: 0.70em;">
-<div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  Scenario: Unsuccessful login with incorrect password</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    Given the login page is loaded</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    When the user enters a valid username but an incorrect password</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    Then the user should see an error message stating 'Invalid password.'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  Scenario: Unsuccessful login with incorrect password</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    Given the login page is loaded</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    When the user enters a valid username but an incorrect password</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    Then the user should see an error message stating 'Invalid password.'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1012,7 +1083,24 @@ So that I can spend less time testing code...</code></pre>
 <div class="fragment">
 <p><br></p>
 <div style="font-size: 0.70em;">
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="|1|7|13|14|15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>testthat<span class="sc">::</span><span class="fu">describe</span>(</span>
+<span id="cb17-2"><a href="#cb17-2"></a>    <span class="st">"Feature: Scatter plot data visualization</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="st">       As a film data analyst</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="st">       I want to explore movie review data from IMDB.com</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="st">       So that I can analyze relationships between movie reivew metrics"</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>       <span class="at">code =</span> {</span>
+<span id="cb17-7"><a href="#cb17-7"></a>      testthat<span class="sc">::</span><span class="fu">it</span>(</span>
+<span id="cb17-8"><a href="#cb17-8"></a>        <span class="st">"Scenario: Create scatter plot</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="st">           Given I have launched the movie review exploration app,</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="st">           When I view the scatter plot,</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="st">           Then I should see points representing values for a default</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a><span class="st">                set of continuous and categorical columns."</span>, </span>
+<span id="cb17-13"><a href="#cb17-13"></a>          <span class="at">code =</span> {</span>
+<span id="cb17-14"><a href="#cb17-14"></a>      <span class="co"># test code</span></span>
+<span id="cb17-15"><a href="#cb17-15"></a>  })</span>
+<span id="cb17-16"><a href="#cb17-16"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </section></section>
