@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.450">
+
+  <meta name="author" content="Martin Frigaard (Atorus)">
+  <title>Developing &amp; Testing Your Shiny Application</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #cbccc6; background-color: #1f2430; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #cbccc6; } /* Normal */
+    code span.al { color: #ff3333; background-color: #332430; font-weight: bold; } /* Alert */
+    code span.an { color: #ffe6b3; } /* Annotation */
+    code span.at { color: #73d0ff; } /* Attribute */
+    code span.bn { color: #ffcc66; } /* BaseN */
+    code span.bu { color: #95e6cb; } /* BuiltIn */
+    code span.cf { color: #ffa759; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #95e6cb; } /* Char */
+    code span.cn { color: #d4bfff; } /* Constant */
+    code span.co { color: #5c6773; font-style: italic; } /* Comment */
+    code span.cv { color: #d4bfff; } /* CommentVar */
+    code span.do { color: #5c6773; } /* Documentation */
+    code span.dt { color: #ffa759; } /* DataType */
+    code span.dv { color: #ffcc66; } /* DecVal */
+    code span.er { color: #ff3333; text-decoration: underline; } /* Error */
+    code span.ex { color: #73d0ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #ffcc66; } /* Float */
+    code span.fu { color: #ffd580; } /* Function */
+    code span.im { color: #bae67e; } /* Import */
+    code span.in { color: #ffcc66; } /* Information */
+    code span.kw { color: #ffa759; font-weight: bold; } /* Keyword */
+    code span.op { color: #f29e74; } /* Operator */
+    code span.ot { color: #5ccfe6; } /* Other */
+    code span.pp { color: #f28779; } /* Preprocessor */
+    code span.re { color: #73d0ff; background-color: #2a4254; } /* RegionMarker */
+    code span.sc { color: #95e6cb; } /* SpecialChar */
+    code span.ss { color: #95e6cb; } /* SpecialString */
+    code span.st { color: #bae67e; } /* String */
+    code span.va { color: #5ccfe6; } /* Variable */
+    code span.vs { color: #bae67e; } /* VerbatimString */
+    code span.wa { color: #f28779; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="img/dark_bkg.jpg" data-background-opacity="0.60" data-background-size="contain" class="center">
+  <h1 class="title">Developing &amp; Testing Your Shiny Application</h1>
+  <p class="subtitle">Addenda</p>
+  <p class="author">Martin Frigaard (Atorus)</p>
+</section>
+<section>
+<section id="additional-slides" class="title-slide slide level1 center">
+<h1>Additional slides</h1>
+<p><br><br></p>
+<p>These are slides that didn’t make the cut (either due to time or relevance), but the branches exist in the <a href="https://github.com/mjfrigaard/moviesApp"><code>moviesApp</code> repository</a> and they are covered in the <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages book.</a></p>
+</section>
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<h4 id="launching-apps">Launching apps</h4>
+<div style="font-size: 0.75em;">
+<ul>
+<li><p><code>shinyApp()</code></p></li>
+<li><p><code>shinyAppDir()</code></p></li>
+<li><p><code>runApp()</code></p></li>
+</ul>
+</div>
+</div><div class="column" style="width:33%;">
+<h4 id="debugging">Debugging</h4>
+<div style="font-size: 0.75em;">
+<ul>
+<li><p><code>browser()</code> &amp; <code>observe()</code></p></li>
+<li><p><code>reactiveValuesToList()</code></p></li>
+</ul>
+</div>
+</div><div class="column" style="width:33%;">
+<h4 id="tests">Tests</h4>
+<div style="font-size: 0.75em;">
+<ul>
+<li><p>Snapshots</p></li>
+<li><p>Test mocks</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="launching-apps-1" class="title-slide slide level1 center">
+<h1>Launching apps</h1>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 0.90em;">Branch: <code>10_launch-app</code></span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>In the <code>10_launch-app</code> repo, multiple functions are used to launch the application in <code>moviesApp</code>.</p>
+</div>
+<div class="fragment">
+<p><br></p>
+<p>The following slides discuss the differences between these functions (and why you’d use one over the other).</p>
+<p><br></p>
+</div>
+<div class="fragment">
+<p>This topic is covered extensively in <a href="https://rtask.thinkr.fr/shinyapp-runapp-shinyappdir-difference/">this blog post from ThinkR</a>.</p>
+</div>
+</section>
+<section id="launching-apps-shinyapp" class="slide level2">
+<h2>Launching apps: shinyApp()</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 0.90em;">Branch: <code>10_launch-app</code></span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>What happens when we call <code>shinyApp()</code>?</p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 0.80em;">
+<ul>
+<li><code>shinyApp()</code> creates and launches an app defined <em>inline</em> (or with UI and server function arguments)</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 0.70em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|2|3-5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>app <span class="ot">&lt;-</span> <span class="fu">shinyApp</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="at">ui =</span> <span class="fu">fluidPage</span>(), </span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">server =</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    </span>
+<span id="cb1-5"><a href="#cb1-5"></a>  }</span>
+<span id="cb1-6"><a href="#cb1-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 0.80em;">
+<ul>
+<li><code>shinyApp()</code> creates a shiny app object (<code>shiny.appobj</code>)</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 0.70em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(app)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div style="font-size: 0.65em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|7|9|"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">List</span> of 5</span>
+<span id="cb3-2"><a href="#cb3-2"></a> <span class="ex">$</span> httpHandler     :function <span class="er">(</span><span class="ex">req</span><span class="kw">)</span>  </span>
+<span id="cb3-3"><a href="#cb3-3"></a> <span class="ex">$</span> serverFuncSource:function <span class="er">(</span><span class="kw">)</span>  </span>
+<span id="cb3-4"><a href="#cb3-4"></a> <span class="ex">$</span> onStart         : NULL</span>
+<span id="cb3-5"><a href="#cb3-5"></a> <span class="ex">$</span> options         : list<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a> <span class="ex">$</span> appOptions      :List of 2</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="ex">..$</span> appDir       : chr <span class="st">"/path/to/moviesApp"</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="ex">..$</span> bookmarkStore: NULL</span>
+<span id="cb3-9"><a href="#cb3-9"></a> <span class="ex">-</span> attr<span class="er">(</span><span class="ex">*,</span> <span class="st">"class"</span><span class="kw">)</span><span class="ex">=</span> chr <span class="st">"shiny.appobj"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="launching-apps-shinyappdir" class="slide level2">
+<h2>Launching apps: shinyAppDir()</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 0.90em;">Branch: <code>10_launch-app</code></span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>What happens when we call <code>shinyAppDir()</code>?</p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 0.80em;">
+<ul>
+<li><code>shinyAppDir()</code> launches an app from a directory (with an <code>app.R</code> or <code>ui.R</code>/<code>server.R</code> files).</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 0.70em;">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|2|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">shinyAppDir</span>(</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="at">appDir =</span> <span class="st">"path/to/app/"</span>, </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="at">options =</span> <span class="fu">list</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 0.80em;">
+<p><br></p>
+<ul>
+<li><code>shinyAppDir()</code> can use a returned <code>appDir</code> from <code>shinyApp()</code></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 0.70em;">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="|1-2|3|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>app <span class="ot">&lt;-</span> <span class="fu">shinyApp</span>(<span class="at">ui =</span> movies_ui,</span>
+<span id="cb5-2"><a href="#cb5-2"></a>        <span class="at">server =</span> movies_server)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>app<span class="sc">$</span>appOptions<span class="sc">$</span>appDir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">"path/to/moviesApp"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|2|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">shinyAppDir</span>(</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="at">appDir =</span> app<span class="sc">$</span>appOptions<span class="sc">$</span>appDir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="launching-apps-runapp" class="slide level2">
+<h2>Launching apps: runApp()</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 0.90em;">Branch: <code>10_launch-app</code></span></p>
+</div>
+<p><br></p>
+<p>What happens when we call <code>runApp()</code>?</p>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 0.90em;">
+<ul>
+<li><code>runApp()</code> is the most versatile way to launch your app from the IDE</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 0.90em;">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runApp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span style="font-size: 0.90em;"><em>It will run apps from the console, stored in a directory, or with a shiny object</em></span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 0.90em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="|2|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">runApp</span>(</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="at">appDir =</span> <span class="st">"path/to/app/"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="at">test.mode =</span> <span class="cn">TRUE</span><span class="sc">/</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+
+</div><div class="column" style="width:50%;">
+<div style="font-size: 0.90em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>app <span class="ot">&lt;-</span> <span class="fu">shinyApp</span>(</span>
+<span id="cb10-2"><a href="#cb10-2"></a>        <span class="at">ui =</span> movies_ui,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>        <span class="at">server =</span> movies_server)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">runApp</span>(<span class="at">appDir =</span> app)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="debugging-1" class="title-slide slide level1 center">
+<h1>Debugging</h1>
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p>In Shiny apps, the debugger can be a powerful tool for investigating error messages and server-side code.</p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p>Function execution is paused while we’re in browser mode, which allows us to inspect the variables in the current environment.</p>
+</div>
+<p><br></p>
+</div>
+<div class="fragment">
+<div style="font-size: 0.85em;">
+<p>The following slides cover two methods for debugging Shiny functions:</p>
+<ol type="1">
+<li><p>Wrapping <code>browser()</code> in a call to <code>observe()</code></p></li>
+<li><p>Capturing reactive values with <code>reactiveValuesToList()</code> and sending output to the UI</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="debugging-shiny-errors" class="slide level2">
+<h2>Debugging Shiny errors</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-01</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.90em;">
+<p>Debugging errors in Shiny can be difficult</p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div style="font-size: 0.65em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">movies_app</span>(<span class="at">run =</span> <span class="st">'p'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ℹ shinyViewerType set to pane</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>Listening on http://127.0.0.1:6588</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:15%;">
+
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/debugging_error.png" width="670"></p>
+<figcaption><em>Opaque errors messages</em></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="browser-and-observe" class="slide level2">
+<h2><code>browser()</code> and <code>observe()</code></h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-02</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p>Wrapping <code>browser()</code> with <code>observe()</code> triggers the debugger when the observer is invalidated</p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div style="font-size: 0.73em;">
+<p>Within the scope of <code>observe()</code> we can interactively examine variables</p>
+</div>
+</div><div class="column" style="width:75%;">
+<div style="font-size: 0.70em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="|3-4,7|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>movies_server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="fu">observe</span>({</span>
+<span id="cb13-4"><a href="#cb13-4"></a>      <span class="fu">browser</span>()</span>
+<span id="cb13-5"><a href="#cb13-5"></a>      selected_vars <span class="ot">&lt;-</span> <span class="fu">mod_var_input_server</span>(<span class="st">"vars"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>      <span class="fu">mod_scatter_display_server</span>(<span class="st">"plot"</span>, <span class="at">var_inputs =</span> selected_vars)</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    })</span>
+<span id="cb13-8"><a href="#cb13-8"></a></span>
+<span id="cb13-9"><a href="#cb13-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:34%;">
+
+</div><div class="column" style="width:33%;">
+<div style="font-size: 1.05em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">load_all</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+
+</div>
+</div>
+</div>
+</section>
+<section id="debugger-pause-execution" class="slide level2">
+<h2>Debugger: pause execution</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-02</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.90em;">
+<p>The debugger pauses execution of the modules in <code>movies_server()</code></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/browser_movies_server_source.png" width="820"></p>
+<figcaption>Call to <code>observe(browser())</code></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/browser_movies_server_console.png" width="660"></p>
+<figcaption>Debugger console</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="debugger-execute-line-by-line" class="slide level2">
+<h2>Debugger: execute line-by-line</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-02</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.90em;">
+<p>Execute next line in the debugger by clicking ‘Next’ or by typing <strong><code>n</code></strong> and <strong><code>return</code></strong>/<strong><code>enter</code></strong> in Console.</p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div style="font-size: 0.90em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">1</span>]<span class="sc">&gt;</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><br></p>
+<div style="font-size: 0.90em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">2</span>]<span class="sc">&gt;</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><br></p>
+<div style="font-size: 0.90em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">2</span>]<span class="sc">&gt;</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:75%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/browser_movies_server_next.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- ![](img/browser_movies_server.png){width='880px' fig-align='center'} -->
+<!-- ![Suspended application](img/browser_movies_server_app.png){width='100%' fig-align='left'} -->
+</div>
+</section>
+<section id="parentheses-or-not" class="slide level2">
+<h2>Parentheses (or not)</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-02</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p><code>selected_vars</code> vs.&nbsp;<code>selected_vars()</code></p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 0.65em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">2</span>]<span class="sc">&gt;</span> selected_vars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>reactive({</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  list(y = input$y, x = input$x, z = input$z,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    alpha = input$alpha, size = input$size,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    plot_title = input$plot_title</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>}) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div style="font-size: 0.70em;">
+<p><code>selected_vars</code> without the parentheses returns the <code>reactive()</code> call (not the values)</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 0.65em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">2</span>]<span class="sc">&gt;</span> <span class="fu">selected_vars</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>$y</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>[1] "audience_score"</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>$x</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>[1] "imdb_rating"</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>$z</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>[1] "mpaa_rating"</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>$alpha</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>[1] 0.5</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>$size</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>[1] 2</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>$plot_title</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>[1] ""</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="debugging-modules" class="slide level2">
+<h2>Debugging modules</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-03</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p>Repeat the process in <code>mod_scatter_display_server()</code></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:25%;">
+<div style="font-size: 0.70em;">
+<p><br><br></p>
+<p>Place <code>browser()</code> <em>after</em> <code>moduleServer()</code></p>
+</div>
+</div><div class="column" style="width:75%;">
+<div style="font-size: 0.80em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="|4-9|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>mod_scatter_display_server <span class="ot">&lt;-</span> <span class="cf">function</span>(id, var_inputs) {</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">moduleServer</span>(id, <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb22-3"><a href="#cb22-3"></a>    </span>
+<span id="cb22-4"><a href="#cb22-4"></a>    <span class="fu">observe</span>({</span>
+<span id="cb22-5"><a href="#cb22-5"></a>      <span class="fu">browser</span>()</span>
+<span id="cb22-6"><a href="#cb22-6"></a>      <span class="co"># module code</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>      })</span>
+<span id="cb22-8"><a href="#cb22-8"></a></span>
+<span id="cb22-9"><a href="#cb22-9"></a>  })</span>
+<span id="cb22-10"><a href="#cb22-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:34%;">
+<div style="font-size: 0.70em;">
+<p>Load the package and run the application again</p>
+</div>
+</div><div class="column" style="width:33%;">
+<div style="font-size: 1.05em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">load_all</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+
+</div>
+</div>
+</div>
+</section>
+<section id="comparisons-waldo" class="slide level2">
+<h2>Comparisons: waldo</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-03</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p>Use <a href="https://waldo.r-lib.org/"><code>waldo</code></a> to compare <code>var_inputs()</code> and <code>inputs()</code></p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size: 0.80em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">2</span>]<span class="sc">&gt;</span> waldo<span class="sc">::</span><span class="fu">compare</span>(<span class="fu">var_inputs</span>(), <span class="fu">inputs</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+
+</div><div class="column" style="width:70%;">
+<div style="font-size: 0.80em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="ex">names</span><span class="er">(</span><span class="ex">old</span><span class="kw">)`</span>: <span class="st">"y"</span> <span class="st">"x"</span> <span class="st">"z"</span>   <span class="st">"alpha"</span> <span class="st">"size"</span> <span class="st">"plot_title"</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="ex">names</span><span class="er">(</span><span class="ex">new</span><span class="kw">)`</span>: <span class="st">"x"</span> <span class="st">"y"</span> <span class="st">"col"</span> <span class="st">"alpha"</span> <span class="st">"size"</span> <span class="st">"plot_title"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="ex">old</span><span class="va">$z</span><span class="kw">`</span> is a character vector <span class="er">(</span><span class="st">'mpaa_rating'</span><span class="kw">)</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="ex">new</span><span class="va">$z</span><span class="kw">`</span> is absent</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="ex">old</span><span class="va">$col</span><span class="kw">`</span> is absent</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="ex">new</span><span class="va">$col</span><span class="kw">`</span> is a character vector <span class="er">(</span><span class="st">'mpaa_rating'</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size: 0.85em;">
+<p><em>Can you spot the error?</em></p>
+</div>
+</div><div class="column" style="width:40%;">
+
+</div>
+</div>
+</div>
+</section>
+<section id="comparisons-diffobj" class="slide level2">
+<h2>Comparisons: <code>diffobj</code></h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-03</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p>Use <a href="https://github.com/brodieG/diffobj"><code>diffobj</code></a> to compare <code>var_inputs()</code> and <code>inputs()</code></p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size: 0.70em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">2</span>]<span class="sc">&gt;</span> diffobj<span class="sc">::</span><span class="fu">diffObj</span>(<span class="at">target =</span> <span class="fu">names</span>(<span class="fu">var_inputs</span>()), </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">current =</span> <span class="fu">names</span>(<span class="fu">inputs</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/diffobj_debugger.png"></p>
+<figcaption><code>Press ENTER to continue...</code></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size: 0.85em;">
+<p><em>Can you spot the error?</em></p>
+</div>
+</div><div class="column" style="width:40%;">
+
+</div>
+</div>
+</div>
+</section>
+<section id="step-into-a-function" class="slide level2">
+<h2>Step into a function</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-04</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p>Step into <code>scatter_plot()</code> and print the <code>plot</code> (before the labels and theme layer are executed)</p>
+</div>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div style="font-size: 0.80em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">1</span>]<span class="sc">&gt;</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">2</span>]<span class="sc">&gt;</span> s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:75%;">
+<p><img data-src="img/step_into_scatter_plot.png"></p>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:25%;">
+<div style="font-size: 0.80em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">1</span>]<span class="sc">&gt;</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">3</span>]<span class="sc">&gt;</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Browse[<span class="dv">3</span>]<span class="sc">&gt;</span> plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:75%;">
+<div style="font-size: 0.65em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32" data-code-line-numbers="|4-6|"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="ex">Error</span> in ggplot2::geom_point<span class="er">(</span><span class="ex">alpha</span> = alpha_var, size = size_var<span class="kw">)</span> <span class="bu">:</span> </span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="ex">Problem</span> while computing aesthetics.</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="ex">ℹ</span> Error occurred in the 1st layer.</span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="ex">Caused</span> by error in <span class="kw">`</span><span class="ex">.data[[NULL]]</span><span class="kw">`</span>:</span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="ot">! </span><span class="ex">Must</span> subset the data pronoun with a string, not <span class="kw">`</span><span class="ex">NULL</span><span class="kw">`</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="well-placed-prints" class="slide level2">
+<h2>Well-placed <code>print()</code>s</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-05</code></span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div style="font-size: 0.85em;">
+<p>The debugger is a powerful tool for your arsenal, but sometimes, a well-placed <code>print()</code> call is the best way to understand your application’s behavior.</p>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p>In standard R functions, adding a distinctive <code>print()</code> statement in a function lets us quickly direct output to the Console.</p>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div style="font-size: 0.85em;">
+<p>In Shiny functions, we can capture the values in <code>input</code> with <code>reactiveValuesToList()</code> and <code>print()</code> them in the UI.</p>
+</div>
+</div>
+</section>
+<section id="shiny-print-calls" class="slide level2">
+<h2>Shiny <code>print()</code> calls</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-05</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.80em;">
+<p>We can combine <code>verbatimTextOutput()</code>, <code>renderPrint()</code>, and <code>reactiveValuesToList()</code> to print the reactive values from modules and the UI/server functions:</p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div style="font-size: 0.70em;">
+<p>In <code>mod_var_input_ui()</code></p>
+</div>
+<div style="font-size: 0.65em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">verbatimTextOutput</span>(<span class="at">outputId =</span> <span class="fu">ns</span>(<span class="st">"vals"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:55%;">
+<div style="font-size: 0.70em;">
+<p>In <code>mod_var_input_server()</code></p>
+</div>
+<div style="font-size: 0.65em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34" data-code-line-numbers="|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>output<span class="sc">$</span>vals <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb34-2"><a href="#cb34-2"></a>  all_vals <span class="ot">&lt;-</span> <span class="fu">reactiveValuesToList</span>(<span class="at">x =</span> input, </span>
+<span id="cb34-3"><a href="#cb34-3"></a>                                   <span class="at">all.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb34-4"><a href="#cb34-4"></a>  lobstr<span class="sc">::</span><span class="fu">tree</span>(all_vals)</span>
+<span id="cb34-5"><a href="#cb34-5"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div style="font-size: 0.70em;">
+<p>In <code>movies_ui()</code></p>
+</div>
+<div style="font-size: 0.65em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">verbatimTextOutput</span>(<span class="at">outputId =</span> <span class="st">"vals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:55%;">
+<div style="font-size: 0.70em;">
+<p>In <code>movies_server()</code></p>
+</div>
+<div style="font-size: 0.65em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36" data-code-line-numbers="|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>output<span class="sc">$</span>vals <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb36-2"><a href="#cb36-2"></a>  all_vals <span class="ot">&lt;-</span> <span class="fu">reactiveValuesToList</span>(<span class="at">x =</span> input,</span>
+<span id="cb36-3"><a href="#cb36-3"></a>                                   <span class="at">all.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb36-4"><a href="#cb36-4"></a>    lobstr<span class="sc">::</span><span class="fu">tree</span>(all_vals)</span>
+<span id="cb36-5"><a href="#cb36-5"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="viewing-print-calls-in-shiny" class="slide level2">
+<h2>Viewing <code>print()</code> calls in Shiny</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-05</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.70em;">
+<p>The module’s reactive values for the are printed in the sidebar.</p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:10%;">
+
+</div><div class="column" style="width:25%;">
+<p><br></p>
+<div style="font-size: 0.70em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">movies_app</span>(<span class="at">run =</span> <span class="st">'p'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<p><img data-src="img/print_reactive_values.png" width="700"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="viewing-print-calls-in-shiny-1" class="slide level2">
+<h2>Viewing <code>print()</code> calls in Shiny</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>spec_topic-debugging-05</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.70em;">
+<p>The reactive values for the app are printed in the main panel.</p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:10%;">
+
+</div><div class="column" style="width:25%;">
+<p><br></p>
+<div style="font-size: 0.70em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">movies_app</span>(<span class="at">run =</span> <span class="st">'p'</span>,</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">bslib =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<p><img data-src="img/print_reactive_values_bslib.png" width="680"></p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="snapshot-tests" class="title-slide slide level1 center">
+<h1>Snapshot tests</h1>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12g_tests-snapshots</code></span></p>
+</div>
+<p><br></p>
+<div style="font-size: 0.90em;">
+<p>The following slides give examples of snapshot tests with <code>vdiffr</code>.</p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<p><strong>Pros</strong></p>
+<div style="font-size: 0.80em;">
+<p>Help identify <em>visual regressions</em> by comparing current output with previous snapshot</p>
+<p><br></p>
+<p>Ensure that plotting functions maintain consistent outputs throughout development</p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<p><strong>Cons</strong></p>
+<div style="font-size: 0.80em;">
+<p>Brittle/sensitive to minor changes in color, spacing, labels, etc.</p>
+<p><br></p>
+<p>Can lead to test failures (even if the changes are insignificant)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="snapshot-scenario" class="slide level2">
+<h2>Snapshot scenario</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12g_tests-snapshots</code></span></p>
+</div>
+<p><br></p>
+<p>An example <code>Feature</code> and <code>Scenario</code> for a snapshot tests:</p>
+<div class="fragment">
+<p><br></p>
+<div style="font-size: 0.67em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39" data-code-line-numbers="1|2,3,4,5|6|7|8-10|11-13|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>testthat<span class="sc">::</span><span class="fu">describe</span>(<span class="st">"Feature: Scatter Plot Points Controlled by Dropdown Menus</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="st">     As a user creating a scatter plot,</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="st">     I want dropdown menus to select continuous variables for the x and y axes a</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="st">     And I want a dropdown menu to select a categorical variable for point coloration,</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a><span class="st">     So that I can effectively visualize the relationships and categories within the data."</span>, <span class="at">code =</span> {</span>
+<span id="cb39-6"><a href="#cb39-6"></a>    testthat<span class="sc">::</span><span class="fu">it</span>(<span class="st">"Scenario: Change x, y, color values for plotting</span></span>
+<span id="cb39-7"><a href="#cb39-7"></a><span class="st">         When I launch the Scatter Plot Data Visualization</span></span>
+<span id="cb39-8"><a href="#cb39-8"></a><span class="st">         And I select the variable 'Audience Score' for the x-axis</span></span>
+<span id="cb39-9"><a href="#cb39-9"></a><span class="st">         And I select the variable 'IMDB Rating' for the y-axis</span></span>
+<span id="cb39-10"><a href="#cb39-10"></a><span class="st">         And I select the variable 'Critics Rating' for the color</span></span>
+<span id="cb39-11"><a href="#cb39-11"></a><span class="st">         Then the scatter plot should show 'Audience Score' on the x-axis</span></span>
+<span id="cb39-12"><a href="#cb39-12"></a><span class="st">         And the scatter plot should show 'IMDB Rating' on the y-axis</span></span>
+<span id="cb39-13"><a href="#cb39-13"></a><span class="st">         And the points on the scatter plot should be colored by 'Critics Rating'"</span>, <span class="at">code =</span> {</span>
+<span id="cb39-14"><a href="#cb39-14"></a>      })</span>
+<span id="cb39-15"><a href="#cb39-15"></a>    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visual-unit-test" class="slide level2">
+<h2>Visual unit test</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12g_tests-snapshots</code></span></p>
+</div>
+<p><br></p>
+<p><a href="https://vdiffr.r-lib.org/"><code>vdiffr</code></a> allows us to perform a ‘visual unit test’</p>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><br><br></p>
+<div style="font-size: 0.80em;">
+<p><code>expect_doppelganger()</code> stores the expected output as an <code>.svg</code> file</p>
+</div>
+</div><div class="column" style="width:60%;">
+<div style="font-size: 0.63em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40" data-code-line-numbers="|1-6|8-15|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>scatter_inputs <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">'imdb_rating'</span>, </span>
+<span id="cb40-2"><a href="#cb40-2"></a>                   <span class="at">y =</span> <span class="st">'audience_score'</span>, </span>
+<span id="cb40-3"><a href="#cb40-3"></a>                   <span class="at">z =</span> <span class="st">'mpaa_rating'</span>, </span>
+<span id="cb40-4"><a href="#cb40-4"></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb40-5"><a href="#cb40-5"></a>                   <span class="at">size =</span> <span class="dv">2</span>, </span>
+<span id="cb40-6"><a href="#cb40-6"></a>                   <span class="at">plot_title =</span> <span class="st">'Enter plot title'</span>)</span>
+<span id="cb40-7"><a href="#cb40-7"></a></span>
+<span id="cb40-8"><a href="#cb40-8"></a>vdiffr<span class="sc">::</span><span class="fu">expect_doppelganger</span>(</span>
+<span id="cb40-9"><a href="#cb40-9"></a>  <span class="at">title =</span> <span class="st">"Initial x y z axes"</span>, </span>
+<span id="cb40-10"><a href="#cb40-10"></a>  <span class="at">fig =</span> <span class="fu">scatter_plot</span>(movies, </span>
+<span id="cb40-11"><a href="#cb40-11"></a>    <span class="at">x_var =</span> scatter_inputs<span class="sc">$</span>x, </span>
+<span id="cb40-12"><a href="#cb40-12"></a>    <span class="at">y_var =</span> scatter_inputs<span class="sc">$</span>y, </span>
+<span id="cb40-13"><a href="#cb40-13"></a>    <span class="at">col_var =</span> scatter_inputs<span class="sc">$</span>z, </span>
+<span id="cb40-14"><a href="#cb40-14"></a>    <span class="at">alpha_var =</span> scatter_inputs<span class="sc">$</span>alpha, </span>
+<span id="cb40-15"><a href="#cb40-15"></a>    <span class="at">size_var =</span> scatter_inputs<span class="sc">$</span>size) <span class="sc">+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visual-unit-test-1" class="slide level2">
+<h2>Visual unit test</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12g_tests-snapshots</code></span></p>
+</div>
+<p><br></p>
+<p>The scenario describes a fully functional graph</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><br><br></p>
+<div style="font-size: 0.80em;">
+<p>So we include the labels and theme in the snapshot:</p>
+</div>
+</div><div class="column" style="width:60%;">
+<div style="font-size: 0.63em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41" data-code-line-numbers="1-8|9-16|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>vdiffr<span class="sc">::</span><span class="fu">expect_doppelganger</span>(</span>
+<span id="cb41-2"><a href="#cb41-2"></a>  <span class="at">title =</span> <span class="st">"Initial x y z axes"</span>, </span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="at">fig =</span> <span class="fu">scatter_plot</span>(movies, </span>
+<span id="cb41-4"><a href="#cb41-4"></a>    <span class="at">x_var =</span> scatter_inputs<span class="sc">$</span>x, </span>
+<span id="cb41-5"><a href="#cb41-5"></a>    <span class="at">y_var =</span> scatter_inputs<span class="sc">$</span>y, </span>
+<span id="cb41-6"><a href="#cb41-6"></a>    <span class="at">col_var =</span> scatter_inputs<span class="sc">$</span>z, </span>
+<span id="cb41-7"><a href="#cb41-7"></a>    <span class="at">alpha_var =</span> scatter_inputs<span class="sc">$</span>alpha, </span>
+<span id="cb41-8"><a href="#cb41-8"></a>    <span class="at">size_var =</span> scatter_inputs<span class="sc">$</span>size) <span class="sc">+</span></span>
+<span id="cb41-9"><a href="#cb41-9"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(</span>
+<span id="cb41-10"><a href="#cb41-10"></a>    <span class="at">title =</span> scatter_inputs<span class="sc">$</span>plot_title,</span>
+<span id="cb41-11"><a href="#cb41-11"></a>    <span class="at">x =</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(</span>
+<span id="cb41-12"><a href="#cb41-12"></a>        tools<span class="sc">::</span><span class="fu">toTitleCase</span>(scatter_inputs<span class="sc">$</span>x),<span class="st">"_"</span>, <span class="st">" "</span>),</span>
+<span id="cb41-13"><a href="#cb41-13"></a>    <span class="at">y =</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(</span>
+<span id="cb41-14"><a href="#cb41-14"></a>        tools<span class="sc">::</span><span class="fu">toTitleCase</span>(scatter_inputs<span class="sc">$</span>y), <span class="st">"_"</span>, <span class="st">" "</span>) ) <span class="sc">+</span></span>
+<span id="cb41-15"><a href="#cb41-15"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb41-16"><a href="#cb41-16"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-test-snapshots-logging" class="slide level2">
+<h2>Example test (snapshots &amp; logging)</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12g_tests-snapshots</code></span></p>
+</div>
+<p>The initial test run gives us a warning about the snapshot files</p>
+<p><br></p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:20%;">
+<div style="font-size: 0.90em;">
+<p>Snapshots</p>
+</div>
+</div><div class="column" style="width:80%;">
+<div style="font-size: 0.70em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">──</span> Warning <span class="er">(</span><span class="ex">test-scatter_plot.R:27:5</span><span class="kw">)</span><span class="bu">:</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Scenario:</span> Displaying the Pre-configured Initial Scatter Plot ──</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Adding</span> new file snapshot: <span class="st">'tests/testthat/_snaps/initial-x-y-z-axes.svg'</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="ex">──</span> Warning <span class="er">(</span><span class="ex">test-scatter_plot.R:71:5</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Scenario:</span> Change x, y, color values for plotting ──</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Adding</span> new file snapshot: <span class="st">'tests/testthat/_snaps/updated-x-y-color.svg'</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> FAIL 0 <span class="er">|</span> <span class="er">WARN</span> <span class="ex">2</span> <span class="kw">|</span> <span class="ex">SKIP</span> 0 <span class="kw">|</span> <span class="ex">PASS</span> 2 ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div style="font-size: 0.90em;">
+<p><code>svg</code> files are stored in <code>tests/testthat/_snaps/</code></p>
+</div>
+</div><div class="column" style="width:60%;">
+<div style="font-size: 0.80em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43" data-code-line-numbers="|3-4|"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="ex">tests/testthat/_snaps/</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="ex">└──</span> scatter_plot</span>
+<span id="cb43-3"><a href="#cb43-3"></a>    <span class="ex">├──</span> initial-x-y-z-axes.svg</span>
+<span id="cb43-4"><a href="#cb43-4"></a>    <span class="ex">└──</span> updated-x-y-color.svg</span>
+<span id="cb43-5"><a href="#cb43-5"></a></span>
+<span id="cb43-6"><a href="#cb43-6"></a><span class="ex">2</span> directories, 2 files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-test-snapshots-logging-1" class="slide level2">
+<h2>Example test (snapshots &amp; logging)</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12g_tests-snapshots</code></span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div style="font-size: 0.90em;">
+<p>Subsequent runs give more verbose output from <code>devtools::test_active_file()</code>:</p>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:15%;">
+<div style="font-size: 0.70em;">
+<p>Start test</p>
+</div>
+</div><div class="column" style="width:85%;">
+<div style="font-size: 0.68em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO</span> [2023-10-24 12:23:56] [ START scatter_plot<span class="er">(</span><span class="ex">movies</span><span class="kw">)</span> <span class="ex">=</span> snap initial x,y,z,size,alpha]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:15%;">
+<div style="font-size: 0.70em;">
+<p>Test ends</p>
+</div>
+</div><div class="column" style="width:85%;">
+<div style="font-size: 0.68em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> FAIL 0 <span class="er">|</span> <span class="er">WARN</span> <span class="ex">0</span> <span class="kw">|</span> <span class="ex">SKIP</span> 0 <span class="kw">|</span> <span class="ex">PASS</span> 1 ]</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO</span> [2023-10-24 12:23:56] [ END scatter_plot<span class="er">(</span><span class="ex">movies</span><span class="kw">)</span> <span class="ex">=</span> snap initial x,y,z,size,alpha]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:15%;">
+<div style="font-size: 0.70em;">
+<p>Test updated values</p>
+</div>
+</div><div class="column" style="width:85%;">
+<div style="font-size: 0.68em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO</span> [2023-10-24 12:23:56] [ START scatter_plot<span class="er">(</span><span class="ex">movies</span><span class="kw">)</span> <span class="ex">=</span> snap updated x,y,z]</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> FAIL 0 <span class="er">|</span> <span class="er">WARN</span> <span class="ex">0</span> <span class="kw">|</span> <span class="ex">SKIP</span> 0 <span class="kw">|</span> <span class="ex">PASS</span> 2 ]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO</span> [2023-10-24 12:23:57] [ END scatter_plot<span class="er">(</span><span class="ex">movies</span><span class="kw">)</span> <span class="ex">=</span> snap updated x,y,z]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="reviewing-snapshots" class="slide level2">
+<h2>Reviewing snapshots</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12g_tests-snapshots</code></span></p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 0.70em;">
+<p><code>initial-x-y-z-axes.svg</code></p>
+</div>
+<p><img data-src="img/initial-x-y-z-axes.png"></p>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 0.70em;">
+<p><code>updated-x-y-color.svg</code></p>
+</div>
+<p><img data-src="img/updated-x-y-color.png"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>These are test results we can share with users/shareholders.</p>
+</div>
+</section></section>
+<section>
+<section id="test-mocks" class="title-slide slide level1 center">
+<h1>Test mocks</h1>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12d_tests-mocks</code></span></p>
+</div>
+<p>Test mocking functions are a relatively new addition to <code>testthat</code></p>
+<p><br></p>
+</section>
+<section id="example-test-with-mocking" class="slide level2">
+<h2>Example test with mocking</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12d_tests-mocks</code></span></p>
+</div>
+<div style="font-size: 0.90em;">
+<p>Mocking functions can be used to substitute functions by emulating their behavior within the test scope</p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div style="font-size: 0.80em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47" data-code-line-numbers="|2|3-5|6-8|9|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">test_that</span>(</span>
+<span id="cb47-2"><a href="#cb47-2"></a>  <span class="st">"Scenario: </span></span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="st">     Given `local_function()` behavior</span></span>
+<span id="cb47-4"><a href="#cb47-4"></a><span class="st">     When I ...</span></span>
+<span id="cb47-5"><a href="#cb47-5"></a><span class="st">     Then ..."</span>, {</span>
+<span id="cb47-6"><a href="#cb47-6"></a>  <span class="fu">local_mocked_bindings</span>(</span>
+<span id="cb47-7"><a href="#cb47-7"></a>    <span class="at">local_function =</span> <span class="cf">function</span>(...) <span class="st">'value'</span></span>
+<span id="cb47-8"><a href="#cb47-8"></a>   )</span>
+<span id="cb47-9"><a href="#cb47-9"></a>  <span class="fu">expect_equal</span>(<span class="at">observed =</span> x, <span class="at">expected =</span> y)</span>
+<span id="cb47-10"><a href="#cb47-10"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-function-check_installed" class="slide level2">
+<h2>Example function: check_installed()</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12d_tests-mocks</code></span></p>
+</div>
+<p><br></p>
+<p>Assume we have a <code>check_installed()</code> function that checks if a package is installed</p>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div style="font-size: 0.80em;">
+<ul>
+<li><p><code>check_installed()</code> relies on <code>is_installed()</code> from <code>rlang</code></p></li>
+<li><p><code>rlang</code> is already listed under <code>Imports</code> in the <code>DESCRIPTION</code></p></li>
+</ul>
+</div>
+</div><div class="column" style="width:60%;">
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>check_installed <span class="ot">&lt;-</span> <span class="cf">function</span>(package) {</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is_installed</span>(package)) {</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">invisible</span>())</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Please install '{package}' before continuing"</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br><br><br></p>
+<div style="font-size: 0.75em;">
+<p><em>The example above has been adapted from the package development masterclass workshop at <a href="https://github.com/posit-conf-2023/pkg-dev-masterclass/tree/main">posit::conf(2023)</a></em></p>
+</div>
+</div>
+</section>
+<section id="example-function-feature-and-scenario" class="slide level2">
+<h2>Example function: feature and scenario</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12d_tests-mocks</code></span></p>
+</div>
+<p><br></p>
+<p>Feature and scenario decriptions for <code>check_installed()</code> might look like:</p>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="font-size: 0.80em;">
+<div class="sourceCode" id="cb49"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>Feature: Checking if an R package is installed</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  Scenario: Checking an uninstalled package</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    Given the R package 'foo' is not installed</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    When I call the `check_installed()` function with 'foo'</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    Then the function should raise an error with the message</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    `Please install 'foo' before continuing`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div style="font-size: 0.80em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_installed</span>(<span class="st">'foo'</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="font-size: 0.80em;">
+<div class="sourceCode" id="cb51"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>  Scenario: Checking an installed package</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    Given the R package 'base' is installed</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    When I call the `check_installed()` function with 'base'</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    Then the function should return without any error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div style="font-size: 0.80em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_installed</span>(<span class="st">'base'</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-test-mock" class="slide level2">
+<h2>Example test mock</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12d_tests-mocks</code></span></p>
+</div>
+<p><br></p>
+<p>Instead of real-time computations, mocks return predefined responses to given inputs.</p>
+<div class="fragment">
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">describe</span>(<span class="st">"Feature: Checking if an R package is installed"</span>, <span class="at">code =</span> {</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54" data-code-line-numbers="1|2|3|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>  <span class="fu">describe</span>(<span class="st">"Scenario: Checking an uninstalled package</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a><span class="st">              Given the R package 'foo' is not installed</span></span>
+<span id="cb54-3"><a href="#cb54-3"></a><span class="st">              When I call the `check_installed()` function with 'foo'"</span>, <span class="at">code =</span> {</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>  <span class="fu">test_that</span>(<span class="st">"Then the function should raise an error with the message</span></span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="st">             `Please install 'foo' before continuing`"</span>, <span class="at">code =</span> {</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56" data-code-line-numbers="2-4|5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>      <span class="fu">test_logger</span>(<span class="at">start =</span> <span class="st">"mock is_installed"</span>, <span class="at">msg =</span> <span class="st">"FALSE"</span>)</span>
+<span id="cb56-2"><a href="#cb56-2"></a>      <span class="fu">local_mocked_bindings</span>(</span>
+<span id="cb56-3"><a href="#cb56-3"></a>        <span class="at">is_installed =</span> <span class="cf">function</span>(package) <span class="cn">FALSE</span></span>
+<span id="cb56-4"><a href="#cb56-4"></a>      )</span>
+<span id="cb56-5"><a href="#cb56-5"></a>      <span class="fu">expect_error</span>(<span class="at">object =</span> <span class="fu">check_installed</span>(<span class="st">"foo"</span>))</span>
+<span id="cb56-6"><a href="#cb56-6"></a>      <span class="fu">test_logger</span>(<span class="at">end =</span> <span class="st">"mock is_installed"</span>, <span class="at">msg =</span> <span class="st">"FALSE"</span>)</span>
+<span id="cb56-7"><a href="#cb56-7"></a>    <span class="er">})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div style="font-size: 0.70em;">
+<p><code>is_installed()</code> is set to <code>FALSE</code></p>
+<p><code>expect_error()</code> confirms the error message</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="notes-on-mocking" class="slide level2">
+<h2>Notes on mocking</h2>
+<div class="footer">
+<p><span style="font-weight: bold; font-size: 1.10em;">Branch: <code>12d_tests-mocks</code></span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>The <code>roxygen2</code> documentation for <code>check_installed()</code> needs an <code>@importFrom</code> tag to import <code>is_installed</code> from <code>rlang</code></p>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div style="font-size: 0.90em;">
+<p>Using explicit namespacing alone won’t work</p>
+</div>
+</div><div class="column" style="width:70%;">
+<div style="font-size: 0.69em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57" data-code-line-numbers="|10|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co">#' Check if package is installed</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="co">#' </span></span>
+<span id="cb57-3"><a href="#cb57-3"></a><span class="co">#' An example function for demonstrating how to use `testthat`'s</span></span>
+<span id="cb57-4"><a href="#cb57-4"></a><span class="co">#' mocking functions.</span></span>
+<span id="cb57-5"><a href="#cb57-5"></a><span class="co">#' </span></span>
+<span id="cb57-6"><a href="#cb57-6"></a><span class="co">#' @param package string, name of package</span></span>
+<span id="cb57-7"><a href="#cb57-7"></a><span class="co">#'</span></span>
+<span id="cb57-8"><a href="#cb57-8"></a><span class="co">#' @return invisible </span></span>
+<span id="cb57-9"><a href="#cb57-9"></a><span class="co">#'</span></span>
+<span id="cb57-10"><a href="#cb57-10"></a><span class="co">#' @importFrom rlang is_installed</span></span>
+<span id="cb57-11"><a href="#cb57-11"></a><span class="co">#'</span></span>
+<span id="cb57-12"><a href="#cb57-12"></a><span class="co">#' @export</span></span>
+<span id="cb57-13"><a href="#cb57-13"></a><span class="co">#'</span></span>
+<span id="cb57-14"><a href="#cb57-14"></a><span class="co">#' @examples</span></span>
+<span id="cb57-15"><a href="#cb57-15"></a><span class="co">#' check_installed("foo")</span></span>
+<span id="cb57-16"><a href="#cb57-16"></a><span class="co">#' check_installed("base")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer footer-default">
+
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
