@@ -1,0 +1,333 @@
+07:12:07 From R Pharma 1 To Everyone:
+	Workshop Environment:
+	
+	The workshop examples will be available within Posit/RStudio Cloud. If you would like to work with the examples during the workshop, please create a free RStudio Cloud account here:
+	
+	https://login.rstudio.cloud/register
+	
+	 
+	
+	## Posit/RStudio Cloud
+	
+	 
+	
+	https://posit.cloud/spaces/434433/join?access_code=OB8uo_ECyPy1QA0DqK-9-Qy6DeAipszz850oqoxi
+07:12:18 From R Pharma 1 To Everyone:
+	Slido:
+	
+	 
+	
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+07:12:50 From R Pharma 1 To Everyone:
+	conf registration 
+	https://hopin.com/events/r-pharma-2023/registration
+07:13:08 From Esther Syombua Ndaka To Everyone:
+	Reacted to "Slido:
+	
+	 
+	
+	https://a..." with 👍🏾
+07:13:13 From Esther Syombua Ndaka To Everyone:
+	Reacted to "Workshop Environment..." with 👍🏾
+07:13:15 From R Pharma 1 To Everyone:
+	Workshop will be posted here in a few months https://www.youtube.com/c/RinPharma
+07:13:30 From Geraldine Klarenberg To Everyone:
+	Reacted to "Workshop Environment..." with 👍
+07:13:37 From Geraldine Klarenberg To Everyone:
+	Reacted to "Slido:
+	
+	 
+	
+	https://a..." with ❤️
+07:14:29 From R Pharma 1 To Everyone:
+	Reacted to "Slido:
+	
+	 
+	
+	https://a..." with ❤️
+07:14:31 From R Pharma 1 To Everyone:
+	Reacted to "Workshop Environment..." with 👍🏾
+07:14:31 From R Pharma 1 To Everyone:
+	Reacted to "Workshop Environment..." with 👍
+07:14:32 From R Pharma 1 To Everyone:
+	Reacted to "Slido:
+	
+	 
+	
+	https://a..." with 👍🏾
+07:14:56 From Libby Heeren To Everyone:
+	yayy, thank you!
+07:15:03 From Martin Frigaard To Everyone:
+	https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/shiny
+07:20:43 From VISHNUVARDHAN REDDY To Everyone:
+	can any one share the link, I have joined late
+07:21:16 From Jared Woolfolk To Everyone:
+	Reacted to "can any one share th..." with 👍
+07:21:50 From Christiana Akande To Everyone:
+	https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/shiny
+07:22:33 From Christiana Akande To Everyone:
+	https://posit.cloud/spaces/434433/join?access_code=OB8uo_ECyPy1QA0DqK-9-Qy6DeAipszz850oqoxi
+07:23:53 From Jared Woolfolk To Everyone:
+	do you also have the slido link?
+07:24:17 From Christiana Akande To Everyone:
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+07:25:32 From R Pharma 1 To Everyone:
+	Workshop Environment:
+	
+	The workshop examples will be available within Posit/RStudio Cloud. If you would like to work with the examples during the workshop, please create a free RStudio Cloud account here:
+	
+	https://login.rstudio.cloud/register
+	
+	## Posit/RStudio Cloud
+	
+	https://posit.cloud/spaces/434433/join?access_code=OB8uo_ECyPy1QA0DqK-9-Qy6DeAipszz850oqoxi
+	
+	You  to  Everyone 10:12 AM
+	Slido:
+	
+	 
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+	
+	
+	conf registration 
+	https://hopin.com/events/r-pharma-2023/registration
+	
+	Workshop will be posted here in a few months https://www.youtube.com/c/RinPharma
+	
+	https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/shiny
+07:27:33 From Karan Shah To Everyone:
+	sorry but can you redo that step?
+07:28:36 From Martin Frigaard To Everyone:
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+07:29:28 From Libby Heeren To Everyone:
+	Will we have a short break in the middle of this workshop?
+07:30:26 From Libby Heeren To Everyone:
+	Great, thanks!
+07:32:02 From R Pharma 1 To Everyone:
+	https://mjfrigaard.github.io/dev-test-shiny/
+07:32:09 From R Pharma 1 To Everyone:
+	main workshop page if needed
+07:34:05 From Karan Shah To Everyone:
+	thanks!
+07:37:51 From R Pharma 1 To Everyone:
+	1. main workshop page:
+	
+	https://mjfrigaard.github.io/dev-test-shiny/
+	
+	2. Workshop Environment:
+	
+	The workshop examples will be available within Posit/RStudio Cloud. If you would like to work with the examples during the workshop, please create a free RStudio Cloud account here:
+	
+	https://login.rstudio.cloud/register
+	
+	## Posit/RStudio Cloud
+	
+	https://posit.cloud/spaces/434433/join?access_code=OB8uo_ECyPy1QA0DqK-9-Qy6DeAipszz850oqoxi
+	
+	3. Slido:
+	
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+	
+	4. Slides
+	https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/shiny
+07:46:21 From R Pharma 1 To Everyone:
+	https://mastering-shiny.org/
+07:47:54 From Martin Frigaard To Everyone:
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+07:51:30 From sai janardhan To Everyone:
+	Can some one tell How to open the  moviesApp.Rproj
+07:52:08 From Jared Woolfolk To Everyone:
+	its already open if you have loaded the posit session
+07:52:36 From Jared Woolfolk To Everyone:
+	if you want to open the text of the file then use file.edit("moviesApp.Rproj")
+07:54:50 From Liam To Everyone:
+	Where do you go to insert the roxygen skeleton again?
+07:55:19 From R Pharma 1 To Everyone:
+	For beginners:
+	
+	https://shiny.posit.co/r/gallery/
+	
+	Build a few of the examples there and review the code structure...
+	
+	From there - read the first 4 chapters here:
+	
+	https://mastering-shiny.org/
+	
+	Take a look at the Shiny UI Editor - nice tool to help you build shiny apps
+	shinyuieditor::launch_editor(app_loc = "new-app/")
+	
+	Then review the content here: https://rpharma.shinyprod.com/
+	
+	learn about publishing to the web etc.
+07:56:42 From R Pharma 1 To Everyone:
+	Replying to "Can some one tell Ho..."
+	
+	it will open when you go to the class examples here https://posit.cloud/spaces/434433/join?access_code=OB8uo_ECyPy1QA0DqK-9-Qy6DeAipszz850oqoxi
+08:07:22 From Karan Shah To Everyone:
+	can you please explain operator import part a bit more?
+08:11:28 From R Pharma 1 To Everyone:
+	Reacted to "Can some one tell Ho..." with ✔️
+08:13:20 From Karan Shah To Everyone:
+	thanks! that clarified it
+08:13:30 From Libby Heeren To Everyone:
+	That was helpful, thanks
+08:13:32 From R Pharma 1 To Everyone:
+	Reacted to "Where do you go to i..." with ✔️
+08:17:26 From R Pharma 1 To Everyone:
+	Replying to "can you please expla..."
+	
+	did Martin answer this one?
+08:17:44 From Karan Shah To Everyone:
+	Replying to "can you please expla..."
+	
+	yes, thanks!
+08:20:29 From Suguna Mary To Everyone:
+	Reacted to "For beginners:
+	
+	http..." with 👍
+08:21:13 From R Pharma 1 To Everyone:
+	Reacted to "yes, thanks!" with 💯
+08:22:06 From Arash Monem To Everyone:
+	can you place the link for the poll again thanks
+08:22:14 From Martin Frigaard To Everyone:
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+08:22:33 From Jared Woolfolk To Everyone:
+	maybe a dumb question, but how do you determine when to explicitly call the package name with xx :: vs when to use the @import ?
+08:22:38 From Michelle Ha To Everyone:
+	Joining late. Could you please post the link for Rstudio again?
+08:24:19 From Jared Woolfolk To Everyone:
+	from a "performance" perspective do you feel like one slows down vs the other or when you want to "slim" down your app is there good areas to look other than this?
+08:25:05 From Jared Woolfolk To Everyone:
+	ok you answered my second question with that lol
+08:26:01 From Jared Woolfolk To Everyone:
+	right! so when possible, do you feel like base r is preferred over package dependent development?
+08:27:23 From Jared Woolfolk To Everyone:
+	so again a threshold that comes from experience I am guessing, or is there a good rule of thumb?
+08:30:24 From Jared Woolfolk To Everyone:
+	last question I promise, do you think it would be a good idea to take the function from a package manually and bring it into the development workflow for your package vs explicitly calling the function from the source package?
+08:31:06 From R Pharma 1 To Everyone:
+	1. main workshop page:
+	
+	https://mjfrigaard.github.io/dev-test-shiny/
+	
+	2. Workshop Environment:
+	
+	The workshop examples will be available within Posit/RStudio Cloud. If you would like to work with the examples during the workshop, please create a free RStudio Cloud account here:
+	
+	https://login.rstudio.cloud/register
+	
+	## Posit/RStudio Cloud
+	
+	https://posit.cloud/spaces/434433/join?access_code=OB8uo_ECyPy1QA0DqK-9-Qy6DeAipszz850oqoxi
+	
+	3. Slido:
+	
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+	
+	4. Slides
+	https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/shiny
+08:31:29 From R Pharma 1 To Everyone:
+	Replying to "Joining late. Could ..."
+	
+	1. main workshop page:
+	
+	https://mjfrigaard.github.io/dev-test-shiny/
+	
+	2. Workshop Environment:
+	
+	The workshop examples will be available within Posit/RStudio Cloud. If you would like to work with the examples during the workshop, please create a free RStudio Cloud account here:
+	
+	https://login.rstudio.cloud/register
+	
+	## Posit/RStudio Cloud
+	
+	https://posit.cloud/spaces/434433/join?access_code=OB8uo_ECyPy1QA0DqK-9-Qy6DeAipszz850oqoxi
+	
+	3. Slido:
+	
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+	
+	4. Slides
+	https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/shiny
+08:32:38 From Michelle Ha To Everyone:
+	Replying to "Joining late. Could ..."
+	
+	Thank you!
+08:56:37 From Martin Frigaard To Everyone:
+	https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF
+08:59:02 From Stevan Earl To Everyone:
+	This is fantastic, thank you. Are you planning to contrast this pacakge development approach with a framework (e.g., Rhino) approach?
+09:00:05 From Federica Gazzelloni To Everyone:
+	Reacted to "This is fantastic, t..." with 👍🏻
+09:04:14 From R Pharma 1 To Everyone:
+	Reacted to "This is fantastic, t..." with 👍🏻
+09:08:00 From Jared Woolfolk To Everyone:
+	from a beginner perspective, would it be the best use of time to learn one framework over another in terms of design to best prepare an app as it becomes more complicated or how would you suggest to best future proof an app?
+09:08:38 From Jared Woolfolk To Everyone:
+	DJ Phil got the beats
+09:10:46 From Jared Woolfolk To Everyone:
+	do you have an order of learning when it comes to R Shiny vs R Packages? like learning one before another would be more helpful or less confusing over another?
+09:11:23 From R Pharma 1 To Everyone:
+	Reacted to "DJ Phil got the beat..." with 🎼
+09:12:23 From Jared Woolfolk To Everyone:
+	sounds great! thanks !!
+09:12:54 From Jared Woolfolk To Everyone:
+	can you share link?
+09:12:59 From Martin Frigaard To Everyone:
+	https://mjfrigaard.github.io/shinyap/
+09:13:01 From Kinga Sałata To Everyone:
+	Reacted to "can you share link?" with 👍
+09:13:03 From Karan Shah To Everyone:
+	Reacted to "https://mjfrigaard.g..." with 👍
+09:13:09 From Radovan Miletić To Everyone:
+	Reacted to "https://mjfrigaard.g..." with 👍
+09:13:11 From Kinga Sałata To Everyone:
+	Reacted to "https://mjfrigaard.g..." with 👍
+09:13:22 From Jared Woolfolk To Everyone:
+	Reacted to "https://mjfrigaard.g..." with 👍
+09:14:33 From Kinga Sałata To Everyone:
+	This looks like the place to finally sort out all the knowledge about creating Shiny apps and R packages. thanks! I was feeling lost before
+09:15:40 From Jen Pokorny To Everyone:
+	Reacted to "https://mjfrigaard.g..." with 👍
+09:21:43 From R Pharma 1 To Everyone:
+	Reacted to "https://mjfrigaard.g..." with 👍
+09:25:01 From Stevan Earl To Everyone:
+	add 👍
+09:43:41 From Jared Woolfolk To Everyone:
+	future idea: post a keyboard shortcut cheat sheet that you often use.
+09:52:55 From Federica Gazzelloni To Everyone:
+	Reacted to "https://mjfrigaard.g..." with 👍
+09:52:59 From Karan Shah To Everyone:
+	not sure if you already answered this (asking as we are nearing the end), but someone in the beginning asked when we were talking about user base r whenever possible, what are your thoughts about copy-pasting a function from other packages instead of loading entire package? I think area of concern for me would potentially not giving credit to original developer
+09:55:09 From Jared Woolfolk To Everyone:
+	Replying to "not sure if you alre..."
+	
+	@Karan Shah totally agree and where I was coming from, I think my question also surrounds the need for dependability and it NOT to change with future updates, essentially ensuring your application works regardless of future updates to dependency packages.
+10:06:48 From Marylene To Everyone:
+	Amazing and wonderful workshop. Thank you 😊
+10:07:08 From Federica Gazzelloni To Everyone:
+	Thank you 😊
+10:07:32 From Karan Shah To Everyone:
+	Thank you!
+10:07:37 From Florian To Everyone:
+	Thanks !
+10:07:40 From Radovan Miletić To Everyone:
+	Thank you Martin & R Pharma !
+10:07:44 From Jen Pokorny To Everyone:
+	This was fantastic - thank you!
+10:07:44 From adebola opasanya To Everyone:
+	Thank you
+10:07:49 From Maria Batalha To Everyone:
+	Thank you!
+10:24:37 From Abhijeet To Everyone:
+	👍
+10:24:53 From Stevan Earl To Everyone:
+	This has been so incredibly helpful, thank you!
+* where can we go to learn more from Martin?
+* would love to get your expert insights on things like containerizing Shiny apps
+10:24:55 From Jared Woolfolk To Everyone:
+	Martin my brain is about to explode so thank you so much man!
+10:25:07 From Eric Simms To Everyone:
+	Very helful. Many thanks.
+10:25:21 From Leonard Daniel Samson To Everyone:
+	Thank you!

@@ -1,0 +1,97 @@
+---
+title: "Zoom chat questions"
+---
+
+Below are responses to questions that came through the chat during the [workshop](slides/wrkshp.qmd). In my answer I've referenced the slide and/or section of [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
+
+### Opening/editing `.Rproj` files
+
+> *Can someone tell [me] how to open the `moviesApp.Rproj`?* 
+
+To view the `.Rproj` file in the IDE, you can use `file.edit()`
+
+```r
+file.edit('moviesApp.Rproj')
+```
+
+This will open the file in the **Source** pane. 
+
+If you only want to view the fields in the `.Rproj` file, you can enter 
+
+```bash
+cat moviesApp.Rproj
+``` 
+
+in the **Terminal** pane
+
+### Dependencies 
+
+> Can you please explain operator import part a bit more?
+
+Importing an operator isn't always possible with the `pkg::` syntax. In this case, you'd want to import the operator using: 
+
+```r
+#' @importFrom package operator
+```
+
+This is demonstrated in the [`08b_pkg-imports` branch of `moviesApp`](https://github.com/mjfrigaard/moviesApp/tree/08b_pkg-imports), and it's covered on [this slide](https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies-imports) (and [this section of Shiny App-Packages](https://mjfrigaard.github.io/shinyap/dependencies.html#imports))
+
+> How do you determine when to explicitly call the package name with `::` vs when to use the `@import` ?
+
+The best advice (in my opinion) on when to use `pkg::fun()` vs. `@import`/`@importFrom` is on the [`roxygen2` site](https://roxygen2.r-lib.org/articles/namespace.html#imports): 
+
+> *If you are using just a few functions from another package, we recommending adding the package to the `Imports:` field of the `DESCRIPTION` file and calling the functions explicitly using `::`, e.g., `pkg::fun()`*
+> *If the repetition of the package name becomes annoying you can `@importFrom` and drop the `::`*
+
+This advice refers to using `@import`, because it's not advised to use `@import`:
+
+> "*It is possible, but not generally recommended to import all functions from a package with `@import` package. This is risky if you import functions from more than one package, because while it might be ok today, in the future the packages might end up with a function having the same name, and your users will get a warning every time your package is loaded.*"
+
+The `usethis::use_package_doc()` will create a `R/{packagename}-package.R` file to store imports/exports in. 
+
+> From a "performance" perspective do you feel like one slows down vs the other or when you want to "slim" down your app
+
+Generally speaking, a lightweight (low-dependency) app-package means your app is less likely to break because of changes to dependencies (and out of your control).
+
+> When possible, do you feel like base R is preferred over package dependent development?
+
+All app-packages inherently have at least one dependency (`shiny`), so that's unavoidable, but every new dependency comes with a cost. Ask yourself if the additional dependency's value outweighs its cost of you re-writing it in base R. 
+
+For example, if your app uses data manipulation functions from `dplyr`, `tidyr`, and `stringr`, it *might* be worth your time to convert these to base R. But if you're building graphs with `ggplot2`, re-writing this functionality is not a good use of time (`ggplot2` is mature, well maintained, has an open license, and isn't likely to introduce backward incompatible changes).
+
+I'll also add that all great packages **do one thing and one thing well.** Examples of packages I don't worry about including as dependencies are [`cli`](https://cli.r-lib.org/) and [`glue`](https://glue.tidyverse.org/) because they has very few imported dependencies (you can check this by looking in their DESCRIPTION files: [cli imports](https://github.com/r-lib/cli/blob/d8883112a8060c1f011cccc9147dd35db03bb9c6/DESCRIPTION#L23) and [`glue imports`](https://github.com/tidyverse/glue/blob/42d29d48a3cd86740ca8e59dbd9615e1e687b6ea/DESCRIPTION#L22))
+
+### Shiny frameworks 
+
+> Are you planning to contrast this package development approach with a framework (e.g., Rhino) approach?
+
+Not explicitly, but I do have [this repo](https://mjfrigaard.github.io/sfw/) that contains the application from `moviesApp` as a `golem` app, a `leprechaun` app, and a `rhino` app.
+
+> From a beginner perspective, would it be the best use of time to learn one framework over another in terms of design to best prepare an app as it becomes more complicated or how would you suggest to best future proof an app?
+
+The approach I recommend is (you've probably guessed) learning how to develop R packages. `golem` and `leprechaun` were designed to streamline many of the steps covered in this workshop, which is helpful if you're aware of the underlying functionality they're replacing. 
+
+For example, `golem::add_module("fun", with_test = TRUE)` is identical to running `usethis::use_r("fun")` and `usethis::use_test("fun')`. The difference being you can use `devtools` and `usethis` to create an app-package without including them as dependencies.  
+
+> Do you have an order of learning when it comes to R Shiny vs R Packages? Like learning one before another would be more helpful or less confusing over another?
+
+This is a fantastic question--and one that I've struggled with given the available resources (and the order/timing of their publication). If you're familiar with the contents of [Mastering Shiny](https://mastering-shiny.org/) and can develop Shiny applications outside of a package structure, I'd recommend picking an application and gradually converting it into an R Package, following the advice in [R Packages, 2ed](https://r-pkgs.org/) and [Writing R Extensions](https://rstudio.github.io/r-manuals/r-exts/).
+
+If you're comfortable with R packages but looking to learn Shiny, I'd start with the [online documentation](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html) and [Building Web Applications With Shiny](https://rstudio-education.github.io/shiny-course/) course. If you're somewhere in-between, I'd check out my book [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) (and let me know if there's a topic you'd like me to cover!)
+
+### Copy-pasting code from other packages
+
+> Do you think it would be a good idea to take the function from a package manually and bring it into the development workflow for your package vs explicitly calling the function from the source package?
+
+If by 'manually' you mean copy + paste the code into your `R/` folder, no, I don't think this is a good idea for multiple reasons: 
+
+1. It's not clear where the code comes from (and you didn't write it)  
+2. The author of the original function probably wrote that function to work 'in concert' with the other functions in that package, so it's likely to contain functionality you don't need (or design decisions that don't fit your purpose).
+
+>  What are your thoughts about copy-pasting a function from other packages instead of loading entire package? I think area of concern for me would potentially not giving credit to original developer...I think my question also surrounds the need for dependability and it NOT to change with future updates, essentially ensuring your application works regardless of future updates to dependency packages.
+
+This question (or a similar version) was answered above. You're correct to be concerned about not giving credit to the original author. 
+
+If you're concerned about including the version of an add-on package with your application, you can investigate using the [`renv` package](https://rstudio.github.io/renv/articles/renv.html), which records, "*exactly which package versions you have installed so you can recreate them.*
+
+

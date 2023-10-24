@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Developing &amp; Testing Your Shiny Application - Welcome!</title>
+<title>Developing &amp; Testing Your Shiny Application - Zoom chat questions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -84,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Welcome</span></a>
   </li>  
   <li class="nav-item">
@@ -92,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Materials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./q-and-a.html" rel="" target="">
+    <a class="nav-link active" href="./q-and-a.html" rel="" target="" aria-current="page">
  <span class="menu-text">Q &amp; A</span></a>
   </li>  
 </ul>
@@ -126,8 +160,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#workshop-description" id="toc-workshop-description" class="nav-link active" data-scroll-target="#workshop-description">Workshop Description</a></li>
-  <li><a href="#about-me" id="toc-about-me" class="nav-link" data-scroll-target="#about-me">About Me</a></li>
+  <li><a href="#openingediting-.rproj-files" id="toc-openingediting-.rproj-files" class="nav-link active" data-scroll-target="#openingediting-.rproj-files">Opening/editing <code>.Rproj</code> files</a></li>
+  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a></li>
+  <li><a href="#shiny-frameworks" id="toc-shiny-frameworks" class="nav-link" data-scroll-target="#shiny-frameworks">Shiny frameworks</a></li>
+  <li><a href="#copy-pasting-code-from-other-packages" id="toc-copy-pasting-code-from-other-packages" class="nav-link" data-scroll-target="#copy-pasting-code-from-other-packages">Copy-pasting code from other packages</a></li>
   </ul>
 </nav>
     </div>
@@ -136,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome!</h1>
+<h1 class="title">Zoom chat questions</h1>
 </div>
 
 
@@ -151,18 +187,83 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This site contains the materials for the R/Pharma workshop titled, <a href="https://www.eventbrite.com/e/developing-testing-your-shiny-application-tickets-728472048507">Developing &amp; Testing Your Shiny Application</a>.</p>
-<section id="workshop-description" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-description">Workshop Description</h2>
-<p>This talk takes a deep dive into the world of testing shiny applications, covering strategies for determining what needs to be tested to ensure your app’s functional accuracy and reliability. Shiny’s reactive programming model requires specialized approaches to testing, distinct from traditional R package testing.</p>
-<p>I’ll begin by describing the application of unit, integration, and end-to-end testing in Shiny apps. Then we’ll move into the role of testing in development and highlight the need for code organization when designing your testing suite.</p>
-<p>The focus then shifts to practical aspects of testing by illustrating tools like test data and fixtures. Attendees will see example tests for utility functions, modules, and tests to capture specific user interactions (and confirm the application behaves as expected).</p>
-<p>Finally, I will demonstrate advanced topics like test coverage, what it measures, and why 100% coverage isn’t necessarily a metric worth chasing.</p>
-<p>This presentation will give R developers a toolkit of testing techniques (building a test suite, writing effective tests, and automated testing) regardless of their familiarity with Shiny.</p>
+<p>Below are responses to questions that came through the chat during the <a href="./slides/wrkshp.html">workshop</a>. In my answer I’ve referenced the slide and/or section of <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a>.</p>
+<section id="openingediting-.rproj-files" class="level3">
+<h3 class="anchored" data-anchor-id="openingediting-.rproj-files">Opening/editing <code>.Rproj</code> files</h3>
+<blockquote class="blockquote">
+<p><em>Can someone tell [me] how to open the <code>moviesApp.Rproj</code>?</em></p>
+</blockquote>
+<p>To view the <code>.Rproj</code> file in the IDE, you can use <code>file.edit()</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.edit</span>(<span class="st">'moviesApp.Rproj'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will open the file in the <strong>Source</strong> pane.</p>
+<p>If you only want to view the fields in the <code>.Rproj</code> file, you can enter</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> moviesApp.Rproj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>in the <strong>Terminal</strong> pane</p>
 </section>
-<section id="about-me" class="level2">
-<h2 class="anchored" data-anchor-id="about-me">About Me</h2>
-<p><a href="https://www.martinfrigaard.io/">Martin Frigaard</a> is a Data Visualization Engineer at <a href="https://www.atorusresearch.com/">Atorus</a>.</p>
+<section id="dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="dependencies">Dependencies</h3>
+<blockquote class="blockquote">
+<p>Can you please explain operator import part a bit more?</p>
+</blockquote>
+<p>Importing an operator isn’t always possible with the <code>pkg::</code> syntax. In this case, you’d want to import the operator using:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom package operator</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is demonstrated in the <a href="https://github.com/mjfrigaard/moviesApp/tree/08b_pkg-imports"><code>08b_pkg-imports</code> branch of <code>moviesApp</code></a>, and it’s covered on <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies-imports">this slide</a> (and <a href="https://mjfrigaard.github.io/shinyap/dependencies.html#imports">this section of Shiny App-Packages</a>)</p>
+<blockquote class="blockquote">
+<p>How do you determine when to explicitly call the package name with <code>::</code> vs when to use the <code>@import</code> ?</p>
+</blockquote>
+<p>The best advice (in my opinion) on when to use <code>pkg::fun()</code> vs.&nbsp;<code>@import</code>/<code>@importFrom</code> is on the <a href="https://roxygen2.r-lib.org/articles/namespace.html#imports"><code>roxygen2</code> site</a>:</p>
+<blockquote class="blockquote">
+<p><em>If you are using just a few functions from another package, we recommending adding the package to the <code>Imports:</code> field of the <code>DESCRIPTION</code> file and calling the functions explicitly using <code>::</code>, e.g., <code>pkg::fun()</code></em> <em>If the repetition of the package name becomes annoying you can <code>@importFrom</code> and drop the <code>::</code></em></p>
+</blockquote>
+<p>This advice refers to using <code>@import</code>, because it’s not advised to use <code>@import</code>:</p>
+<blockquote class="blockquote">
+<p>“<em>It is possible, but not generally recommended to import all functions from a package with <code>@import</code> package. This is risky if you import functions from more than one package, because while it might be ok today, in the future the packages might end up with a function having the same name, and your users will get a warning every time your package is loaded.</em>”</p>
+</blockquote>
+<p>The <code>usethis::use_package_doc()</code> will create a <code>R/{packagename}-package.R</code> file to store imports/exports in.</p>
+<blockquote class="blockquote">
+<p>From a “performance” perspective do you feel like one slows down vs the other or when you want to “slim” down your app</p>
+</blockquote>
+<p>Generally speaking, a lightweight (low-dependency) app-package means your app is less likely to break because of changes to dependencies (and out of your control).</p>
+<blockquote class="blockquote">
+<p>When possible, do you feel like base R is preferred over package dependent development?</p>
+</blockquote>
+<p>All app-packages inherently have at least one dependency (<code>shiny</code>), so that’s unavoidable, but every new dependency comes with a cost. Ask yourself if the additional dependency’s value outweighs its cost of you re-writing it in base R.</p>
+<p>For example, if your app uses data manipulation functions from <code>dplyr</code>, <code>tidyr</code>, and <code>stringr</code>, it <em>might</em> be worth your time to convert these to base R. But if you’re building graphs with <code>ggplot2</code>, re-writing this functionality is not a good use of time (<code>ggplot2</code> is mature, well maintained, has an open license, and isn’t likely to introduce backward incompatible changes).</p>
+<p>I’ll also add that all great packages <strong>do one thing and one thing well.</strong> Examples of packages I don’t worry about including as dependencies are <a href="https://cli.r-lib.org/"><code>cli</code></a> and <a href="https://glue.tidyverse.org/"><code>glue</code></a> because they has very few imported dependencies (you can check this by looking in their DESCRIPTION files: <a href="https://github.com/r-lib/cli/blob/d8883112a8060c1f011cccc9147dd35db03bb9c6/DESCRIPTION#L23">cli imports</a> and <a href="https://github.com/tidyverse/glue/blob/42d29d48a3cd86740ca8e59dbd9615e1e687b6ea/DESCRIPTION#L22"><code>glue imports</code></a>)</p>
+</section>
+<section id="shiny-frameworks" class="level3">
+<h3 class="anchored" data-anchor-id="shiny-frameworks">Shiny frameworks</h3>
+<blockquote class="blockquote">
+<p>Are you planning to contrast this package development approach with a framework (e.g., Rhino) approach?</p>
+</blockquote>
+<p>Not explicitly, but I do have <a href="https://mjfrigaard.github.io/sfw/">this repo</a> that contains the application from <code>moviesApp</code> as a <code>golem</code> app, a <code>leprechaun</code> app, and a <code>rhino</code> app.</p>
+<blockquote class="blockquote">
+<p>From a beginner perspective, would it be the best use of time to learn one framework over another in terms of design to best prepare an app as it becomes more complicated or how would you suggest to best future proof an app?</p>
+</blockquote>
+<p>The approach I recommend is (you’ve probably guessed) learning how to develop R packages. <code>golem</code> and <code>leprechaun</code> were designed to streamline many of the steps covered in this workshop, which is helpful if you’re aware of the underlying functionality they’re replacing.</p>
+<p>For example, <code>golem::add_module("fun", with_test = TRUE)</code> is identical to running <code>usethis::use_r("fun")</code> and <code>usethis::use_test("fun')</code>. The difference being you can use <code>devtools</code> and <code>usethis</code> to create an app-package without including them as dependencies.</p>
+<blockquote class="blockquote">
+<p>Do you have an order of learning when it comes to R Shiny vs R Packages? Like learning one before another would be more helpful or less confusing over another?</p>
+</blockquote>
+<p>This is a fantastic question–and one that I’ve struggled with given the available resources (and the order/timing of their publication). If you’re familiar with the contents of <a href="https://mastering-shiny.org/">Mastering Shiny</a> and can develop Shiny applications outside of a package structure, I’d recommend picking an application and gradually converting it into an R Package, following the advice in <a href="https://r-pkgs.org/">R Packages, 2ed</a> and <a href="https://rstudio.github.io/r-manuals/r-exts/">Writing R Extensions</a>.</p>
+<p>If you’re comfortable with R packages but looking to learn Shiny, I’d start with the <a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html">online documentation</a> and <a href="https://rstudio-education.github.io/shiny-course/">Building Web Applications With Shiny</a> course. If you’re somewhere in-between, I’d check out my book <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a> (and let me know if there’s a topic you’d like me to cover!)</p>
+</section>
+<section id="copy-pasting-code-from-other-packages" class="level3">
+<h3 class="anchored" data-anchor-id="copy-pasting-code-from-other-packages">Copy-pasting code from other packages</h3>
+<blockquote class="blockquote">
+<p>Do you think it would be a good idea to take the function from a package manually and bring it into the development workflow for your package vs explicitly calling the function from the source package?</p>
+</blockquote>
+<p>If by ‘manually’ you mean copy + paste the code into your <code>R/</code> folder, no, I don’t think this is a good idea for multiple reasons:</p>
+<ol type="1">
+<li>It’s not clear where the code comes from (and you didn’t write it)<br>
+</li>
+<li>The author of the original function probably wrote that function to work ‘in concert’ with the other functions in that package, so it’s likely to contain functionality you don’t need (or design decisions that don’t fit your purpose).</li>
+</ol>
+<blockquote class="blockquote">
+<p>What are your thoughts about copy-pasting a function from other packages instead of loading entire package? I think area of concern for me would potentially not giving credit to original developer…I think my question also surrounds the need for dependability and it NOT to change with future updates, essentially ensuring your application works regardless of future updates to dependency packages.</p>
+</blockquote>
+<p>This question (or a similar version) was answered above. You’re correct to be concerned about not giving credit to the original author.</p>
+<p>If you’re concerned about including the version of an add-on package with your application, you can investigate using the <a href="https://rstudio.github.io/renv/articles/renv.html"><code>renv</code> package</a>, which records, “<em>exactly which package versions you have installed so you can recreate them.</em></p>
 
 
 </section>

@@ -2,10 +2,7 @@
 title: "Welcome!"
 ---
 
-
-
 This site contains the materials for the R/Pharma workshop titled, [Developing & Testing Your Shiny Application](https://www.eventbrite.com/e/developing-testing-your-shiny-application-tickets-728472048507).
-
 
 
 ## Workshop Description 

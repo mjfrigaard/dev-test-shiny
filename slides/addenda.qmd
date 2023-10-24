@@ -1,0 +1,1900 @@
+---
+title: "Developing & Testing Your Shiny Application"
+subtitle: "Addenda"
+author: "Martin Frigaard (Atorus)"
+format: 
+  revealjs: 
+    title-slide-style: pandoc
+    center: false
+    height: 900
+    width: 1600
+    theme: slides.scss
+    highlight-style: ayu-mirage
+    transition: fade
+    code-line-numbers: false
+    slide-number: true
+    chalkboard: true
+    scrollable: true
+    pdf-separate-fragments: false
+
+title-slide-attributes:
+  data-background-image: img/dark_bkg.jpg
+  data-background-size: contain
+  data-background-opacity: "0.60"
+  
+from: markdown+emoji
+editor: source
+---
+
+```{r, include = FALSE}
+library(tidyverse)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(ggthemes)
+options(
+  dplyr.print_min = 6,
+  dplyr.print_max = 6,
+  width = 64,
+  pillar.print_max = 8
+)
+library(fontawesome)
+library(rlang)
+```
+
+# Additional slides 
+
+<br><br>
+
+These are slides that didn't make the cut (either due to time or relevance), but the branches exist in the [`moviesApp` repository](https://github.com/mjfrigaard/moviesApp) and they are covered in the [Shiny App-Packages book.](https://mjfrigaard.github.io/shinyap/) 
+
+## Outline
+
+<br>
+
+:::: columns
+
+:::{.column width="33%"}
+
+#### Launching apps
+
+:::{style="font-size: 0.75em;"}
+-   `shinyApp()`
+
+-   `shinyAppDir()`
+
+-   `runApp()`
+:::
+
+:::
+
+:::{.column width="33%"}
+
+#### Debugging 
+
+:::{style="font-size: 0.75em;"}
+-   `browser()` & `observe()`
+
+-   `reactiveValuesToList()`
+:::
+
+:::
+
+:::{.column width="33%"}
+
+#### Tests 
+
+:::{style="font-size: 0.75em;"}
+-   Snapshots 
+
+-   Test mocks 
+:::
+
+:::
+
+::::
+
+# Launching apps
+
+:::: footer
+[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+::::
+
+<br>
+
+. . .
+
+In the `10_launch-app` repo, multiple functions are used to launch the application in `moviesApp`.
+
+. . .
+
+<br>
+
+The following slides discuss the differences between these functions (and why you'd use one over the other).
+
+<br>
+
+. . .
+
+This topic is covered extensively in [this blog post from ThinkR](https://rtask.thinkr.fr/shinyapp-runapp-shinyappdir-difference/).
+
+
+
+## Launching apps: shinyApp()
+
+:::: footer
+[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+::::
+
+<br>
+
+. . .
+
+What happens when we call `shinyApp()`?
+
+. . .
+
+<br>
+
+::: columns
+:::{.column width="50%"}
+:::{style="font-size: 0.80em;"}
+-   `shinyApp()` creates and launches an app defined *inline* (or with UI and server function arguments)
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.70em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|3-5|"
+app <- shinyApp(
+  ui = fluidPage(), 
+  server = function(input, output) {
+    
+  }
+)
+```
+:::
+:::
+:::
+
+. . .
+
+::: columns
+:::{.column width="50%"}
+:::{style="font-size: 0.80em;"}
+-   `shinyApp()` creates a shiny app object (`shiny.appobj`)
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.70em;"}
+```{r}
+#| eval: false 
+#| echo: true
+str(app)
+```
+:::
+
+:::{style="font-size: 0.65em;"}
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|7|9|"
+List of 5
+ $ httpHandler     :function (req)  
+ $ serverFuncSource:function ()  
+ $ onStart         : NULL
+ $ options         : list()
+ $ appOptions      :List of 2
+  ..$ appDir       : chr "/path/to/moviesApp"
+  ..$ bookmarkStore: NULL
+ - attr(*, "class")= chr "shiny.appobj"
+```
+:::
+:::
+:::
+
+## Launching apps: shinyAppDir()
+
+:::: footer
+[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+::::
+
+<br>
+
+. . .
+
+What happens when we call `shinyAppDir()`?
+
+. . .
+
+<br>
+
+::: columns
+:::{.column width="50%"}
+:::{style="font-size: 0.80em;"}
+-   `shinyAppDir()` launches an app from a directory (with an `app.R` or `ui.R`/`server.R` files).
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.70em;"}
+<br>
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|"
+shinyAppDir(
+  appDir = "path/to/app/", 
+  options = list())
+```
+:::
+:::
+:::
+
+. . .
+
+::: columns
+:::{.column width="50%"}
+:::{style="font-size: 0.80em;"}
+<br>
+
+-   `shinyAppDir()` can use a returned `appDir` from `shinyApp()`
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.70em;"}
+<br>
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|1-2|3|"
+app <- shinyApp(ui = movies_ui,
+        server = movies_server)
+app$appOptions$appDir
+```
+
+```{bash}
+#| eval: false 
+#| echo: true
+[1] "path/to/moviesApp"
+```
+
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|"
+shinyAppDir(
+  appDir = app$appOptions$appDir)
+```
+:::
+:::
+:::
+
+## Launching apps: runApp()
+
+:::: footer
+[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+::::
+
+<br>
+
+What happens when we call `runApp()`?
+
+. . .
+
+<br>
+
+::: columns
+:::{.column width="50%"}
+:::{style="font-size: 0.90em;"}
+-   `runApp()` is the most versatile way to launch your app from the IDE
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.90em;"}
+<br>
+
+```{r}
+#| eval: false 
+#| echo: true
+runApp()
+```
+:::
+:::
+:::
+
+. . .
+
+::: columns
+:::{.column width="50%"}
+-   [*It will run apps from the console, stored in a directory, or with a shiny object*]{style="font-size: 0.90em;"}
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.90em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|"
+runApp(
+  appDir = "path/to/app/",
+  test.mode = TRUE/FALSE)
+
+```
+:::
+:::
+:::
+
+. . .
+
+::: columns
+:::{.column width="50%"}
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.90em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|4"
+app <- shinyApp(
+        ui = movies_ui,
+        server = movies_server)
+runApp(appDir = app)
+```
+:::
+:::
+:::
+
+# Debugging 
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+In Shiny apps, the debugger can be a powerful tool for investigating error messages and server-side code.
+:::
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+Function execution is paused while we're in browser mode, which allows us to inspect the variables in the current environment.
+:::
+
+<br>
+
+. . .
+
+:::{style="font-size: 0.85em;"}
+The following slides cover two methods for debugging Shiny functions: 
+
+1. Wrapping `browser()` in a call to `observe()`
+
+2. Capturing reactive values with `reactiveValuesToList()` and sending output to the UI
+:::
+
+## Debugging Shiny errors 
+
+:::: footer
+[Branch: `spec_topic-debugging-01`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+Debugging errors in Shiny can be difficult 
+:::
+
+. . .
+
+<br>
+
+::::columns 
+
+:::{.column width="35%"}
+
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true
+movies_app(run = 'p')
+```
+
+```{verbatim}
+ℹ shinyViewerType set to pane
+Listening on http://127.0.0.1:6588
+```
+
+:::
+:::
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="50%"}
+
+![*Opaque errors messages*](img/debugging_error.png){width='670px' fig-align='left'}
+:::
+
+::::
+
+## `browser()` and `observe()`
+
+:::: footer
+[Branch: `spec_topic-debugging-02`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+
+Wrapping `browser()` with `observe()` triggers the debugger when the observer is invalidated
+
+:::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="25%"}
+:::{style="font-size: 0.73em;"}
+Within the scope of `observe()` we can interactively examine variables
+:::
+:::
+
+:::{.column width="75%"}
+:::{style="font-size: 0.70em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|3-4,7|"
+movies_server <- function(input, output, session) {
+
+    observe({
+      browser()
+      selected_vars <- mod_var_input_server("vars")
+      mod_scatter_display_server("plot", var_inputs = selected_vars)
+    })
+
+}
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="34%"}
+
+:::
+
+:::{.column width="33%"}
+:::{style="font-size: 1.05em;"}
+```{r}
+#| eval: false 
+#| echo: true
+devtools::load_all()
+```
+:::
+:::
+
+:::{.column width="33%"}
+
+:::
+
+::::
+
+## Debugger: pause execution
+
+:::: footer
+[Branch: `spec_topic-debugging-02`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+The debugger pauses execution of the modules in `movies_server()`
+:::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="60%"}
+![Call to `observe(browser())`](img/browser_movies_server_source.png){width='820px' fig-align='left'}
+:::
+
+:::{.column width="40%"}
+![Debugger console](img/browser_movies_server_console.png){width='660px' fig-align='left'}
+:::
+
+::::
+
+## Debugger: execute line-by-line
+
+:::: footer
+[Branch: `spec_topic-debugging-02`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+Execute next line in the debugger by clicking 'Next' or by typing **`n`** and **`return`**/**`enter`** in Console.
+:::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="25%"}
+
+:::{style="font-size: 0.90em;"}
+```{r}
+#| eval: false 
+#| echo: true
+Browse[1]> n
+```
+:::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+```{r}
+#| eval: false 
+#| echo: true
+Browse[2]> n
+```
+:::
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+```{r}
+#| eval: false 
+#| echo: true
+Browse[2]> n
+```
+:::
+
+:::
+
+:::{.column width="75%"}
+
+![](img/browser_movies_server_next.png){width='100%' fig-align='left'}
+:::
+
+::::
+
+<!-- ![](img/browser_movies_server.png){width='880px' fig-align='center'} -->
+
+<!-- ![Suspended application](img/browser_movies_server_app.png){width='100%' fig-align='left'} -->
+
+
+## Parentheses (or not) 
+
+:::: footer
+[Branch: `spec_topic-debugging-02`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+`selected_vars` vs.  `selected_vars()`
+:::
+
+. . .
+
+<br>
+
+::::columns 
+
+:::{.column width="50%"}
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true
+Browse[2]> selected_vars
+```
+
+```{verbatim}
+reactive({
+  list(y = input$y, x = input$x, z = input$z,
+    alpha = input$alpha, size = input$size,
+    plot_title = input$plot_title
+  )
+}) 
+```
+:::
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+`selected_vars` without the parentheses returns the `reactive()` call (not the values)
+:::
+
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true
+Browse[2]> selected_vars()
+```
+
+```{verbatim}
+$y
+[1] "audience_score"
+
+$x
+[1] "imdb_rating"
+
+$z
+[1] "mpaa_rating"
+
+$alpha
+[1] 0.5
+
+$size
+[1] 2
+
+$plot_title
+[1] ""
+```
+:::
+:::
+
+::::
+
+
+## Debugging modules
+
+:::: footer
+[Branch: `spec_topic-debugging-03`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+
+Repeat the process in `mod_scatter_display_server()`
+
+:::
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="25%"}
+:::{style="font-size: 0.70em;"}
+
+<br><br>
+
+Place `browser()` *after* `moduleServer()`
+:::
+:::
+
+:::{.column width="75%"}
+:::{style="font-size: 0.80em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|4-9|"
+mod_scatter_display_server <- function(id, var_inputs) {
+  moduleServer(id, function(input, output, session) {
+    
+    observe({
+      browser()
+      # module code
+      })
+
+  })
+}
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="34%"}
+:::{style="font-size: 0.70em;"}
+Load the package and run the application again 
+:::
+:::
+
+:::{.column width="33%"}
+:::{style="font-size: 1.05em;"}
+```{r}
+#| eval: false 
+#| echo: true
+devtools::load_all()
+```
+:::
+:::
+
+:::{.column width="33%"}
+
+:::
+
+::::
+
+## Comparisons: waldo
+
+:::: footer
+[Branch: `spec_topic-debugging-03`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+
+Use [`waldo`](https://waldo.r-lib.org/) to compare `var_inputs()` and `inputs()`
+
+:::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="60%"}
+
+:::{style="font-size: 0.80em;"}
+```{r}
+#| eval: false 
+#| echo: true
+Browse[2]> waldo::compare(var_inputs(), inputs())
+```
+:::
+
+:::
+
+:::{.column width="40%"}
+
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="30%"}
+:::
+
+
+:::{.column width="70%"}
+:::{style="font-size: 0.80em;"}
+```{bash}
+#| eval: false 
+#| echo: true
+`names(old)`: "y" "x" "z"   "alpha" "size" "plot_title"
+`names(new)`: "x" "y" "col" "alpha" "size" "plot_title"
+
+`old$z` is a character vector ('mpaa_rating')
+`new$z` is absent
+
+`old$col` is absent
+`new$col` is a character vector ('mpaa_rating')
+```
+:::
+:::
+
+::::
+
+. . .
+
+:::: columns
+
+:::{.column width="60%"}
+:::{style="font-size: 0.85em;"}
+*Can you spot the error?*
+:::
+:::
+
+
+:::{.column width="40%"}
+:::
+
+::::
+
+## Comparisons: `diffobj`
+
+:::: footer
+[Branch: `spec_topic-debugging-03`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+
+Use [`diffobj`](https://github.com/brodieG/diffobj) to compare `var_inputs()` and `inputs()`
+
+:::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="60%"}
+
+:::{style="font-size: 0.70em;"}
+```{r}
+#| eval: false 
+#| echo: true
+Browse[2]> diffobj::diffObj(target = names(var_inputs()), 
+                            current = names(inputs()))
+```
+:::
+
+:::
+
+:::{.column width="40%"}
+
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="40%"}
+:::
+
+
+:::{.column width="60%"}
+![`Press ENTER to continue...`](img/diffobj_debugger.png)
+:::
+
+::::
+
+. . .
+
+:::: columns
+
+:::{.column width="60%"}
+:::{style="font-size: 0.85em;"}
+*Can you spot the error?*
+:::
+:::
+
+
+:::{.column width="40%"}
+:::
+
+::::
+
+## Step into a function
+
+:::: footer
+[Branch: `spec_topic-debugging-04`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+
+Step into `scatter_plot()` and print the `plot` (before the labels and theme layer are executed)
+
+:::
+
+<br>
+
+:::: columns
+
+:::{.column width="25%"}
+
+:::{style="font-size: 0.80em;"}
+```{r}
+#| eval: false 
+#| echo: true
+Browse[1]> n
+```
+
+```{r}
+#| eval: false 
+#| echo: true
+Browse[2]> s
+```
+:::
+
+:::
+
+:::{.column width="75%"}
+![](img/step_into_scatter_plot.png)
+:::
+
+::::
+
+. . .
+
+:::: columns
+
+:::{.column width="25%"}
+:::{style="font-size: 0.80em;"}
+```{r}
+#| eval: false 
+#| echo: true
+Browse[1]> n
+```
+
+```{r}
+#| eval: false 
+#| echo: true
+Browse[3]> n
+```
+
+```{r}
+#| eval: false 
+#| echo: true
+Browse[3]> plot
+```
+:::
+:::
+
+:::{.column width="75%"}
+:::{style="font-size: 0.65em;"}
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|4-6|"
+Error in ggplot2::geom_point(alpha = alpha_var, size = size_var) : 
+  Problem while computing aesthetics.
+ℹ Error occurred in the 1st layer.
+Caused by error in `.data[[NULL]]`:
+! Must subset the data pronoun with a string, not `NULL`.
+```
+:::
+:::
+
+::::
+
+
+## Well-placed `print()`s
+
+:::: footer
+[Branch: `spec_topic-debugging-05`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+. . .
+
+:::{style="font-size: 0.85em;"}
+The debugger is a powerful tool for your arsenal, but sometimes, a well-placed `print()` call is the best way to understand your application's behavior.
+:::
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+In standard R functions, adding a distinctive `print()` statement in a function lets us quickly direct output to the Console.
+:::
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.85em;"}
+In Shiny functions, we can capture the values in `input` with `reactiveValuesToList()` and `print()` them in the UI.
+:::
+
+## Shiny `print()` calls
+
+:::: footer
+[Branch: `spec_topic-debugging-05`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.80em;"}
+We can combine `verbatimTextOutput()`, `renderPrint()`, and `reactiveValuesToList()` to print the reactive values from modules and the UI/server functions:
+:::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="45%"}
+
+:::{style="font-size: 0.70em;"}
+In `mod_var_input_ui()`
+:::
+
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "1"
+verbatimTextOutput(outputId = ns("vals"))
+```
+:::
+:::
+
+:::{.column width="55%"}
+
+:::{style="font-size: 0.70em;"}
+In `mod_var_input_server()`
+:::
+
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|4"
+output$vals <- renderPrint({
+  all_vals <- reactiveValuesToList(x = input, 
+                                   all.names = TRUE)
+  lobstr::tree(all_vals)
+})
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="45%"}
+
+:::{style="font-size: 0.70em;"}
+In `movies_ui()`
+:::
+
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "1"
+verbatimTextOutput(outputId = "vals")
+```
+:::
+:::
+
+:::{.column width="55%"}
+
+:::{style="font-size: 0.70em;"}
+In `movies_server()`
+:::
+
+:::{style="font-size: 0.65em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|4"
+output$vals <- renderPrint({
+  all_vals <- reactiveValuesToList(x = input,
+                                   all.names = TRUE)
+    lobstr::tree(all_vals)
+})
+```
+:::
+:::
+
+::::
+
+## Viewing `print()` calls in Shiny 
+
+:::: footer
+[Branch: `spec_topic-debugging-05`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+The module's reactive values for the are printed in the sidebar.
+:::
+
+. . .
+
+:::: columns
+
+:::{.column width="10%"}
+:::
+
+:::{.column width="25%"}
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+```{r}
+#| eval: false 
+#| echo: true
+movies_app(run = 'p')
+```
+:::
+:::
+
+
+:::{.column width="65%"}
+![](img/print_reactive_values.png){width='700'}
+:::
+
+::::
+
+
+## Viewing `print()` calls in Shiny 
+
+:::: footer
+[Branch: `spec_topic-debugging-05`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+The reactive values for the app are printed in the main panel.
+:::
+
+. . .
+
+:::: columns
+
+:::{.column width="10%"}
+:::
+
+:::{.column width="25%"}
+
+<br>
+
+:::{style="font-size: 0.70em;"}
+```{r}
+#| eval: false 
+#| echo: true
+movies_app(run = 'p',
+           bslib = TRUE)
+```
+:::
+:::
+
+:::{.column width="65%"}
+
+![](img/print_reactive_values_bslib.png){width='680'}
+
+:::
+
+::::
+
+# Snapshot tests 
+
+:::: footer
+[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+
+<br>
+
+:::{style="font-size: 0.90em;"}
+The following slides give examples of snapshot tests with `vdiffr`. 
+:::
+
+. . .
+
+:::: columns 
+
+:::{.column width="50%"}
+
+<br>
+
+**Pros**
+
+:::{style="font-size: 0.80em;"}
+
+Help identify _visual regressions_ by comparing current output with previous snapshot
+
+<br>
+
+Ensure that plotting functions maintain consistent outputs throughout development
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+<br>
+
+**Cons**
+
+:::{style="font-size: 0.80em;"}
+
+Brittle/sensitive to minor changes in color, spacing, labels, etc.
+
+<br>
+
+Can lead to test failures (even if the changes are insignificant)
+
+:::
+
+:::
+
+::::
+
+## Snapshot scenario
+
+:::: footer
+[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+An example `Feature` and `Scenario` for a snapshot tests:
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.67em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "1|2,3,4,5|6|7|8-10|11-13|"
+testthat::describe("Feature: Scatter Plot Points Controlled by Dropdown Menus
+     As a user creating a scatter plot,
+     I want dropdown menus to select continuous variables for the x and y axes a
+     And I want a dropdown menu to select a categorical variable for point coloration,
+     So that I can effectively visualize the relationships and categories within the data.", code = {
+    testthat::it("Scenario: Change x, y, color values for plotting
+         When I launch the Scatter Plot Data Visualization
+         And I select the variable 'Audience Score' for the x-axis
+         And I select the variable 'IMDB Rating' for the y-axis
+         And I select the variable 'Critics Rating' for the color
+         Then the scatter plot should show 'Audience Score' on the x-axis
+         And the scatter plot should show 'IMDB Rating' on the y-axis
+         And the points on the scatter plot should be colored by 'Critics Rating'", code = {
+      })
+    })
+```
+:::
+
+
+## Visual unit test
+
+:::: footer
+[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+[`vdiffr`](https://vdiffr.r-lib.org/) allows us to perform a ‘visual unit test’
+
+. . . 
+
+<br>
+
+::: columns
+
+:::{.column width="40%"}
+
+<br><br>
+
+:::{style="font-size: 0.80em;"}
+`expect_doppelganger()` stores the expected output as an `.svg` file 
+:::
+:::
+
+:::{.column width="60%"}
+:::{style="font-size: 0.63em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|1-6|8-15|"
+scatter_inputs <- list(x = 'imdb_rating', 
+                   y = 'audience_score', 
+                   z = 'mpaa_rating', 
+                   alpha = 0.5,
+                   size = 2, 
+                   plot_title = 'Enter plot title')
+
+vdiffr::expect_doppelganger(
+  title = "Initial x y z axes", 
+  fig = scatter_plot(movies, 
+    x_var = scatter_inputs$x, 
+    y_var = scatter_inputs$y, 
+    col_var = scatter_inputs$z, 
+    alpha_var = scatter_inputs$alpha, 
+    size_var = scatter_inputs$size) +
+```
+:::
+
+:::
+
+::::
+
+## Visual unit test
+
+:::: footer
+[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+The scenario describes a fully functional graph
+
+. . . 
+
+::: columns
+
+:::{.column width="40%"}
+
+<br><br>
+
+:::{style="font-size: 0.80em;"}
+
+So we include the labels and theme in the snapshot:
+
+:::
+:::
+
+:::{.column width="60%"}
+:::{style="font-size: 0.63em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "1-8|9-16|"
+vdiffr::expect_doppelganger(
+  title = "Initial x y z axes", 
+  fig = scatter_plot(movies, 
+    x_var = scatter_inputs$x, 
+    y_var = scatter_inputs$y, 
+    col_var = scatter_inputs$z, 
+    alpha_var = scatter_inputs$alpha, 
+    size_var = scatter_inputs$size) +
+  ggplot2::labs(
+    title = scatter_inputs$plot_title,
+    x = stringr::str_replace_all(
+        tools::toTitleCase(scatter_inputs$x),"_", " "),
+    y = stringr::str_replace_all(
+        tools::toTitleCase(scatter_inputs$y), "_", " ") ) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(legend.position = "bottom"))
+```
+:::
+:::
+
+::::
+
+## Example test (snapshots & logging)
+
+:::: footer
+[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+
+The initial test run gives us a warning about the snapshot files
+
+<br>
+
+. . .
+
+:::: columns
+
+:::{.column width="20%"}
+:::{style="font-size: 0.90em;"}
+Snapshots
+:::
+:::
+
+:::{.column width="80%"}
+:::{style="font-size: 0.70em;"}
+```{bash}
+#| eval: false 
+#| echo: true
+── Warning (test-scatter_plot.R:27:5): 
+Scenario: Displaying the Pre-configured Initial Scatter Plot ──
+Adding new file snapshot: 'tests/testthat/_snaps/initial-x-y-z-axes.svg'
+
+── Warning (test-scatter_plot.R:71:5):
+Scenario: Change x, y, color values for plotting ──
+Adding new file snapshot: 'tests/testthat/_snaps/updated-x-y-color.svg'
+[ FAIL 0 | WARN 2 | SKIP 0 | PASS 2 ]
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="40%"}
+:::{style="font-size: 0.90em;"}
+`svg` files are stored in `tests/testthat/_snaps/`
+:::
+:::
+
+:::{.column width="60%"}
+:::{style="font-size: 0.80em;"}
+```{bash}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|3-4|"
+tests/testthat/_snaps/
+└── scatter_plot
+    ├── initial-x-y-z-axes.svg
+    └── updated-x-y-color.svg
+
+2 directories, 2 files
+```
+:::
+:::
+
+::::
+
+## Example test (snapshots & logging)
+
+:::: footer
+[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+. . .
+
+:::{style="font-size: 0.90em;"}
+Subsequent runs give more verbose output from `devtools::test_active_file()`:
+:::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="15%"}
+:::{style="font-size: 0.70em;"}
+Start test
+:::
+:::
+
+:::{.column width="85%"}
+:::{style="font-size: 0.68em;"}
+```{bash}
+#| eval: false 
+#| echo: true
+INFO [2023-10-24 12:23:56] [ START scatter_plot(movies) = snap initial x,y,z,size,alpha]
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="15%"}
+:::{style="font-size: 0.70em;"}
+Test ends
+:::
+:::
+
+:::{.column width="85%"}
+:::{style="font-size: 0.68em;"}
+```{bash}
+#| eval: false 
+#| echo: true
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
+INFO [2023-10-24 12:23:56] [ END scatter_plot(movies) = snap initial x,y,z,size,alpha]
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="15%"}
+:::{style="font-size: 0.70em;"}
+Test updated values
+:::
+:::
+
+:::{.column width="85%"}
+:::{style="font-size: 0.68em;"}
+```{bash}
+#| eval: false 
+#| echo: true
+INFO [2023-10-24 12:23:56] [ START scatter_plot(movies) = snap updated x,y,z]
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 2 ]
+INFO [2023-10-24 12:23:57] [ END scatter_plot(movies) = snap updated x,y,z]
+```
+:::
+:::
+
+::::
+
+
+
+## Reviewing snapshots
+
+:::: footer
+[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+. . .
+
+:::: columns
+
+:::{.column width="50%"}
+
+:::{style="font-size: 0.70em;"}
+`initial-x-y-z-axes.svg`
+:::
+
+![](img/initial-x-y-z-axes.png)
+:::
+
+
+:::{.column width="50%"}
+
+:::{style="font-size: 0.70em;"}
+`updated-x-y-color.svg`
+:::
+
+![](img/updated-x-y-color.png)
+:::
+
+::::
+
+. . .
+
+These are test results we can share with users/shareholders.
+
+
+# Test mocks
+
+:::: footer
+[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+Test mocking functions are a relatively new addition to `testthat`
+
+<br>
+
+. . .
+
+
+
+## Example test with mocking
+
+:::: footer
+[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+:::{style="font-size: 0.90em;"}
+Mocking functions can be used to substitute functions by emulating their behavior within the test scope
+:::
+
+. . .
+
+<br>
+
+:::{style="font-size: 0.80em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|2|3-5|6-8|9|"
+test_that(
+  "Scenario: 
+     Given `local_function()` behavior
+     When I ...
+     Then ...", {
+  local_mocked_bindings(
+    local_function = function(...) 'value'
+   )
+  expect_equal(observed = x, expected = y)
+})
+```
+:::
+
+## Example function: check_installed()
+
+:::: footer
+[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+Assume we have a `check_installed()` function that checks if a package is installed 
+
+. . .
+
+<br>
+
+:::: columns
+:::{.column width="40%"}
+
+:::{style="font-size: 0.80em;"}
+
+-  `check_installed()` relies on `is_installed()` from `rlang` 
+
+-  `rlang` is already listed under `Imports` in the `DESCRIPTION`
+
+:::
+:::
+
+:::{.column width="60%"}
+:::{style="font-size: 0.75em;"}
+```{r}
+#| eval: false 
+#| echo: true
+check_installed <- function(package) {
+  if (is_installed(package)) {
+    return(invisible())
+  } else {
+    stop("Please install '{package}' before continuing")
+  }
+}
+```
+:::
+:::
+
+::::
+
+. . .
+
+<br><br><br>
+
+:::{style="font-size: 0.75em;"}
+*The example above has been adapted from the package development masterclass workshop at [posit::conf(2023)](https://github.com/posit-conf-2023/pkg-dev-masterclass/tree/main)*
+:::
+
+## Example function: feature and scenario
+
+:::: footer
+[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+Feature and scenario decriptions for `check_installed()` might look like:
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="70%"}
+:::{style="font-size: 0.80em;"}
+```{verbatim}
+#| eval: false 
+#| echo: true
+Feature: Checking if an R package is installed
+
+  Scenario: Checking an uninstalled package
+    Given the R package 'foo' is not installed
+    When I call the `check_installed()` function with 'foo'
+    Then the function should raise an error with the message
+    `Please install 'foo' before continuing`
+```
+:::
+:::
+
+:::{.column width="30%"}
+:::{style="font-size: 0.80em;"}
+```{r}
+#| echo: true 
+#| collapse: true
+is_installed('foo')
+```
+
+:::
+:::
+
+::::
+
+. . .
+
+<br>
+
+:::: columns
+
+:::{.column width="70%"}
+:::{style="font-size: 0.80em;"}
+```{verbatim}
+#| eval: false 
+#| echo: true
+  Scenario: Checking an installed package
+    Given the R package 'base' is installed
+    When I call the `check_installed()` function with 'base'
+    Then the function should return without any error
+```
+:::
+:::
+
+:::{.column width="30%"}
+:::{style="font-size: 0.80em;"}
+```{r}
+#| echo: true 
+#| collapse: true
+is_installed('base')
+```
+:::
+:::
+
+::::
+
+
+## Example test mock
+
+:::: footer
+[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+Instead of real-time computations, mocks return predefined responses to given inputs.
+
+. . .
+
+:::{style="font-size: 0.75em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "1"
+describe("Feature: Checking if an R package is installed", code = {
+```
+:::
+
+. . .
+
+:::{style="font-size: 0.75em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "1|2|3|"
+  describe("Scenario: Checking an uninstalled package
+              Given the R package 'foo' is not installed
+              When I call the `check_installed()` function with 'foo'", code = {
+```
+:::
+
+. . .
+
+:::{style="font-size: 0.75em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "1-2"
+  test_that("Then the function should raise an error with the message
+             `Please install 'foo' before continuing`", code = {
+```
+:::
+
+. . .
+
+:::: columns
+
+:::{.column width="70%"}
+:::{style="font-size: 0.75em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "2-4|5|"
+      test_logger(start = "mock is_installed", msg = "FALSE")
+      local_mocked_bindings(
+        is_installed = function(package) FALSE
+      )
+      expect_error(object = check_installed("foo"))
+      test_logger(end = "mock is_installed", msg = "FALSE")
+    })
+```
+:::
+:::
+
+:::{.column width="30%"}
+:::{style="font-size: 0.70em;"}
+`is_installed()` is set to `FALSE`
+
+`expect_error()` confirms the error message
+:::
+:::
+
+::::
+
+## Notes on mocking 
+
+:::: footer
+[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+::::
+
+<br>
+
+. . .
+
+The `roxygen2` documentation for `check_installed()` needs an `@importFrom` tag to import `is_installed` from `rlang`
+
+. . .
+
+<br>
+
+:::: columns
+:::{.column width="30%"}
+:::{style="font-size: 0.90em;"}
+
+Using explicit namespacing alone won’t work
+
+:::
+:::
+
+:::{.column width="70%"}
+:::{style="font-size: 0.69em;"}
+```{r}
+#| eval: false 
+#| echo: true
+#| code-line-numbers: "|10|"
+#' Check if package is installed
+#' 
+#' An example function for demonstrating how to use `testthat`'s
+#' mocking functions.
+#' 
+#' @param package string, name of package
+#'
+#' @return invisible 
+#'
+#' @importFrom rlang is_installed
+#'
+#' @export
+#'
+#' @examples
+#' check_installed("foo")
+#' check_installed("base")
+```
+:::
+:::
+
+::::

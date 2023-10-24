@@ -10,9 +10,13 @@ website:
         text: Welcome
       - href: materials.qmd
         text: Materials
+      - href: q-and-a.qmd
+        text: Q & A
     right:
       - href: slides/wrkshp.qmd
         text: Full workshop
+      - href: slides/addenda.qmd
+        text: Addenda
       - href: slides/efficient-tests.qmd
         text: Efficient tests
 

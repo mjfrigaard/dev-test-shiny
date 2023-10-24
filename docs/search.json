@@ -4,7 +4,7 @@
     "href": "materials.html",
     "title": "Materials",
     "section": "",
-    "text": "Code & Materials\n\n\n\n\n\n\nInstall latest version of RStudio (RStudio 2023.09.0 463 “Desert Sunflower” or later)\nAccess ALL hands-on materials by cloning the repo: https://github.com/mjfrigaard/moviesApp.git\n\n\n\n\n\nPosit Cloud has the workshop materials pre-installed: https://posit.cloud/spaces/434433/content/6827633\n\n\n\n\n\nAccess the Slido polls\n\n\n\n\n\nInstall these R packages:\n\n\npkgs &lt;- c(\"shiny\", \"shinythemes\", \"rlang\", \"ggplot2\", \n  \"devtools\",  \"logger\", \"fs\", \"rmarkdown\", \"lobstr\",\n  \"shinytest2\", \"fst\")\ninstall.packages(pkgs)\nTo follow along, change the branch in the Git pane to the corresponding Branch in the slide footer:"
+    "text": "Code & Materials\n\n\n\n\n\n\nInstall latest version of RStudio (RStudio 2023.09.0 463 “Desert Sunflower” or later)\nAccess ALL hands-on materials by cloning the repo: https://github.com/mjfrigaard/moviesApp.git\n\n\n\n\n\nPosit Cloud has the workshop materials pre-installed: https://posit.cloud/spaces/434433/content/6827633\n\n\n\n\n\nAccess the Slido polls\n\n\n\n\n\nInstall these R packages:\n\n\npkgs &lt;- c(\"shiny\", \"shinythemes\", \"rlang\", \"ggplot2\", \n  \"devtools\",  \"logger\", \"fs\", \"rmarkdown\", \"lobstr\",\n  \"shinytest2\", \"fst\")\ninstall.packages(pkgs)"
   },
   {
     "objectID": "materials.html#local-use",
@@ -33,6 +33,237 @@
     "title": "Materials",
     "section": "",
     "text": "Install these R packages:\n\n\npkgs &lt;- c(\"shiny\", \"shinythemes\", \"rlang\", \"ggplot2\", \n  \"devtools\",  \"logger\", \"fs\", \"rmarkdown\", \"lobstr\",\n  \"shinytest2\", \"fst\")\ninstall.packages(pkgs)"
+  },
+  {
+    "objectID": "materials.html#accessing-code-examples",
+    "href": "materials.html#accessing-code-examples",
+    "title": "Materials",
+    "section": "Accessing code examples",
+    "text": "Accessing code examples\nTo follow along, change the branch in the Git pane to the corresponding Branch in the slide footer:"
+  },
+  {
+    "objectID": "slides/addenda.html#outline",
+    "href": "slides/addenda.html#outline",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Outline",
+    "text": "Outline\n\n\n\nLaunching apps\n\n\nshinyApp()\nshinyAppDir()\nrunApp()\n\n\n\nDebugging\n\n\nbrowser() & observe()\nreactiveValuesToList()\n\n\n\nTests\n\n\nSnapshots\nTest mocks"
+  },
+  {
+    "objectID": "slides/addenda.html#launching-apps-shinyapp",
+    "href": "slides/addenda.html#launching-apps-shinyapp",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Launching apps: shinyApp()",
+    "text": "Launching apps: shinyApp()\n\nBranch: 10_launch-app\n\n\n\nWhat happens when we call shinyApp()?\n\n\n\n\n\n\n\nshinyApp() creates and launches an app defined inline (or with UI and server function arguments)\n\n\n\n\n\napp &lt;- shinyApp(\n  ui = fluidPage(), \n  server = function(input, output) {\n    \n  }\n)\n\n\n\n\n\n\n\n\n\n\nshinyApp() creates a shiny app object (shiny.appobj)\n\n\n\n\n\nstr(app)\n\n\n\n\nList of 5\n $ httpHandler     :function (req)  \n $ serverFuncSource:function ()  \n $ onStart         : NULL\n $ options         : list()\n $ appOptions      :List of 2\n  ..$ appDir       : chr \"/path/to/moviesApp\"\n  ..$ bookmarkStore: NULL\n - attr(*, \"class\")= chr \"shiny.appobj\""
+  },
+  {
+    "objectID": "slides/addenda.html#launching-apps-shinyappdir",
+    "href": "slides/addenda.html#launching-apps-shinyappdir",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Launching apps: shinyAppDir()",
+    "text": "Launching apps: shinyAppDir()\n\nBranch: 10_launch-app\n\n\n\nWhat happens when we call shinyAppDir()?\n\n\n\n\n\n\n\nshinyAppDir() launches an app from a directory (with an app.R or ui.R/server.R files).\n\n\n\n\n\n\nshinyAppDir(\n  appDir = \"path/to/app/\", \n  options = list())\n\n\n\n\n\n\n\n\n\n\n\nshinyAppDir() can use a returned appDir from shinyApp()\n\n\n\n\n\n\napp &lt;- shinyApp(ui = movies_ui,\n        server = movies_server)\napp$appOptions$appDir\n\n\n[1] \"path/to/moviesApp\"\n\n\nshinyAppDir(\n  appDir = app$appOptions$appDir)"
+  },
+  {
+    "objectID": "slides/addenda.html#launching-apps-runapp",
+    "href": "slides/addenda.html#launching-apps-runapp",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Launching apps: runApp()",
+    "text": "Launching apps: runApp()\n\nBranch: 10_launch-app\n\n\nWhat happens when we call runApp()?\n\n\n\n\n\n\nrunApp() is the most versatile way to launch your app from the IDE\n\n\n\n\n\n\nrunApp()\n\n\n\n\n\n\n\n\n\nIt will run apps from the console, stored in a directory, or with a shiny object\n\n\n\n\nrunApp(\n  appDir = \"path/to/app/\",\n  test.mode = TRUE/FALSE)\n\n\n\n\n\n\n\n\n\n\n\n\napp &lt;- shinyApp(\n        ui = movies_ui,\n        server = movies_server)\nrunApp(appDir = app)"
+  },
+  {
+    "objectID": "slides/addenda.html#debugging-shiny-errors",
+    "href": "slides/addenda.html#debugging-shiny-errors",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Debugging Shiny errors",
+    "text": "Debugging Shiny errors\n\nBranch: spec_topic-debugging-01\n\n\n\nDebugging errors in Shiny can be difficult\n\n\n\n\n\n\n\nmovies_app(run = 'p')\n\nℹ shinyViewerType set to pane\nListening on http://127.0.0.1:6588\n\n\n\n\n\n\n\nOpaque errors messages"
+  },
+  {
+    "objectID": "slides/addenda.html#browser-and-observe",
+    "href": "slides/addenda.html#browser-and-observe",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "browser() and observe()",
+    "text": "browser() and observe()\n\nBranch: spec_topic-debugging-02\n\n\n\nWrapping browser() with observe() triggers the debugger when the observer is invalidated\n\n\n\n\n\n\nWithin the scope of observe() we can interactively examine variables\n\n\n\n\nmovies_server &lt;- function(input, output, session) {\n\n    observe({\n      browser()\n      selected_vars &lt;- mod_var_input_server(\"vars\")\n      mod_scatter_display_server(\"plot\", var_inputs = selected_vars)\n    })\n\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\ndevtools::load_all()"
+  },
+  {
+    "objectID": "slides/addenda.html#debugger-pause-execution",
+    "href": "slides/addenda.html#debugger-pause-execution",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Debugger: pause execution",
+    "text": "Debugger: pause execution\n\nBranch: spec_topic-debugging-02\n\n\n\nThe debugger pauses execution of the modules in movies_server()\n\n\n\n\n\n\n\n\nCall to observe(browser())\n\n\n\n\n\n\nDebugger console"
+  },
+  {
+    "objectID": "slides/addenda.html#debugger-execute-line-by-line",
+    "href": "slides/addenda.html#debugger-execute-line-by-line",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Debugger: execute line-by-line",
+    "text": "Debugger: execute line-by-line\n\nBranch: spec_topic-debugging-02\n\n\n\nExecute next line in the debugger by clicking ‘Next’ or by typing n and return/enter in Console.\n\n\n\n\n\n\n\nBrowse[1]&gt; n\n\n\n\n\n\nBrowse[2]&gt; n\n\n\n\n\n\nBrowse[2]&gt; n"
+  },
+  {
+    "objectID": "slides/addenda.html#parentheses-or-not",
+    "href": "slides/addenda.html#parentheses-or-not",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Parentheses (or not)",
+    "text": "Parentheses (or not)\n\nBranch: spec_topic-debugging-02\n\n\n\nselected_vars vs. selected_vars()\n\n\n\n\n\n\n\nBrowse[2]&gt; selected_vars\n\nreactive({\n  list(y = input$y, x = input$x, z = input$z,\n    alpha = input$alpha, size = input$size,\n    plot_title = input$plot_title\n  )\n}) \n\n\n\nselected_vars without the parentheses returns the reactive() call (not the values)\n\n\n\n\nBrowse[2]&gt; selected_vars()\n\n$y\n[1] \"audience_score\"\n\n$x\n[1] \"imdb_rating\"\n\n$z\n[1] \"mpaa_rating\"\n\n$alpha\n[1] 0.5\n\n$size\n[1] 2\n\n$plot_title\n[1] \"\""
+  },
+  {
+    "objectID": "slides/addenda.html#debugging-modules",
+    "href": "slides/addenda.html#debugging-modules",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Debugging modules",
+    "text": "Debugging modules\n\nBranch: spec_topic-debugging-03\n\n\n\nRepeat the process in mod_scatter_display_server()\n\n\n\n\n\n\n\nPlace browser() after moduleServer()\n\n\n\n\nmod_scatter_display_server &lt;- function(id, var_inputs) {\n  moduleServer(id, function(input, output, session) {\n    \n    observe({\n      browser()\n      # module code\n      })\n\n  })\n}\n\n\n\n\n\n\n\n\n\n\nLoad the package and run the application again\n\n\n\n\ndevtools::load_all()"
+  },
+  {
+    "objectID": "slides/addenda.html#comparisons-waldo",
+    "href": "slides/addenda.html#comparisons-waldo",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Comparisons: waldo",
+    "text": "Comparisons: waldo\n\nBranch: spec_topic-debugging-03\n\n\n\nUse waldo to compare var_inputs() and inputs()\n\n\n\n\n\n\n\nBrowse[2]&gt; waldo::compare(var_inputs(), inputs())\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n`names(old)`: \"y\" \"x\" \"z\"   \"alpha\" \"size\" \"plot_title\"\n`names(new)`: \"x\" \"y\" \"col\" \"alpha\" \"size\" \"plot_title\"\n\n`old$z` is a character vector ('mpaa_rating')\n`new$z` is absent\n\n`old$col` is absent\n`new$col` is a character vector ('mpaa_rating')\n\n\n\n\n\n\n\n\n\nCan you spot the error?"
+  },
+  {
+    "objectID": "slides/addenda.html#comparisons-diffobj",
+    "href": "slides/addenda.html#comparisons-diffobj",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Comparisons: diffobj",
+    "text": "Comparisons: diffobj\n\nBranch: spec_topic-debugging-03\n\n\n\nUse diffobj to compare var_inputs() and inputs()\n\n\n\n\n\n\n\nBrowse[2]&gt; diffobj::diffObj(target = names(var_inputs()), \n                            current = names(inputs()))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPress ENTER to continue...\n\n\n\n\n\n\n\n\n\nCan you spot the error?"
+  },
+  {
+    "objectID": "slides/addenda.html#step-into-a-function",
+    "href": "slides/addenda.html#step-into-a-function",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Step into a function",
+    "text": "Step into a function\n\nBranch: spec_topic-debugging-04\n\n\n\nStep into scatter_plot() and print the plot (before the labels and theme layer are executed)\n\n\n\n\n\n\nBrowse[1]&gt; n\n\n\nBrowse[2]&gt; s\n\n\n\n\n\n\n\n\n\n\n\nBrowse[1]&gt; n\n\n\nBrowse[3]&gt; n\n\n\nBrowse[3]&gt; plot\n\n\n\n\n\nError in ggplot2::geom_point(alpha = alpha_var, size = size_var) : \n  Problem while computing aesthetics.\nℹ Error occurred in the 1st layer.\nCaused by error in `.data[[NULL]]`:\n! Must subset the data pronoun with a string, not `NULL`."
+  },
+  {
+    "objectID": "slides/addenda.html#well-placed-prints",
+    "href": "slides/addenda.html#well-placed-prints",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Well-placed print()s",
+    "text": "Well-placed print()s\n\nBranch: spec_topic-debugging-05\n\n\n\n\nThe debugger is a powerful tool for your arsenal, but sometimes, a well-placed print() call is the best way to understand your application’s behavior.\n\n\n\n\n\nIn standard R functions, adding a distinctive print() statement in a function lets us quickly direct output to the Console.\n\n\n\n\n\nIn Shiny functions, we can capture the values in input with reactiveValuesToList() and print() them in the UI."
+  },
+  {
+    "objectID": "slides/addenda.html#shiny-print-calls",
+    "href": "slides/addenda.html#shiny-print-calls",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Shiny print() calls",
+    "text": "Shiny print() calls\n\nBranch: spec_topic-debugging-05\n\n\n\nWe can combine verbatimTextOutput(), renderPrint(), and reactiveValuesToList() to print the reactive values from modules and the UI/server functions:\n\n\n\n\n\n\nIn mod_var_input_ui()\n\n\n\nverbatimTextOutput(outputId = ns(\"vals\"))\n\n\n\n\nIn mod_var_input_server()\n\n\n\noutput$vals &lt;- renderPrint({\n  all_vals &lt;- reactiveValuesToList(x = input, \n                                   all.names = TRUE)\n  lobstr::tree(all_vals)\n})\n\n\n\n\n\n\n\n\n\n\nIn movies_ui()\n\n\n\nverbatimTextOutput(outputId = \"vals\")\n\n\n\n\nIn movies_server()\n\n\n\noutput$vals &lt;- renderPrint({\n  all_vals &lt;- reactiveValuesToList(x = input,\n                                   all.names = TRUE)\n    lobstr::tree(all_vals)\n})"
+  },
+  {
+    "objectID": "slides/addenda.html#viewing-print-calls-in-shiny",
+    "href": "slides/addenda.html#viewing-print-calls-in-shiny",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Viewing print() calls in Shiny",
+    "text": "Viewing print() calls in Shiny\n\nBranch: spec_topic-debugging-05\n\n\n\nThe module’s reactive values for the are printed in the sidebar.\n\n\n\n\n\n\n\n\n\nmovies_app(run = 'p')"
+  },
+  {
+    "objectID": "slides/addenda.html#viewing-print-calls-in-shiny-1",
+    "href": "slides/addenda.html#viewing-print-calls-in-shiny-1",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Viewing print() calls in Shiny",
+    "text": "Viewing print() calls in Shiny\n\nBranch: spec_topic-debugging-05\n\n\n\nThe reactive values for the app are printed in the main panel.\n\n\n\n\n\n\n\n\n\nmovies_app(run = 'p',\n           bslib = TRUE)"
+  },
+  {
+    "objectID": "slides/addenda.html#snapshot-scenario",
+    "href": "slides/addenda.html#snapshot-scenario",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Snapshot scenario",
+    "text": "Snapshot scenario\n\nBranch: 12g_tests-snapshots\n\n\nAn example Feature and Scenario for a snapshot tests:\n\n\n\n\ntestthat::describe(\"Feature: Scatter Plot Points Controlled by Dropdown Menus\n     As a user creating a scatter plot,\n     I want dropdown menus to select continuous variables for the x and y axes a\n     And I want a dropdown menu to select a categorical variable for point coloration,\n     So that I can effectively visualize the relationships and categories within the data.\", code = {\n    testthat::it(\"Scenario: Change x, y, color values for plotting\n         When I launch the Scatter Plot Data Visualization\n         And I select the variable 'Audience Score' for the x-axis\n         And I select the variable 'IMDB Rating' for the y-axis\n         And I select the variable 'Critics Rating' for the color\n         Then the scatter plot should show 'Audience Score' on the x-axis\n         And the scatter plot should show 'IMDB Rating' on the y-axis\n         And the points on the scatter plot should be colored by 'Critics Rating'\", code = {\n      })\n    })"
+  },
+  {
+    "objectID": "slides/addenda.html#visual-unit-test",
+    "href": "slides/addenda.html#visual-unit-test",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Visual unit test",
+    "text": "Visual unit test\n\nBranch: 12g_tests-snapshots\n\n\nvdiffr allows us to perform a ‘visual unit test’\n\n\n\n\n\n\nexpect_doppelganger() stores the expected output as an .svg file\n\n\n\n\nscatter_inputs &lt;- list(x = 'imdb_rating', \n                   y = 'audience_score', \n                   z = 'mpaa_rating', \n                   alpha = 0.5,\n                   size = 2, \n                   plot_title = 'Enter plot title')\n\nvdiffr::expect_doppelganger(\n  title = \"Initial x y z axes\", \n  fig = scatter_plot(movies, \n    x_var = scatter_inputs$x, \n    y_var = scatter_inputs$y, \n    col_var = scatter_inputs$z, \n    alpha_var = scatter_inputs$alpha, \n    size_var = scatter_inputs$size) +"
+  },
+  {
+    "objectID": "slides/addenda.html#visual-unit-test-1",
+    "href": "slides/addenda.html#visual-unit-test-1",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Visual unit test",
+    "text": "Visual unit test\n\nBranch: 12g_tests-snapshots\n\n\nThe scenario describes a fully functional graph\n\n\n\n\n\nSo we include the labels and theme in the snapshot:\n\n\n\n\nvdiffr::expect_doppelganger(\n  title = \"Initial x y z axes\", \n  fig = scatter_plot(movies, \n    x_var = scatter_inputs$x, \n    y_var = scatter_inputs$y, \n    col_var = scatter_inputs$z, \n    alpha_var = scatter_inputs$alpha, \n    size_var = scatter_inputs$size) +\n  ggplot2::labs(\n    title = scatter_inputs$plot_title,\n    x = stringr::str_replace_all(\n        tools::toTitleCase(scatter_inputs$x),\"_\", \" \"),\n    y = stringr::str_replace_all(\n        tools::toTitleCase(scatter_inputs$y), \"_\", \" \") ) +\n  ggplot2::theme_minimal() +\n  ggplot2::theme(legend.position = \"bottom\"))"
+  },
+  {
+    "objectID": "slides/addenda.html#example-test-snapshots-logging",
+    "href": "slides/addenda.html#example-test-snapshots-logging",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Example test (snapshots & logging)",
+    "text": "Example test (snapshots & logging)\n\nBranch: 12g_tests-snapshots\n\nThe initial test run gives us a warning about the snapshot files\n\n\n\n\n\nSnapshots\n\n\n\n\n── Warning (test-scatter_plot.R:27:5): \nScenario: Displaying the Pre-configured Initial Scatter Plot ──\nAdding new file snapshot: 'tests/testthat/_snaps/initial-x-y-z-axes.svg'\n\n── Warning (test-scatter_plot.R:71:5):\nScenario: Change x, y, color values for plotting ──\nAdding new file snapshot: 'tests/testthat/_snaps/updated-x-y-color.svg'\n[ FAIL 0 | WARN 2 | SKIP 0 | PASS 2 ]\n\n\n\n\n\n\n\n\n\n\nsvg files are stored in tests/testthat/_snaps/\n\n\n\n\ntests/testthat/_snaps/\n└── scatter_plot\n    ├── initial-x-y-z-axes.svg\n    └── updated-x-y-color.svg\n\n2 directories, 2 files"
+  },
+  {
+    "objectID": "slides/addenda.html#example-test-snapshots-logging-1",
+    "href": "slides/addenda.html#example-test-snapshots-logging-1",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Example test (snapshots & logging)",
+    "text": "Example test (snapshots & logging)\n\nBranch: 12g_tests-snapshots\n\n\n\n\nSubsequent runs give more verbose output from devtools::test_active_file():\n\n\n\n\n\n\n\nStart test\n\n\n\n\nINFO [2023-10-24 12:23:56] [ START scatter_plot(movies) = snap initial x,y,z,size,alpha]\n\n\n\n\n\n\n\n\n\n\nTest ends\n\n\n\n\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]\nINFO [2023-10-24 12:23:56] [ END scatter_plot(movies) = snap initial x,y,z,size,alpha]\n\n\n\n\n\n\n\n\n\n\nTest updated values\n\n\n\n\nINFO [2023-10-24 12:23:56] [ START scatter_plot(movies) = snap updated x,y,z]\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 2 ]\nINFO [2023-10-24 12:23:57] [ END scatter_plot(movies) = snap updated x,y,z]"
+  },
+  {
+    "objectID": "slides/addenda.html#reviewing-snapshots",
+    "href": "slides/addenda.html#reviewing-snapshots",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Reviewing snapshots",
+    "text": "Reviewing snapshots\n\nBranch: 12g_tests-snapshots\n\n\n\n\n\ninitial-x-y-z-axes.svg\n\n\n\n\nupdated-x-y-color.svg\n\n\n\n\n\n\nThese are test results we can share with users/shareholders."
+  },
+  {
+    "objectID": "slides/addenda.html#example-test-with-mocking",
+    "href": "slides/addenda.html#example-test-with-mocking",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Example test with mocking",
+    "text": "Example test with mocking\n\nBranch: 12d_tests-mocks\n\n\nMocking functions can be used to substitute functions by emulating their behavior within the test scope\n\n\n\n\n\ntest_that(\n  \"Scenario: \n     Given `local_function()` behavior\n     When I ...\n     Then ...\", {\n  local_mocked_bindings(\n    local_function = function(...) 'value'\n   )\n  expect_equal(observed = x, expected = y)\n})"
+  },
+  {
+    "objectID": "slides/addenda.html#example-function-check_installed",
+    "href": "slides/addenda.html#example-function-check_installed",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Example function: check_installed()",
+    "text": "Example function: check_installed()\n\nBranch: 12d_tests-mocks\n\n\nAssume we have a check_installed() function that checks if a package is installed\n\n\n\n\n\n\ncheck_installed() relies on is_installed() from rlang\nrlang is already listed under Imports in the DESCRIPTION\n\n\n\n\n\ncheck_installed &lt;- function(package) {\n  if (is_installed(package)) {\n    return(invisible())\n  } else {\n    stop(\"Please install '{package}' before continuing\")\n  }\n}\n\n\n\n\n\n\n\n\nThe example above has been adapted from the package development masterclass workshop at posit::conf(2023)"
+  },
+  {
+    "objectID": "slides/addenda.html#example-function-feature-and-scenario",
+    "href": "slides/addenda.html#example-function-feature-and-scenario",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Example function: feature and scenario",
+    "text": "Example function: feature and scenario\n\nBranch: 12d_tests-mocks\n\n\nFeature and scenario decriptions for check_installed() might look like:\n\n\n\n\n\nFeature: Checking if an R package is installed\n\n  Scenario: Checking an uninstalled package\n    Given the R package 'foo' is not installed\n    When I call the `check_installed()` function with 'foo'\n    Then the function should raise an error with the message\n    `Please install 'foo' before continuing`\n\n\n\n\nis_installed('foo')\n## [1] FALSE\n\n\n\n\n\n\n\n\n\n\n  Scenario: Checking an installed package\n    Given the R package 'base' is installed\n    When I call the `check_installed()` function with 'base'\n    Then the function should return without any error\n\n\n\n\nis_installed('base')\n## [1] TRUE"
+  },
+  {
+    "objectID": "slides/addenda.html#example-test-mock",
+    "href": "slides/addenda.html#example-test-mock",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Example test mock",
+    "text": "Example test mock\n\nBranch: 12d_tests-mocks\n\n\nInstead of real-time computations, mocks return predefined responses to given inputs.\n\n\n\ndescribe(\"Feature: Checking if an R package is installed\", code = {\n\n\n\n\n\n\n  describe(\"Scenario: Checking an uninstalled package\n              Given the R package 'foo' is not installed\n              When I call the `check_installed()` function with 'foo'\", code = {\n\n\n\n\n\n\n  test_that(\"Then the function should raise an error with the message\n             `Please install 'foo' before continuing`\", code = {\n\n\n\n\n\n\n\n\n      test_logger(start = \"mock is_installed\", msg = \"FALSE\")\n      local_mocked_bindings(\n        is_installed = function(package) FALSE\n      )\n      expect_error(object = check_installed(\"foo\"))\n      test_logger(end = \"mock is_installed\", msg = \"FALSE\")\n    })\n\n\n\n\nis_installed() is set to FALSE\nexpect_error() confirms the error message"
+  },
+  {
+    "objectID": "slides/addenda.html#notes-on-mocking",
+    "href": "slides/addenda.html#notes-on-mocking",
+    "title": "Developing & Testing Your Shiny Application",
+    "section": "Notes on mocking",
+    "text": "Notes on mocking\n\nBranch: 12d_tests-mocks\n\n\n\nThe roxygen2 documentation for check_installed() needs an @importFrom tag to import is_installed from rlang\n\n\n\n\n\n\nUsing explicit namespacing alone won’t work\n\n\n\n\n#' Check if package is installed\n#' \n#' An example function for demonstrating how to use `testthat`'s\n#' mocking functions.\n#' \n#' @param package string, name of package\n#'\n#' @return invisible \n#'\n#' @importFrom rlang is_installed\n#'\n#' @export\n#'\n#' @examples\n#' check_installed(\"foo\")\n#' check_installed(\"base\")"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome!",
+    "section": "",
+    "text": "This site contains the materials for the R/Pharma workshop titled, Developing & Testing Your Shiny Application."
+  },
+  {
+    "objectID": "index.html#workshop-description",
+    "href": "index.html#workshop-description",
+    "title": "Welcome!",
+    "section": "Workshop Description",
+    "text": "Workshop Description\nThis talk takes a deep dive into the world of testing shiny applications, covering strategies for determining what needs to be tested to ensure your app’s functional accuracy and reliability. Shiny’s reactive programming model requires specialized approaches to testing, distinct from traditional R package testing.\nI’ll begin by describing the application of unit, integration, and end-to-end testing in Shiny apps. Then we’ll move into the role of testing in development and highlight the need for code organization when designing your testing suite.\nThe focus then shifts to practical aspects of testing by illustrating tools like test data and fixtures. Attendees will see example tests for utility functions, modules, and tests to capture specific user interactions (and confirm the application behaves as expected).\nFinally, I will demonstrate advanced topics like test coverage, what it measures, and why 100% coverage isn’t necessarily a metric worth chasing.\nThis presentation will give R developers a toolkit of testing techniques (building a test suite, writing effective tests, and automated testing) regardless of their familiarity with Shiny."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Welcome!",
+    "section": "About Me",
+    "text": "About Me\nMartin Frigaard is a Data Visualization Engineer at Atorus."
+  },
+  {
+    "objectID": "q-and-a.html",
+    "href": "q-and-a.html",
+    "title": "Zoom chat questions",
+    "section": "",
+    "text": "Below are responses to questions that came through the chat during the workshop. In my answer I’ve referenced the slide and/or section of Shiny App-Packages.\n\nOpening/editing .Rproj files\n\nCan someone tell [me] how to open the moviesApp.Rproj?\n\nTo view the .Rproj file in the IDE, you can use file.edit()\nfile.edit('moviesApp.Rproj')\nThis will open the file in the Source pane.\nIf you only want to view the fields in the .Rproj file, you can enter\ncat moviesApp.Rproj\nin the Terminal pane\n\n\nDependencies\n\nCan you please explain operator import part a bit more?\n\nImporting an operator isn’t always possible with the pkg:: syntax. In this case, you’d want to import the operator using:\n#' @importFrom package operator\nThis is demonstrated in the 08b_pkg-imports branch of moviesApp, and it’s covered on this slide (and this section of Shiny App-Packages)\n\nHow do you determine when to explicitly call the package name with :: vs when to use the @import ?\n\nThe best advice (in my opinion) on when to use pkg::fun() vs. @import/@importFrom is on the roxygen2 site:\n\nIf you are using just a few functions from another package, we recommending adding the package to the Imports: field of the DESCRIPTION file and calling the functions explicitly using ::, e.g., pkg::fun() If the repetition of the package name becomes annoying you can @importFrom and drop the ::\n\nThis advice refers to using @import, because it’s not advised to use @import:\n\n“It is possible, but not generally recommended to import all functions from a package with @import package. This is risky if you import functions from more than one package, because while it might be ok today, in the future the packages might end up with a function having the same name, and your users will get a warning every time your package is loaded.”\n\nThe usethis::use_package_doc() will create a R/{packagename}-package.R file to store imports/exports in.\n\nFrom a “performance” perspective do you feel like one slows down vs the other or when you want to “slim” down your app\n\nGenerally speaking, a lightweight (low-dependency) app-package means your app is less likely to break because of changes to dependencies (and out of your control).\n\nWhen possible, do you feel like base R is preferred over package dependent development?\n\nAll app-packages inherently have at least one dependency (shiny), so that’s unavoidable, but every new dependency comes with a cost. Ask yourself if the additional dependency’s value outweighs its cost of you re-writing it in base R.\nFor example, if your app uses data manipulation functions from dplyr, tidyr, and stringr, it might be worth your time to convert these to base R. But if you’re building graphs with ggplot2, re-writing this functionality is not a good use of time (ggplot2 is mature, well maintained, has an open license, and isn’t likely to introduce backward incompatible changes).\nI’ll also add that all great packages do one thing and one thing well. Examples of packages I don’t worry about including as dependencies are cli and glue because they has very few imported dependencies (you can check this by looking in their DESCRIPTION files: cli imports and glue imports)\n\n\nShiny frameworks\n\nAre you planning to contrast this package development approach with a framework (e.g., Rhino) approach?\n\nNot explicitly, but I do have this repo that contains the application from moviesApp as a golem app, a leprechaun app, and a rhino app.\n\nFrom a beginner perspective, would it be the best use of time to learn one framework over another in terms of design to best prepare an app as it becomes more complicated or how would you suggest to best future proof an app?\n\nThe approach I recommend is (you’ve probably guessed) learning how to develop R packages. golem and leprechaun were designed to streamline many of the steps covered in this workshop, which is helpful if you’re aware of the underlying functionality they’re replacing.\nFor example, golem::add_module(\"fun\", with_test = TRUE) is identical to running usethis::use_r(\"fun\") and usethis::use_test(\"fun'). The difference being you can use devtools and usethis to create an app-package without including them as dependencies.\n\nDo you have an order of learning when it comes to R Shiny vs R Packages? Like learning one before another would be more helpful or less confusing over another?\n\nThis is a fantastic question–and one that I’ve struggled with given the available resources (and the order/timing of their publication). If you’re familiar with the contents of Mastering Shiny and can develop Shiny applications outside of a package structure, I’d recommend picking an application and gradually converting it into an R Package, following the advice in R Packages, 2ed and Writing R Extensions.\nIf you’re comfortable with R packages but looking to learn Shiny, I’d start with the online documentation and Building Web Applications With Shiny course. If you’re somewhere in-between, I’d check out my book Shiny App-Packages (and let me know if there’s a topic you’d like me to cover!)\n\n\nCopy-pasting code from other packages\n\nDo you think it would be a good idea to take the function from a package manually and bring it into the development workflow for your package vs explicitly calling the function from the source package?\n\nIf by ‘manually’ you mean copy + paste the code into your R/ folder, no, I don’t think this is a good idea for multiple reasons:\n\nIt’s not clear where the code comes from (and you didn’t write it)\n\nThe author of the original function probably wrote that function to work ‘in concert’ with the other functions in that package, so it’s likely to contain functionality you don’t need (or design decisions that don’t fit your purpose).\n\n\nWhat are your thoughts about copy-pasting a function from other packages instead of loading entire package? I think area of concern for me would potentially not giving credit to original developer…I think my question also surrounds the need for dependability and it NOT to change with future updates, essentially ensuring your application works regardless of future updates to dependency packages.\n\nThis question (or a similar version) was answered above. You’re correct to be concerned about not giving credit to the original author.\nIf you’re concerned about including the version of an add-on package with your application, you can investigate using the renv package, which records, “exactly which package versions you have installed so you can recreate them."
   },
   {
     "objectID": "slides/wrkshp.html#introduction",
@@ -600,27 +831,6 @@
     "title": "Developing & Testing Your Shiny Application",
     "section": "Recap",
     "text": "Recap\n\nMartin Frigaard | Github | LinkedIn\n\n\n\nShiny App-Packages\n\n\nDESCRIPTION file and fields\n.Rproj files and fields\ndevtools function workflow\nroxygen2 & dependencies\nData\n\n\n\n\n\n\nLaunching apps\nExternal resources\nBDD tests, fixtures & helpers\nTesting modules & system tests\n\n\n\n\n\n\n\nRead more:\n\n\nR packages, 2ed\nshinytest2 documentation\nShiny testing (Shiny documentation)\n\n\n\n\n\n\nBDD in Action, 2ed\nWriting R Extensions\nShiny App-packages (in development)"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome!",
-    "section": "",
-    "text": "This site contains the materials for the R/Pharma workshop titled, Developing & Testing Your Shiny Application."
-  },
-  {
-    "objectID": "index.html#workshop-description",
-    "href": "index.html#workshop-description",
-    "title": "Welcome!",
-    "section": "Workshop Description",
-    "text": "Workshop Description\nThis talk takes a deep dive into the world of testing shiny applications, covering strategies for determining what needs to be tested to ensure your app’s functional accuracy and reliability. Shiny’s reactive programming model requires specialized approaches to testing, distinct from traditional R package testing.\nI’ll begin by describing the application of unit, integration, and end-to-end testing in Shiny apps. Then we’ll move into the role of testing in development and highlight the need for code organization when designing your testing suite.\nThe focus then shifts to practical aspects of testing by illustrating tools like test data and fixtures. Attendees will see example tests for utility functions, modules, and tests to capture specific user interactions (and confirm the application behaves as expected).\nFinally, I will demonstrate advanced topics like test coverage, what it measures, and why 100% coverage isn’t necessarily a metric worth chasing.\nThis presentation will give R developers a toolkit of testing techniques (building a test suite, writing effective tests, and automated testing) regardless of their familiarity with Shiny."
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "Welcome!",
-    "section": "About Me",
-    "text": "About Me\nMartin Frigaard is a Data Visualization Engineer at Atorus."
   },
   {
     "objectID": "slides/efficient-tests.html#introduction",

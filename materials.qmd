@@ -34,6 +34,8 @@ install.packages(pkgs)
 
 :::
 
+## Accessing code examples 
+
 To follow along, change the branch in the **Git** pane to the corresponding **Branch** in the slide footer: 
 
 :::: {.column-page-inset-right}
@@ -48,13 +50,4 @@ To follow along, change the branch in the **Git** pane to the corresponding **Br
 :::
 
 ::::
-
-
-
-
-
-
-
-
-
 
