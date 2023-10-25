@@ -17,6 +17,10 @@ Finally, I will demonstrate advanced topics like test coverage, what it measures
 
 This presentation will give R developers a toolkit of testing techniques (building a test suite, writing effective tests, and automated testing) regardless of their familiarity with Shiny.
 
+## Efficient tests talk (recording)
+
+You can view a recorded version of the [Efficient tests](https://mjfrigaard.github.io/dev-test-shiny/slides/efficient-tests.html#/title-slide) talk [here](https://www.youtube.com/watch?v=hcmQJOEphHc)
+
 ## About Me
 
 [Martin Frigaard](https://www.martinfrigaard.io/) is a Data Visualization Engineer at [Atorus](https://www.atorusresearch.com/).
