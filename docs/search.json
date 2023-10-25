@@ -151,7 +151,7 @@
     "href": "slides/addenda.html#viewing-print-calls-in-shiny",
     "title": "Developing & Testing Your Shiny Application",
     "section": "Viewing print() calls in Shiny",
-    "text": "Viewing print() calls in Shiny\n\nBranch: spec_topic-debugging-05\n\n\n\nThe module’s reactive values for the are printed in the sidebar.\n\n\n\n\n\n\n\n\n\nmovies_app(run = 'p')"
+    "text": "Viewing print() calls in Shiny\n\nBranch: spec_topic-debugging-05\n\n\n\nThe module’s reactive values are printed in the sidebar.\n\n\n\n\n\n\n\n\n\nmovies_app(run = 'p')"
   },
   {
     "objectID": "slides/addenda.html#viewing-print-calls-in-shiny-1",

@@ -1126,7 +1126,7 @@ output$vals <- renderPrint({
 <br>
 
 :::{style="font-size: 0.70em;"}
-The module's reactive values for the are printed in the sidebar.
+The module's reactive values are printed in the sidebar.
 :::
 
 . . .

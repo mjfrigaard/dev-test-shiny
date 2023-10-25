@@ -15,10 +15,10 @@ website:
     right:
       - href: slides/wrkshp.qmd
         text: Full workshop
-      - href: slides/addenda.qmd
-        text: Addenda
       - href: slides/efficient-tests.qmd
         text: Efficient tests
+      - href: slides/addenda.qmd
+        text: Addenda
 
 format:
   html:
