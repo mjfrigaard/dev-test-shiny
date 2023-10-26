@@ -19,7 +19,7 @@ This presentation will give R developers a toolkit of testing techniques (buildi
 
 ## Efficient tests talk (recording)
 
-You can view a recorded version of the [Efficient tests](https://mjfrigaard.github.io/dev-test-shiny/slides/efficient-tests.html#/title-slide) talk [here](https://www.youtube.com/watch?v=hcmQJOEphHc)
+You can view a recorded version of the [Efficient tests](https://mjfrigaard.github.io/dev-test-shiny/slides/efficient-tests.html#/title-slide) talk [here](https://www.youtube.com/watch?v=hcmQJOEphHc).
 
 ## About Me
 
