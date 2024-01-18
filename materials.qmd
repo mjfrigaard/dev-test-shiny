@@ -2,7 +2,9 @@
 title: "Materials"
 ---
 
-:::{.callout-tip title="Workshop Code & Materials" collapse=false}
+## Workshop Code & Materials
+
+:::{.callout-tip title="Pre-work" collapse=false}
 
 ### Local use
 
@@ -33,6 +35,10 @@ install.packages(pkgs)
 ```
 
 :::
+
+### Efficient Tests Talk (recording)
+
+You can view a recorded version of the [Efficient Tests talk](https://mjfrigaard.github.io/dev-test-shiny/slides/efficient-tests.html#/title-slide) [here.](https://youtu.be/hcmQJOEphHc?si=fVGT2zz7yf6PuJA5)
 
 ### Accessing code examples 
 
