@@ -97,7 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.scss">
 </head>
 
 <body class="nav-fixed">
@@ -184,37 +184,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="callout callout-style-default callout-tip callout-titled" title="Code &amp; Materials">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-tip callout-titled" title="Workshop Code &amp; Materials">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Code &amp; Materials
+Workshop Code &amp; Materials
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<section id="local-use" class="level2">
-<h2 class="anchored" data-anchor-id="local-use">Local use</h2>
+<section id="local-use" class="level3">
+<h3 class="anchored" data-anchor-id="local-use">Local use</h3>
 <ul>
 <li><p>Install latest version of RStudio (<a href="https://www.rstudio.com/products/rstudio/download/#download"><code>RStudio 2023.09.0 463</code> “Desert Sunflower”</a> or later)</p></li>
 <li><p>Access ALL hands-on materials by cloning the repo: <a href="https://github.com/mjfrigaard/moviesApp.git" class="uri">https://github.com/mjfrigaard/moviesApp.git</a></p></li>
 </ul>
 </section>
-<section id="posit-cloud" class="level2">
-<h2 class="anchored" data-anchor-id="posit-cloud">Posit Cloud</h2>
+<section id="posit-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="posit-cloud">Posit Cloud</h3>
 <ul>
 <li>Posit Cloud has the workshop materials pre-installed: <a href="https://posit.cloud/spaces/434433/content/6827633" class="uri">https://posit.cloud/spaces/434433/content/6827633</a></li>
 </ul>
 </section>
-<section id="slido-link" class="level2">
-<h2 class="anchored" data-anchor-id="slido-link">Slido link</h2>
+<section id="slido-link" class="level3">
+<h3 class="anchored" data-anchor-id="slido-link">Slido link</h3>
 <ul>
 <li>Access the <a href="https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF">Slido polls</a></li>
 </ul>
 </section>
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<section id="packages" class="level3">
+<h3 class="anchored" data-anchor-id="packages">Packages</h3>
 <ul>
 <li>Install these R packages:</li>
 </ul>
@@ -227,25 +229,36 @@ Code &amp; Materials
 </section>
 </div>
 </div>
-<section id="accessing-code-examples" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="accessing-code-examples">Accessing code examples</h2>
+</div>
+<section id="accessing-code-examples" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="accessing-code-examples">Accessing code examples</h3>
 <p>To follow along, change the branch in the <strong>Git</strong> pane to the corresponding <strong>Branch</strong> in the slide footer:</p>
 <div class="column-page-inset-right">
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <p><img src="img/cloud_branches.gif" class="img-fluid"></p>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="img/slide_02_movies-app.png" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="img/slide_03_proj-app.png" class="img-fluid"></p>
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="img/slide_02_movies-app.png" class="img-fluid" width="480"></p>
 </div>
 </div>
 </div>
+<p>You can also access each branch/app with the <a href="https://mjfrigaard.github.io/shinypak/"><code>shinypak</code> package</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pak")</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"mjfrigaard/shinypak"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinypak)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>List all the apps with <code>list_apps()</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">list_apps</span>())</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  branch        last_updated</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     01_whole-app-game 2024-01-01 14:11:32</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        02.1_shiny-app 2024-01-04 13:05:58</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4       02.2_movies-app 2024-01-04 13:07:59</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5         02.3_proj-app 2024-01-04 13:08:58</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      03.1_description 2024-01-04 13:10:00</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7            03.2_rproj 2024-01-04 13:25:06</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Launch an app with <code>launch()</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">launch</span>(<span class="at">app =</span> <span class="st">"02.3_proj-app"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
