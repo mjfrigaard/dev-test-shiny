@@ -2,25 +2,25 @@
 title: "Materials"
 ---
 
-:::{.callout-tip title="Code & Materials"}
+:::{.callout-tip title="Workshop Code & Materials" collapse=false}
 
-## Local use
+### Local use
 
 - Install latest version of RStudio ([`RStudio 2023.09.0 463` "Desert Sunflower"](https://www.rstudio.com/products/rstudio/download/#download) or later)
 
 - Access ALL hands-on materials by cloning the repo:  <https://github.com/mjfrigaard/moviesApp.git> 
 
 
-## Posit Cloud 
+### Posit Cloud 
 
 - Posit Cloud has the workshop materials pre-installed: <https://posit.cloud/spaces/434433/content/6827633>
 
-## Slido link 
+### Slido link 
 
 - Access the [Slido polls](https://app.sli.do/event/35KFYSpk85ckAYUstZrNMF)
 
 
-## Packages 
+### Packages 
 
 - Install these R packages:
 
@@ -34,20 +34,47 @@ install.packages(pkgs)
 
 :::
 
-## Accessing code examples 
+### Accessing code examples 
 
 To follow along, change the branch in the **Git** pane to the corresponding **Branch** in the slide footer: 
 
 :::: {.column-page-inset-right}
 
-::: {layout="[[1], [1,1]]"}
+::: {layout="[55,45]"}
 ![](img/cloud_branches.gif){width='100%'}
 
+![](img/slide_02_movies-app.png){width='480'}
 
-![](img/slide_02_movies-app.png){width='100%'}
-
-![](img/slide_03_proj-app.png){width='100%'}
 :::
+
+You can also access each branch/app with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/). 
+
+```r
+# install.packages("pak")
+pak::pak("mjfrigaard/shinypak")
+library(shinypak)
+```
+
+List all the apps with `list_apps()`
+
+
+```r
+head(list_apps())
+#>                  branch        last_updated
+#> 2     01_whole-app-game 2024-01-01 14:11:32
+#> 1        02.1_shiny-app 2024-01-04 13:05:58
+#> 4       02.2_movies-app 2024-01-04 13:07:59
+#> 5         02.3_proj-app 2024-01-04 13:08:58
+#> 6      03.1_description 2024-01-04 13:10:00
+#> 7            03.2_rproj 2024-01-04 13:25:06
+```
+
+Launch an app with `launch()`
+
+```r
+launch(app = "02.3_proj-app")
+```
+
 
 ::::
 

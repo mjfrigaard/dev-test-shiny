@@ -25,7 +25,7 @@ format:
     theme:
       light: [minty, styles.scss]
       dark: [cyborg, styles-dark.scss]
-    css: styles.css
+    css: styles.scss
     toc: true
 
 editor: source

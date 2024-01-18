@@ -130,7 +130,7 @@ Comfortable building R packages, but want to build more app-packages
 ## New Shiny app
 
 ::::footer
-[Branch: `main`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `02.1_shiny-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -161,7 +161,7 @@ moviesApp/
 ## Shiny code
 
 :::: footer
-[Branch: `02_movies-app`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `02.2_movies-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -197,7 +197,7 @@ moviesApp/
 ## Shiny project folders
 
 :::: footer
-[Branch: `03_proj-app`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `02.3_proj-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -243,7 +243,7 @@ moviesApp/
 ## Shiny loadSupport()
 
 :::: footer
-[Branch: `03_proj-app`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `02.3_proj-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -263,7 +263,7 @@ Shiny automatically `source`s the files in the `R/` folder and serves the extern
 ## DESCRIPTION files
 
 :::: footer
-[Branch: `04_description`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `03.1_description`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -291,7 +291,7 @@ DisplayMode: Showcase
 ## DESCRIPTION fields
 
 :::: footer
-[Branch: `04_description`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `03.1_description`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -328,7 +328,7 @@ License: GPL-3
 ## .Rproj files
 
 :::: footer
-[Branch: `05_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `03.2_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -369,7 +369,7 @@ moviesApp/
 ## Shiny project .Rproj fields
 
 :::: footer
-[Branch: `05_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `03.2_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -407,7 +407,7 @@ LaTeX: XeLaTeX
 ## R Package (Project build tools)
 
 :::: footer
-[Branch: `05_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `03.2_rproj`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -465,7 +465,7 @@ PackageRoxygenize: rd,collate,namespace
 ## Creating new app-packages
 
 :::: footer
-[Branch: `06a_create-package`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `03.3_create-package`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -515,7 +515,7 @@ newApp/
 ## Converting Shiny apps (fields)
 
 :::: footer
-[Branch: `06a_create-package`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `03.3_create-package`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -560,7 +560,7 @@ fields = list(Package = 'moviesApp',
 ## Converting Shiny apps (IDE options)
 
 :::: footer
-[Branch: `06a_create-package`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `03.3_create-package`]{style="font-weight: bold; font-size: 1.10em;"}
 :::::
 
 <br>
@@ -608,7 +608,7 @@ usethis::create_package(path = getwd(),
 ## Development with devtools
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `04_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -638,7 +638,7 @@ usethis::create_package(path = getwd(),
 ## Development: load_all()
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `04_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -680,7 +680,7 @@ Load the package when anything changes in the `R/` folder.
 ## Development: document()
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `04_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -749,7 +749,7 @@ Encoding: UTF-8
 ## Development: document()
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `04_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -796,7 +796,7 @@ Documentation completed
 ## Development: install()
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `04_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -851,7 +851,7 @@ No man pages found in package  ‘moviesApp’
 ## Development: check()?
 
 :::: footer
-[Branch: `06b_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `04_devtools`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -909,7 +909,7 @@ Recap: Shiny stuff
 ## Documentation: roxygen2
 
 :::: footer
-[Branch: `07_roxygen2`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `05_roxygen2`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -937,7 +937,7 @@ Recap: Shiny stuff
 ## Documentation: roxygen2 & document()
 
 :::: footer
-[Branch: `07_roxygen2`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `05_roxygen2`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -969,7 +969,7 @@ man
 ## Dependencies
 
 :::: footer
-[Branch: `07_roxygen2`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `05_roxygen2`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1050,7 +1050,7 @@ Error in movies_app() : could not find function "movies_app"
 ## Dependencies: exports
 
 :::: footer
-[Branch: `08a_pkg-exports`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `06.1_pkg-exports`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1096,7 +1096,7 @@ export(scatter_plot)
 ## Dependencies: imports
 
 :::: footer
-[Branch: `08b_pkg-imports`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `06.2_pkg-imports`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1182,7 +1182,7 @@ Use the `@import` tag if your code uses ***a lot*** of functions from a package
 ## Dependencies: imports cont.
 
 :::: footer
-[Branch: `08b_pkg-imports`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `06.2_pkg-imports`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -1210,7 +1210,7 @@ I highly recommend reading [Confusion about imports](https://r-pkgs.org/dependen
 ## Dependencies: recap
 
 :::: footer
-[Branch: `08b_pkg-imports`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `06.2_pkg-imports`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -1266,7 +1266,7 @@ Imports:
 ## Data
 
 :::: footer
-[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `07_data`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1302,7 +1302,7 @@ There are three locations for data in your app-package:
 ## Data: package data
 
 :::: footer
-[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `07_data`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1364,7 +1364,7 @@ data
 ## Data: raw data files
 
 :::: footer
-[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `07_data`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1441,7 +1441,7 @@ data-raw
 ## Data: external data files
 
 :::: footer
-[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `07_data`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1514,7 +1514,7 @@ fst::read_fst(path =
 ## Using system.file()
 
 :::: footer
-[Branch: `09_data`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `07_data`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1637,7 +1637,7 @@ The next section covers practices specific to app-packages.
 ## Launching apps
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `08_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1685,7 +1685,7 @@ moviesApp/
 ## Launching apps: movies_app()
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `08_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1753,7 +1753,7 @@ movies_app <- function(options = list()) {
 ## Launching apps: display_type()
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `08_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1806,7 +1806,7 @@ display_type <- function(run = "w") {
 ## Launching apps: movies_app()
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `08_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1850,7 +1850,7 @@ movies_app <- function(options = list(), run = "p") {
 ## Launching apps: app.R
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `08_launch-app`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1915,7 +1915,7 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
 ## External resources
 
 :::: footer
-[Branch: `11a_inst-www`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `09.1_inst-www`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1976,7 +1976,7 @@ After loading, documenting, and installing, we can access `shiny.png` with `syst
 ## External files: www/
 
 :::: footer
-[Branch: `11a_inst-www`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `09.1_inst-www`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2063,7 +2063,7 @@ img(src = "www/shiny.png")
 ## External files: bslib
 
 :::: footer
-[Branch: `11b_inst-bslib`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `09.2_inst-bslib`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2144,7 +2144,7 @@ movies_app(options = list(test.mode = TRUE),
 ## External files: dev
 
 :::: footer
-[Branch: `11c_inst-dev`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `09.3_inst-dev`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2232,7 +2232,7 @@ ggp2_movies_app(
 ## External files: prod
 
 :::: footer
-[Branch: `11d_inst-prod`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `09.4_inst-prod`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2305,9 +2305,6 @@ shinyAppDir(appDir = system.file("prod/app",
 :::
 ::::
 
-. . .
-
-[App](https://mjfrigaard.shinyapps.io/moviesApp-prod/)
 
 # Ready
 
@@ -2353,7 +2350,7 @@ The following sections will cover:
 ## Test suite
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `11_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2457,7 +2454,7 @@ usethis::use_testthat(3)
 ## New tests
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `11_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2521,7 +2518,7 @@ tests/
 ## Test files
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `11_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2615,7 +2612,7 @@ expect_equal(
 ## Running tests
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `11_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2712,7 +2709,7 @@ expect_equal(
 ## App specifications
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `11_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2777,7 +2774,7 @@ The **testable, specific behaviors**
 ## Test specifications
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `11_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2806,7 +2803,7 @@ A traceability matrix is a table that 'traces' the user specifications to featur
 ## Behavior-driven development tests
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `11_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2838,7 +2835,7 @@ Feature: < High-level description of capability >
 ## _Describe_ features & background
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `11_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2874,7 +2871,7 @@ testthat::describe(
 ## Write a test for _it_
 
 :::: footer
-[Branch: `12a_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `11_tests-specs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2909,7 +2906,7 @@ testthat::it("
 ## Test fixtures
 
 :::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.1_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -2958,7 +2955,7 @@ tests/
 ## Feature description for fixture
 
 :::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.1_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3012,7 +3009,7 @@ testthat::describe(
 ## Give a concrete scenario
 
 :::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.1_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3061,7 +3058,7 @@ testthat::it(
 ## Example fixture: data
 
 :::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.1_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -3133,7 +3130,7 @@ tests
 ## Write a fixture test
 
 :::: footer
-[Branch: `12b_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.1_tests-fixtures`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -3186,7 +3183,7 @@ Write a test using the static data test fixture
 ## Test helpers
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.2_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3234,7 +3231,7 @@ Store test helpers in `tests/testthat/helper.R` files.
 ## Example test helper
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.2_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3292,7 +3289,7 @@ We could write `var_inputs()` to store these values in a list
 ## Example test helper
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.2_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3351,7 +3348,7 @@ This removes duplicated code, but it's not clear for the reader what `var_inputs
 ## Test helpers & the DRY principle
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.2_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3379,7 +3376,7 @@ It’s more important that test code is obvious than DRY, because it’s **more 
 ## Better test helper
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.2_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3424,7 +3421,7 @@ This reduces the number of keystrokes per test, but doesn’t obscure the source
 ## Test output
 
 :::: footer
-[Branch: `12c_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `12.2_tests-helpers`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3492,7 +3489,7 @@ R/
 ## Testing modules
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -3531,7 +3528,7 @@ movies_server <- function(input, output, session) {
 ## Module behaviors 
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3582,7 +3579,7 @@ What scenarios call for a snapshot test?
 ## Testing modules: returned values 
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3646,7 +3643,7 @@ shiny::testServer(app = mod_var_input_server, expr = {
 ## Testing modules: returned values 
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -3687,7 +3684,7 @@ movies_server <- function(input, output, session) {
 ## Testing modules: reactive inputs 
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -3756,7 +3753,7 @@ Error in `var_inputs()`: could not find function "var_inputs"
 ## Testing modules: reactive inputs 
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -3825,7 +3822,7 @@ shiny::testServer(app = mod_scatter_display_server,
 ## Testing modules: how does this work? 
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3895,7 +3892,7 @@ $plot_title
 ## Testing modules: reactive inputs
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -3952,7 +3949,7 @@ shiny::testServer(app = mod_scatter_display_server,
 ## Testing modules: outputs
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -3987,7 +3984,7 @@ shiny::testServer(app = mod_scatter_display_server,
 ## Testing modules: verifying outputs
 
 :::: footer
-[Branch: `12d_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `13_tests-modules`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -4081,7 +4078,7 @@ We can also build the graph in the display module and confirm with `is.ggplot()`
 ## System tests with shinytest2
 
 :::: footer
-[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `14_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -4143,7 +4140,7 @@ shinytest2::use_shinytest2()
 ## shinytest2 setup
 
 :::: footer
-[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `14_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -4185,7 +4182,7 @@ b$view()
 ## shinytest2: recording tests
 
 :::: footer
-[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `14_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -4211,7 +4208,7 @@ Feature 1: Scatter plot data visualization dropdowns
 ## shinytest2: recording tests
 
 :::: footer
-[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `14_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -4242,7 +4239,7 @@ If we've been writing BDD scenarios, the tests are relatively easy to record:
 ## shinytest2: recording features 
 
 :::: footer
-[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `14_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -4276,7 +4273,7 @@ shinytest2::record_test()
 ## shinytest2: test contents
 
 :::: footer
-[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `14_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -4360,7 +4357,7 @@ test_that("{shinytest2} recording: moviesApp-feature-01", {
 ## shinytest2: writing tests
 
 :::: footer
-[Branch: `12f_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `14_tests-system`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>

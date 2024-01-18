@@ -63,7 +63,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.scss">
 </head>
 
 <body class="nav-fixed">
@@ -127,6 +127,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#workshop-description" id="toc-workshop-description" class="nav-link active" data-scroll-target="#workshop-description">Workshop Description</a></li>
+  <li><a href="#workshop-index" id="toc-workshop-index" class="nav-link" data-scroll-target="#workshop-index">Workshop Index</a></li>
   <li><a href="#efficient-tests-talk-recording" id="toc-efficient-tests-talk-recording" class="nav-link" data-scroll-target="#efficient-tests-talk-recording">Efficient tests talk (recording)</a></li>
   <li><a href="#about-me" id="toc-about-me" class="nav-link" data-scroll-target="#about-me">About Me</a></li>
   </ul>
@@ -160,6 +161,374 @@ ul.task-list li input[type="checkbox"] {
 <p>The focus then shifts to practical aspects of testing by illustrating tools like test data and fixtures. Attendees will see example tests for utility functions, modules, and tests to capture specific user interactions (and confirm the application behaves as expected).</p>
 <p>Finally, I will demonstrate advanced topics like test coverage, what it measures, and why 100% coverage isn’t necessarily a metric worth chasing.</p>
 <p>This presentation will give R developers a toolkit of testing techniques (building a test suite, writing effective tests, and automated testing) regardless of their familiarity with Shiny.</p>
+</section>
+<section id="workshop-index" class="level2">
+<h2 class="anchored" data-anchor-id="workshop-index">Workshop Index</h2>
+<table class="table">
+<caption>Video/slide index</caption>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Video</th>
+<th>Slide</th>
+<th>Branch(es)</th>
+<th>Book section</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Introduction</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=6Gbc9iXBOhJQaFlb">1:53</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/introduction">2</a></td>
+<td>NA</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Basic Shiny Apps</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=GZWSOIOzZZTKdYj_">6:15</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/new-shiny-app">5</a></td>
+<td><code>02.1_shiny-app</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/shiny.html#sec-shiny-projects">Shiny Apps</a></td>
+</tr>
+<tr class="odd">
+<td>Advanced Shiny Apps</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=x5TWf0ZIAfOo50Ko&amp;t=517">8:37</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/shiny-project-folders">7</a></td>
+<td><code>02.2_movies-app</code>, <code>02.3_proj-app</code></td>
+<td><p><a href="https://mjfrigaard.github.io/shiny-app-pkgs/shiny.html#sec-introduce-movie-review-app">Movie review data app</a></p>
+<p><a href="https://mjfrigaard.github.io/shiny-app-pkgs/shiny.html#sec-shiny-folders">Project folders</a></p></td>
+</tr>
+<tr class="even">
+<td><code>Rproj</code> fields</td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/r-package-.rproj-fields">14</a></td>
+<td><code>03.2_rproj</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/packages.html#r-projects">R Projects</a></td>
+</tr>
+<tr class="odd">
+<td>Transitioning to a Package</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=YFHVaFnfnI1e2ApV&amp;t=1218">20:18</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/creating-new-app-packages">15</a></td>
+<td><code>03.1_description</code>, <code>03.3_create-package</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/packages.html#creating-app-packages">Creating app-packages</a></td>
+</tr>
+<tr class="even">
+<td><code>DESCRIPTION</code> fields</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=TvwLxoN2bZk7u9cX&amp;t=1551">25:51</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/converting-shiny-apps-fields">16</a></td>
+<td><code>03.3_create-package</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/packages.html#description-arguments"><code>DESCRIPTION</code> arguments</a></td>
+</tr>
+<tr class="odd">
+<td>Load, document, install</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=EeP6BLQkvM7SUBFZ&amp;t=1681">28:01</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/development-with-devtools">18</a></td>
+<td><code>04_devtools</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/development.html#package-development-habits">Package development habits</a></td>
+</tr>
+<tr class="even">
+<td><code>document()</code> benefits</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=BNCpDydbrFYW2mdA&amp;t=1886">31:26</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/development-document">20</a></td>
+<td><code>04_devtools</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/development.html#sec-dev-document">Documentation</a></td>
+</tr>
+<tr class="odd">
+<td>Running <code>check()</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=Fvj_lqTzDCZk9JOs&amp;t=2114">35:14</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/development-check">23</a></td>
+<td><code>04_devtools</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/development.html#sec-dev-check">Check?</a></td>
+</tr>
+<tr class="even">
+<td><code>roxygen2</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=wNeP8HdssvxmNRCE&amp;t=2499">41:39</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/documentation-roxygen2">26</a></td>
+<td><code>05_roxygen2</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/document.html#sec-intro-roxygen2"><code>roxygen2</code> basics</a></td>
+</tr>
+<tr class="odd">
+<td>Help files</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=OTccwHwIBJLtw6rN&amp;t=2704">45:03</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/documentation-roxygen2-document">27</a></td>
+<td><code>05_roxygen2</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/document.html#sec-document-app-functions">Documenting app functions</a></td>
+</tr>
+<tr class="even">
+<td>Dependencies</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=P_ltFgxI5J7siD17&amp;t=2838">47:21</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies">28</a></td>
+<td><code>06.1_pkg-exports</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/dependencies.html">Dependencies</a></td>
+</tr>
+<tr class="odd">
+<td>Exports</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=qiyzhXr0yGaovDrI&amp;t=2982">49:44</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies-exports">29</a></td>
+<td><code>06.1_pkg-exports</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/dependencies.html#sec-depends-exports">Exports</a></td>
+</tr>
+<tr class="even">
+<td>Imports</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=kxRVEU54Oj_7eDPs&amp;t=3181">53:01</a></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies-imports">30</a></td>
+<td><code>06.2_pkg-imports</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/dependencies.html#sec-depends-imports">Imports</a></td>
+</tr>
+<tr class="odd">
+<td>Data</td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/data">33</a></td>
+<td><code>07_data</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/data.html">Data</a></td>
+</tr>
+<tr class="even">
+<td>Using <code>system.file</code></td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/using-system.file">37</a></td>
+<td><code>07_data</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/data.html#sec-data-inst-extdata">The <code>inst/extdata</code> folder</a></td>
+</tr>
+<tr class="odd">
+<td>Launching apps</td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/launching-apps">40</a></td>
+<td><code>08_launch-app</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/launch.html">Launch</a></td>
+</tr>
+<tr class="even">
+<td>Standalone app functions</td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/launching-apps-movies_app">41</a></td>
+<td><code>08_launch-app</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/launch.html#standalone-options">Standalone options</a></td>
+</tr>
+<tr class="odd">
+<td><code>app.R</code> files</td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/launching-apps-app.r">44</a></td>
+<td><code>08_launch-app</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/launch.html#sec-launch-app-dot-r"><code>app.R</code> options</a></td>
+</tr>
+<tr class="even">
+<td>External resources</td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-resources">45</a></td>
+<td><code>09.1_inst-www</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>inst/www</code></td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-files-www">46</a></td>
+<td><code>09.1_inst-www</code>, <code>09.2_inst-bslib</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>inst/dev</code></td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-files-dev">48</a></td>
+<td><code>09.3_inst-dev</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>inst/prod</code></td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-files-prod">49</a></td>
+<td><code>09.4_inst-prod</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Tests</td>
+<td></td>
+<td><a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/tests">51</a></td>
+<td><code>11_tests-specs</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="efficient-tests-talk-recording" class="level2">
 <h2 class="anchored" data-anchor-id="efficient-tests-talk-recording">Efficient tests talk (recording)</h2>

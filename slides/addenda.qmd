@@ -97,14 +97,14 @@ These are slides that didn't make the cut (either due to time or relevance), but
 # Launching apps
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `08_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
 ::::
 
 <br>
 
 . . .
 
-In the `10_launch-app` repo, multiple functions are used to launch the application in `moviesApp`.
+In the `08_launch-app` repo, multiple functions are used to launch the application in `moviesApp`.
 
 . . .
 
@@ -123,7 +123,7 @@ This topic is covered extensively in [this blog post from ThinkR](https://rtask.
 ## Launching apps: shinyApp()
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `08_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
 ::::
 
 <br>
@@ -200,7 +200,7 @@ List of 5
 ## Launching apps: shinyAppDir()
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `08_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
 ::::
 
 <br>
@@ -280,7 +280,7 @@ shinyAppDir(
 ## Launching apps: runApp()
 
 :::: footer
-[Branch: `10_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
+[Branch: `08_launch-app`]{style="font-weight: bold; font-size: 0.90em;"}
 ::::
 
 <br>
@@ -385,7 +385,7 @@ The following slides cover two methods for debugging Shiny functions:
 ## Debugging Shiny errors 
 
 :::: footer
-[Branch: `spec_topic-debugging-01`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.1_debug-error`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -431,7 +431,7 @@ Listening on http://127.0.0.1:6588
 ## `browser()` and `observe()`
 
 :::: footer
-[Branch: `spec_topic-debugging-02`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.2_debug-selected_vars`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -504,7 +504,7 @@ devtools::load_all()
 ## Debugger: pause execution
 
 :::: footer
-[Branch: `spec_topic-debugging-02`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.2_debug-selected_vars`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -532,7 +532,7 @@ The debugger pauses execution of the modules in `movies_server()`
 ## Debugger: execute line-by-line
 
 :::: footer
-[Branch: `spec_topic-debugging-02`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.2_debug-selected_vars`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -594,7 +594,7 @@ Browse[2]> n
 ## Parentheses (or not) 
 
 :::: footer
-[Branch: `spec_topic-debugging-02`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.2_debug-selected_vars`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -671,7 +671,7 @@ $plot_title
 ## Debugging modules
 
 :::: footer
-[Branch: `spec_topic-debugging-03`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.3_debug-var_inputs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -750,7 +750,7 @@ devtools::load_all()
 ## Comparisons: waldo
 
 :::: footer
-[Branch: `spec_topic-debugging-03`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.3_debug-var_inputs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -833,7 +833,7 @@ Browse[2]> waldo::compare(var_inputs(), inputs())
 ## Comparisons: `diffobj`
 
 :::: footer
-[Branch: `spec_topic-debugging-03`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.3_debug-var_inputs`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -904,7 +904,7 @@ Browse[2]> diffobj::diffObj(target = names(var_inputs()),
 ## Step into a function
 
 :::: footer
-[Branch: `spec_topic-debugging-04`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.4_debug-scatter_plot`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -990,7 +990,7 @@ Caused by error in `.data[[NULL]]`:
 ## Well-placed `print()`s
 
 :::: footer
-[Branch: `spec_topic-debugging-05`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.5_debug-print`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1020,7 +1020,7 @@ In Shiny functions, we can capture the values in `input` with `reactiveValuesToL
 ## Shiny `print()` calls
 
 :::: footer
-[Branch: `spec_topic-debugging-05`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.5_debug-print`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1120,7 +1120,7 @@ output$vals <- renderPrint({
 ## Viewing `print()` calls in Shiny 
 
 :::: footer
-[Branch: `spec_topic-debugging-05`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.5_debug-print`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1160,7 +1160,7 @@ movies_app(run = 'p')
 ## Viewing `print()` calls in Shiny 
 
 :::: footer
-[Branch: `spec_topic-debugging-05`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `21.5_debug-print`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1201,7 +1201,7 @@ movies_app(run = 'p',
 # Snapshot tests 
 
 :::: footer
-[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `23_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -1256,7 +1256,7 @@ Can lead to test failures (even if the changes are insignificant)
 ## Snapshot scenario
 
 :::: footer
-[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `23_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1294,7 +1294,7 @@ testthat::describe("Feature: Scatter Plot Points Controlled by Dropdown Menus
 ## Visual unit test
 
 :::: footer
-[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `23_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1347,7 +1347,7 @@ vdiffr::expect_doppelganger(
 ## Visual unit test
 
 :::: footer
-[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `23_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1400,7 +1400,7 @@ vdiffr::expect_doppelganger(
 ## Example test (snapshots & logging)
 
 :::: footer
-[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `23_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 
@@ -1470,7 +1470,7 @@ tests/testthat/_snaps/
 ## Example test (snapshots & logging)
 
 :::: footer
-[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `23_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1561,7 +1561,7 @@ INFO [2023-10-24 12:23:57] [ END scatter_plot(movies) = snap updated x,y,z]
 ## Reviewing snapshots
 
 :::: footer
-[Branch: `12g_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `23_tests-snapshots`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 . . .
@@ -1597,7 +1597,7 @@ These are test results we can share with users/shareholders.
 # Test mocks
 
 :::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `24_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 Test mocking functions are a relatively new addition to `testthat`
@@ -1611,7 +1611,7 @@ Test mocking functions are a relatively new addition to `testthat`
 ## Example test with mocking
 
 :::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `24_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 :::{style="font-size: 0.90em;"}
@@ -1643,7 +1643,7 @@ test_that(
 ## Example function: check_installed()
 
 :::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `24_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1695,7 +1695,7 @@ check_installed <- function(package) {
 ## Example function: feature and scenario
 
 :::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `24_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1772,7 +1772,7 @@ is_installed('base')
 ## Example test mock
 
 :::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `24_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
@@ -1849,7 +1849,7 @@ describe("Feature: Checking if an R package is installed", code = {
 ## Notes on mocking 
 
 :::: footer
-[Branch: `12d_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
+[Branch: `24_tests-mocks`]{style="font-weight: bold; font-size: 1.10em;"}
 ::::
 
 <br>
