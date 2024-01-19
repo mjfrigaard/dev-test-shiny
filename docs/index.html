@@ -163,9 +163,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#workshop-description" id="toc-workshop-description" class="nav-link active" data-scroll-target="#workshop-description">Workshop Description</a></li>
   <li><a href="#workshop-topic-index" id="toc-workshop-topic-index" class="nav-link" data-scroll-target="#workshop-topic-index">Workshop Topic Index</a>
   <ul class="collapse">
-  <li><a href="#shiny-packages-and-devtools" id="toc-shiny-packages-and-devtools" class="nav-link" data-scroll-target="#shiny-packages-and-devtools">Shiny, packages, and <code>devtools</code></a></li>
-  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">R Packages</a></li>
-  <li><a href="#app-packages" id="toc-app-packages" class="nav-link" data-scroll-target="#app-packages">App-packages</a></li>
+  <li><a href="#shiny-apps-and-r-packages" id="toc-shiny-apps-and-r-packages" class="nav-link" data-scroll-target="#shiny-apps-and-r-packages">Shiny Apps and R packages</a></li>
+  <li><a href="#r-package-contents" id="toc-r-package-contents" class="nav-link" data-scroll-target="#r-package-contents">R Package Contents</a></li>
+  <li><a href="#app-package-contents" id="toc-app-package-contents" class="nav-link" data-scroll-target="#app-package-contents">App-Package Contents</a></li>
+  <li><a href="#questions-from-chat" id="toc-questions-from-chat" class="nav-link" data-scroll-target="#questions-from-chat">Questions from chat</a></li>
   <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests">Tests</a></li>
   </ul></li>
   <li><a href="#about-me" id="toc-about-me" class="nav-link" data-scroll-target="#about-me">About Me</a></li>
@@ -219,65 +220,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Launch an app with <code>launch()</code></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">launch</span>(<span class="at">app =</span> <span class="st">"02.3_proj-app"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
-<section id="shiny-packages-and-devtools" class="level3">
-<h3 class="anchored" data-anchor-id="shiny-packages-and-devtools">Shiny, packages, and <code>devtools</code></h3>
+<section id="shiny-apps-and-r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="shiny-apps-and-r-packages">Shiny Apps and R packages</h3>
 <div style="font-size: 0.85rem;">
 <table class="table">
-<thead>
-<tr class="header">
-<th>Topic</th>
-<th>Video/Slide</th>
-<th>Branch</th>
-<th>Book section</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
+<td><h4 id="topic" class="anchored">Topic</h4></td>
+<td><h4 id="videoslidebranch" class="anchored">Video/Slide/Branch</h4></td>
+<td><h4 id="book-section" class="anchored">Book section</h4></td>
+</tr>
+<tr class="even">
 <td><strong>Basic Shiny Apps</strong></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=GZWSOIOzZZTKdYj_">6:15</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/new-shiny-app">5</a></td>
-<td><code>02.1_shiny-app</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=GZWSOIOzZZTKdYj_">6:15</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/new-shiny-app">5</a> /<code>02.1_shiny-app</code></td>
 <td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/shiny.html#sec-shiny-projects">Shiny Apps</a> covers creating a new Shiny app in Posit Workbench and the boilerplate code.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Advanced Shiny Apps</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=x5TWf0ZIAfOo50Ko&amp;t=517">8:37</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/shiny-project-folders">7</a></td>
-<td><code>02.2_movies-app</code>, <code>02.3_proj-app</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=x5TWf0ZIAfOo50Ko&amp;t=517">8:37</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/shiny-project-folders">7</a> / <code>02.2_movies-app</code>, <code>02.3_proj-app</code></td>
 <td>The code for our application is introduced in <a href="https://mjfrigaard.github.io/shiny-app-pkgs/shiny.html#sec-introduce-movie-review-app">Movie review data app</a>, and the utility function, modules, and data are covered in <a href="https://mjfrigaard.github.io/shiny-app-pkgs/shiny.html#sec-shiny-folders">Project folders</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>Rproj</code> fields</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=4BjbXJgSJon5GEg0&amp;t=818">13:38</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/r-package-.rproj-fields">14</a></td>
-<td><code>03.2_rproj</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=4BjbXJgSJon5GEg0&amp;t=818">13:38</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/r-package-.rproj-fields">14</a> / <code>03.2_rproj</code></td>
 <td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/packages.html#r-projects">R Projects</a> discusses what’s in the <code>.Rproj</code> file (and project vs.&nbsp;package fields).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>Transitioning to a Package</strong></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=YFHVaFnfnI1e2ApV&amp;t=1218">20:18</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/creating-new-app-packages">15</a></td>
-<td><code>03.1_description</code>, <code>03.3_create-package</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=YFHVaFnfnI1e2ApV&amp;t=1218">20:18</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/creating-new-app-packages">15</a> / <code>03.1_description</code>, <code>03.3_create-package</code></td>
 <td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/packages.html#creating-app-packages">Creating app-packages</a> covers converting and creating app-packages with <code>usethis::create_package()</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>DESCRIPTION</code> fields</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=TvwLxoN2bZk7u9cX&amp;t=1551">25:51</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/converting-shiny-apps-fields">16</a></td>
-<td><code>03.3_create-package</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=TvwLxoN2bZk7u9cX&amp;t=1551">25:51</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/converting-shiny-apps-fields">16</a> / <code>03.3_create-package</code></td>
 <td>Storing/supplying your personal information in new packages is discussed in <a href="https://mjfrigaard.github.io/shiny-app-pkgs/packages.html#description-argumentshttps://mjfrigaard.github.io/shiny-app-pkgs/packages.html#description-arguments">DESCRIPTION</a> <a href="https://mjfrigaard.github.io/shiny-app-pkgs/packages.html#description-arguments">arguments</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Load, document, and install</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=EeP6BLQkvM7SUBFZ&amp;t=1681">28:01</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/development-with-devtools">18</a></td>
-<td><code>04_devtools</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=EeP6BLQkvM7SUBFZ&amp;t=1681">28:01</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/development-with-devtools">18</a> / <code>04_devtools</code></td>
 <td>Building R packages means adopting new <a href="https://mjfrigaard.github.io/shiny-app-pkgs/development.html#package-development-habits">package development habits</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>The benefits of <code>document()</code></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=BNCpDydbrFYW2mdA&amp;t=1886">31:26</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/development-document">20</a></td>
-<td><code>04_devtools</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=BNCpDydbrFYW2mdA&amp;t=1886">31:26</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/development-document">20</a> / <code>04_devtools</code></td>
 <td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/development.html#sec-dev-document">Documentation</a> covers the multiple outputs created with <code>devtools::document()</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Running <code>check()</code></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=Fvj_lqTzDCZk9JOs&amp;t=2114">35:14</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/development-check">23</a></td>
-<td><code>04_devtools</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=Fvj_lqTzDCZk9JOs&amp;t=2114">35:14</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/development-check">23</a> / <code>04_devtools</code></td>
 <td>How often/should you run <a href="https://mjfrigaard.github.io/shiny-app-pkgs/development.html#sec-dev-check">Check?</a></td>
 </tr>
 </tbody>
@@ -285,59 +275,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="r-packages" class="level3">
-<h3 class="anchored" data-anchor-id="r-packages">R Packages</h3>
+<section id="r-package-contents" class="level3">
+<h3 class="anchored" data-anchor-id="r-package-contents">R Package Contents</h3>
 <div style="font-size: 0.85rem;">
 <table class="table">
-<thead>
-<tr class="header">
-<th>Topic</th>
-<th>Video/Slide</th>
-<th>Branch</th>
-<th>Book section</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
+<td><h4 id="topic-1" class="anchored">Topic</h4></td>
+<td><h4 id="videoslidebranch-1" class="anchored">Video/Slide/Branch</h4></td>
+<td><h4 id="book-section-1" class="anchored">Book section</h4></td>
+</tr>
+<tr class="even">
 <td><strong>Documentation</strong></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=wNeP8HdssvxmNRCE&amp;t=2499">41:39</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/documentation-roxygen2">26</a></td>
-<td><code>05_roxygen2</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=wNeP8HdssvxmNRCE&amp;t=2499">41:39</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/documentation-roxygen2">26</a> / <code>05_roxygen2</code></td>
 <td>Learn the basics of function documentation with <a href="https://mjfrigaard.github.io/shiny-app-pkgs/document.html#sec-intro-roxygen2"><code>roxygen2</code> basics</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Help files</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=OTccwHwIBJLtw6rN&amp;t=2704">45:03</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/documentation-roxygen2-document">27</a></td>
-<td><code>05_roxygen2</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=OTccwHwIBJLtw6rN&amp;t=2704">45:03</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/documentation-roxygen2-document">27</a> / <code>05_roxygen2</code></td>
 <td>Preview help files while <a href="https://mjfrigaard.github.io/shiny-app-pkgs/document.html#sec-document-app-functions">documenting app functions</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>Dependencies</strong></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=P_ltFgxI5J7siD17&amp;t=2838">47:21</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies">28</a></td>
-<td><code>06.1_pkg-exports</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=P_ltFgxI5J7siD17&amp;t=2838">47:21</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies">28</a> / <code>06.1_pkg-exports</code></td>
 <td>Introduction to managing <a href="https://mjfrigaard.github.io/shiny-app-pkgs/dependencies.html">dependencies</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Exports</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=qiyzhXr0yGaovDrI&amp;t=2982">49:44</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies-exports">29</a></td>
-<td><code>06.1_pkg-exports</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=qiyzhXr0yGaovDrI&amp;t=2982">49:44</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies-exports">29</a> / <code>06.1_pkg-exports</code></td>
 <td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/dependencies.html#sec-depends-exports">Exports</a> from your app-package</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Imports</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=kxRVEU54Oj_7eDPs&amp;t=3181">53:01</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies-imports">30</a></td>
-<td><code>06.2_pkg-imports</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=kxRVEU54Oj_7eDPs&amp;t=3181">53:01</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/dependencies-imports">30</a> / <code>06.2_pkg-imports</code></td>
 <td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/dependencies.html#sec-depends-imports">Imports</a> into your app-package</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>Data</strong></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=0hIM5hPQbUga4HRt&amp;t=3795">1:03:15</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/data">33</a></td>
-<td><code>07_data</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=0hIM5hPQbUga4HRt&amp;t=3795">1:03:15</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/data">33</a> / <code>07_data</code></td>
 <td>Storing, loading, and documenting <a href="https://mjfrigaard.github.io/shiny-app-pkgs/data.html">data</a></td>
 </tr>
-<tr class="odd">
-<td>Using <code>system.file</code></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=oqq851Mgt3yXokkn&amp;t=4130">1:08:51</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/using-system.file">37</a></td>
-<td><code>07_data</code></td>
+<tr class="even">
+<td>Accessing files with <code>system.file()</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=oqq851Mgt3yXokkn&amp;t=4130">1:08:51</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/using-system.file">37</a> / <code>07_data</code></td>
 <td>How to use <a href="https://mjfrigaard.github.io/shiny-app-pkgs/data.html#sec-data-inst-extdata">the <code>inst/extdata</code> folder</a></td>
 </tr>
 </tbody>
@@ -345,126 +325,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="app-packages" class="level3">
-<h3 class="anchored" data-anchor-id="app-packages">App-packages</h3>
+<section id="app-package-contents" class="level3">
+<h3 class="anchored" data-anchor-id="app-package-contents">App-Package Contents</h3>
 <div style="font-size: 0.85rem;">
 <table class="table">
-<thead>
-<tr class="header">
-<th>Topic</th>
-<th>Video/Slide</th>
-<th>Branch</th>
-<th>Book section</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
+<td><h4 id="topic-2" class="anchored">Topic</h4></td>
+<td><h4 id="videoslidebranch-2" class="anchored">Video/Slide/Branch</h4></td>
+<td><h4 id="book-section-2" class="anchored">Book section</h4></td>
+</tr>
+<tr class="even">
 <td><strong>Launching apps</strong></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=dnkLLOmoweSaEX1C&amp;t=4877">1:21:17</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/launching-apps">40</a></td>
-<td><code>08_launch-app</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=dnkLLOmoweSaEX1C&amp;t=4877">1:21:17</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/launching-apps">40</a> / <code>08_launch-app</code></td>
 <td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/launch.html">Launch</a> covers Shiny’s three functions for running apps (<code>shinyApp()</code>, <code>runApp()</code>, and <code>shinyAppDir()</code>)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Standalone app functions</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=dnkLLOmoweSaEX1C&amp;t=4877">1:22:07</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/launching-apps-movies_app">41</a></td>
-<td><code>08_launch-app</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=dnkLLOmoweSaEX1C&amp;t=4877">1:22:07</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/launching-apps-movies_app">41</a> / <code>08_launch-app</code></td>
 <td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/launch.html#standalone-options">Standalone options</a> provides some methods/approaches to writing the primary function to run your application.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>app.R</code> files</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=5pga8ulVAxz6r7sa&amp;t=5227">1:27:07</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/launching-apps-app.r">44</a></td>
-<td><code>08_launch-app</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=5pga8ulVAxz6r7sa&amp;t=5227">1:27:07</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/launching-apps-app.r">44</a> / <code>08_launch-app</code></td>
 <td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/launch.html#sec-launch-app-dot-r"><code>app.R</code> options</a> includes packages and functions to consider including in the root <code>app.R</code> file (and how to use it non-interactively).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>External resources</strong></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=YG7pA-jNdOu9vz9m&amp;t=5432">1:30:32</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-resources">45</a></td>
-<td><code>09.1_inst-www</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=YG7pA-jNdOu9vz9m&amp;t=5432">1:30:32</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-resources">45</a> / <code>09.1_inst-www</code></td>
 <td>Most Shiny apps require some <a href="https://mjfrigaard.github.io/shiny-app-pkgs/external.html#external-files">external files</a>–this chapter covers how to include them.</td>
 </tr>
-<tr class="odd">
-<td><code>addResourcePath()</code> and <code>system.file()</code></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=zhMURS7p60Hbm3uE&amp;t=5472">1:31:12</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-files-www">46</a></td>
-<td><code>09.1_inst-www</code>, <code>09.2_inst-bslib</code></td>
-<td>The differences between the ‘source’ and ‘installed’ package is covered <a href="https://mjfrigaard.github.io/shiny-app-pkgs/external.html#package-files">package files</a>, and including alternative image files/UI arguments is discussed in <a href="https://mjfrigaard.github.io/shiny-app-pkgs/external.html#sec-external-inst-bslib"><code>bslib</code> layout</a></td>
-</tr>
 <tr class="even">
+<td><code>addResourcePath()</code> and <code>system.file()</code></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=zhMURS7p60Hbm3uE&amp;t=5472">1:31:12</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-files-www">46</a> / <code>09.1_inst-www</code>, <code>09.2_inst-bslib</code></td>
+<td>The differences between the ‘source’ and ‘installed’ package is covered in <a href="https://mjfrigaard.github.io/shiny-app-pkgs/external.html#package-files">package files</a>, and including alternative image files/UI arguments is discussed in <a href="https://mjfrigaard.github.io/shiny-app-pkgs/external.html#sec-external-inst-bslib"><code>bslib</code> layout</a></td>
+</tr>
+<tr class="odd">
 <td>‘development’ vs ‘production’ directories</td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=atOgvJyrmHQH3u5h&amp;t=6221">1:43:41</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-files-dev">48</a></td>
-<td><code>09.3_inst-dev</code>, <code>09.4_inst-prod</code></td>
-<td>You can also use <code>inst/</code> to store <a href="https://mjfrigaard.github.io/shiny-app-pkgs/external.html#sec-external-inst-dev"><code>dev</code> data</a> and <a href="https://mjfrigaard.github.io/shiny-app-pkgs/external.html#sec-external-inst-prod">production (<code>prod</code>)</a> versions of your app</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=atOgvJyrmHQH3u5h&amp;t=6221">1:43:41</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/external-files-dev">48</a> / <code>09.3_inst-dev</code>, <code>09.4_inst-prod</code></td>
+<td>This chapter also covers how to use <code>inst/</code> to store <a href="https://mjfrigaard.github.io/shiny-app-pkgs/external.html#sec-external-inst-dev"><code>dev</code> data</a> and <a href="https://mjfrigaard.github.io/shiny-app-pkgs/external.html#sec-external-inst-prod">production (<code>prod</code>)</a> versions of your app</td>
 </tr>
 </tbody>
 </table>
 </div>
 <hr>
 </section>
+<section id="questions-from-chat" class="level3">
+<h3 class="anchored" data-anchor-id="questions-from-chat">Questions from chat</h3>
+<ol type="1">
+<li><p><strong><em>Am I planning on contrasting this package development approach with a [Shiny] framework?</em></strong></p>
+<ol type="1">
+<li><p>Discussion of the <code>rhino</code> framework: <a href="https://youtu.be/HApff2wBM2I?si=YGlulttEp9Sa8R3k&amp;t=6509">1:48:29</a></p></li>
+<li><p>Shiny framework comparisons website: <a href="https://youtu.be/HApff2wBM2I?si=Z8qmxl5331tt0Wkc&amp;t=6635">1:50:35</a></p>
+<ul>
+<li><a href="https://mjfrigaard.github.io/sfw/">Link to site</a></li>
+</ul></li>
+</ol>
+<!-- -->
+<ol start="3" type="1">
+<li>Brief discussion of the <code>golem</code> framework: <a href="https://youtu.be/HApff2wBM2I?si=VlB9ldC7LD0ZFhfH&amp;t=6669">1:51:09</a></li>
+</ol></li>
+<li><p><strong><em>Choosing one framework over another in terms of design and how to best prepare your app as it becomes more complicated or how you choose the best way to ‘future proof’ your app?</em></strong></p>
+<ol type="1">
+<li>My rather lengthy non-answer starts at <a href="https://youtu.be/HApff2wBM2I?si=qXP5fem4AjXyiLVj&amp;t=6854">1:54:14</a></li>
+</ol></li>
+<li><p><strong><em>The order of learning when it comes to our Shiny versus R packages (like learning before the other)</em></strong></p>
+<ol type="1">
+<li>Shameless plug for my <a href="https://mjfrigaard.github.io/shiny-app-pkgs/">Shiny App-Packages book</a> starting at: <a href="https://youtu.be/HApff2wBM2I?si=zizpElY84QqE6Qdb&amp;t=6975">1:56:15</a></li>
+</ol></li>
+</ol>
+</section>
 <section id="tests" class="level3">
 <h3 class="anchored" data-anchor-id="tests">Tests</h3>
 <div style="font-size: 0.85rem;">
 <table class="table">
-<thead>
-<tr class="header">
-<th>Topic</th>
-<th>Video/Slide</th>
-<th>Branch</th>
-<th>Book section</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
-<td><strong>Tests</strong></td>
-<td><a href="https://youtu.be/HApff2wBM2I?si=fnmuBdGdeiJ0mntC&amp;t=7236">2:00:56</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/tests">51</a></td>
-<td><code>11_tests-specs</code></td>
-<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/tests.html">Tests</a></td>
+<td style="text-align: left;"><h4 id="topic-3" class="anchored">Topic</h4></td>
+<td><h4 id="videoslidebranch-3" class="anchored">Video/Slide/Branch</h4></td>
+<td><h4 id="book-section-3" class="anchored">Book section</h4></td>
 </tr>
 <tr class="even">
-<td>Test suite</td>
-<td>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/test-suite">52</a></td>
-<td><code>11_tests-specs</code></td>
-<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_suite.html">Test suite</a></td>
+<td style="text-align: left;"><strong>Tests</strong></td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=cnCxfbfLRCiKr1tK&amp;t=7244">2:00:45</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/tests">51</a> / <code>11_tests-specs</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/tests.html">Tests</a> gives an overview of the testing section (and links to additional resources)</td>
 </tr>
 <tr class="odd">
-<td>App specifications</td>
-<td>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/app-specifications">56</a></td>
-<td><code>11_tests-specs</code></td>
-<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_specs.html">Specifications</a></td>
+<td style="text-align: left;">Test suite</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=YecOsAHvWXr0ouC0&amp;t=7335">2:02:15</a>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/test-suite">52</a> / <code>11_tests-specs</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_suite.html">Test suite</a> covers how to setup your <code>testthat</code> tests, creating new tests, running tests interactively, etc.</td>
 </tr>
 <tr class="even">
-<td>Mapping specifications and tests</td>
-<td>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/test-specifications">57</a></td>
-<td><code>11_tests-specs</code></td>
-<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_specs.html#traceability-matrix">Traceability Matrix</a></td>
+<td style="text-align: left;">App specifications</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=8dcAQVPTzvf21rc4&amp;t=7786">2:09:46</a>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/app-specifications">56</a> / <code>11_tests-specs</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_specs.html">Specifications</a> compares user specifications, features, and functional requirements (or <em>how to figure out what to test</em>)</td>
 </tr>
 <tr class="odd">
-<td><code>testthat</code> BDD functions</td>
-<td>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/describe-features-background">59</a></td>
-<td><code>11_tests-specs</code></td>
-<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_specs.html#bdd-and-testthat">BDD and <code>testthat</code></a></td>
+<td style="text-align: left;">Connecting user specifications and tests</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=vAboLu1lrW_7nxYN&amp;t=7900">2:11:40</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/test-specifications">57</a> / <code>11_tests-specs</code></td>
+<td>The <a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_specs.html#traceability-matrix">traceability matrix</a> section gives an example of a user specification <em>mapped</em> to a feature <em>linked</em> to a functional requirement <em>connected</em> to a test.</td>
 </tr>
 <tr class="even">
-<td>Test fixtures</td>
-<td>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/test-fixtures">61</a></td>
-<td><code>12.1_tests-fixtures</code></td>
-<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_tools.html#sec-test-fixtures">Fixtures</a></td>
+<td style="text-align: left;"><code>testthat</code> BDD functions</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=O_zOzgVT6lpJhms0&amp;t=8305">2:18:25</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/describe-features-background">59</a> / <code>11_tests-specs</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_specs.html#bdd-and-testthat">BDD and <code>testthat</code></a> covers using <code>describe()</code> and <code>it()</code> with the <a href="https://cucumber.io/docs/gherkin/">Gherkin syntax</a></td>
 </tr>
 <tr class="odd">
-<td>Test helpers</td>
-<td>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/test-helpers">66</a></td>
-<td><code>12.2_tests-helpers</code></td>
-<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_tools.html#sec-test-helpers">Helpers</a></td>
+<td style="text-align: left;">Test fixtures</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=XAPAxqLeypoBnHaB&amp;t=8527">2:22:07</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/test-fixtures">61</a> / <code>12.1_tests-fixtures</code></td>
+<td>The <a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_tools.html#sec-test-fixtures">fixtures</a> section uses the same (data) example fixture, but gives more information on using them in tests.</td>
 </tr>
 <tr class="even">
-<td>Testing modules</td>
-<td>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/testing-modules">72</a></td>
-<td><code>13_tests-modules</code></td>
-<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_modules.html#integration-tests">Integration tests</a></td>
+<td style="text-align: left;">Test helpers</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=-5vGuHRDYCs-897Z&amp;t=9129">2:32:09</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/test-helpers">66</a> / <code>12.2_tests-helpers</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_tools.html#sec-test-helpers">Test helpers</a> covers some dos and don’ts of writing test helpers (it’s OK if test code doesn’t 100% adhere to the DRY principle)</td>
 </tr>
 <tr class="odd">
-<td>System tests</td>
-<td>/ <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/system-tests-with-shinytest2">82</a></td>
-<td><code>14_tests-system</code></td>
-<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_system.html">System tests</a></td>
+<td style="text-align: left;">Testing modules</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=kJrNilYhnpxDbBkg&amp;t=9479">2:37:59</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/testing-modules">72</a> / <code>13_tests-modules</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_modules.html#integration-tests">Integration tests</a> discusses testing module server functions with <code>testServer()</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">System tests</td>
+<td><a href="https://youtu.be/HApff2wBM2I?si=6sd8N8bvKlpabLv8&amp;t=10134">2:48:54</a> / <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/system-tests-with-shinytest2">82</a> / <code>14_tests-system</code></td>
+<td><a href="https://mjfrigaard.github.io/shiny-app-pkgs/test_system.html">System tests</a> covers setting up <code>shinytest2</code>, recording and writing tests.</td>
 </tr>
 </tbody>
 </table>
